@@ -3,7 +3,7 @@ import { Wrapper, Title } from './styles';
 
 export const Warnner = () => {
   return (
-    <Wrapper>
+    <Wrapper >
       <Title>Home</Title>
     </Wrapper>
   );
