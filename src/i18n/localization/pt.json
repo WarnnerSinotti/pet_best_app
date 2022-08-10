@@ -1,0 +1,14 @@
+{
+  "_comment": "src/localization/pt.json",
+  "loginScreen": {
+    "email": "Email",
+    "password": "Senha",
+    "forgot_your_password": "Esqueceu Sua Senha?",
+    "login": "Entrar",
+    "or": "OU",
+    "login_with_google": "Entrar Com Google",
+    "login_with_apple": "Entrar Com Apple",
+    "new_to_my_pet_friend": "Pronto Para My Pet Friend APP?",
+    "sign_in": "Cadastre-se"
+  }
+}

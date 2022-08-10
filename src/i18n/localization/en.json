@@ -1,0 +1,14 @@
+{
+  "_comment": "src/localization/en.json",
+  "loginScreen": {
+    "email": "Email",
+    "password": "Password",
+    "forgot_your_password": "Forgot Your Password?",
+    "login": "Login",
+    "or": "OR",
+    "login_with_google": "Login With Google",
+    "login_with_apple": "Login With Apple",
+    "new_to_my_pet_friend": "New To My Pet Friend?",
+    "sign_in": "Sign In"
+  }
+}
