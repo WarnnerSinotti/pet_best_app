@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     rowDivider:{
+        padding: 15,
         paddingHorizontal: 20,
         width: '100%',
         flexDirection: 'row',

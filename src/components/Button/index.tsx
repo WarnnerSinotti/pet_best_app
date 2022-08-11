@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, Image } from 'react-native';
 import themes from '../../themes';
 
 export const MyButton = (props: any) => {

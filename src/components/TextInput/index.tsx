@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TextInput, Text } from 'react-native';
+import { StyleSheet, TextInput, Text, Image } from 'react-native';
 import themes from '../../themes';
 
 export const TextInputEmail = (props: any) => {

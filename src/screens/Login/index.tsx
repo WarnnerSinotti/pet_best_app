@@ -6,6 +6,7 @@ import {
   Alert,
   KeyboardAvoidingView,
   Image,
+  View,
 } from 'react-native';
 import {
   Container,
@@ -27,8 +28,10 @@ import themes from '../../themes';
 import { TextInputEmail } from '../../components/TextInput';
 import { Divider } from '@react-native-material/core';
 import { MyDivider } from '../../components/Divider';
+import Mail from '../../../assets/icons/mail.svg';
+import Lock from '../../../assets/icons/lock.svg';
 
-export default function Login() {
+export default function Login({ navigation: any }) {
   const navigation = useNavigation();
   const { t } = useTranslation();
   const [textEmail, setTextEmail] = React.useState('');
@@ -64,12 +67,14 @@ export default function Login() {
         onChangeText={setTextPassword}
         value={textPassword}
       />
+      <Mail height={20} width={20} color={'grey'}/>
+      <Lock height={20} width={20} color={'grey'}/>
       <RowRight>
         <SubTituloLink onPress={() => Alert.alert('Ainda não funcionando')}>
           {t('loginScreen.forgot_your_password')}
         </SubTituloLink>
       </RowRight>
-      <MyButton onPress={navigation.navigate('Menu')}>
+      <MyButton onPress={() => navigation.navigate('Menu')}>
         {t('loginScreen.login')}
       </MyButton>
       <RowDivider>
