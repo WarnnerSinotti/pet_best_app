@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
   Text,
   StyleSheet,
@@ -28,6 +29,7 @@ import { Divider } from '@react-native-material/core';
 import { MyDivider } from '../../components/Divider';
 
 export default function Login() {
+  const navigation = useNavigation();
   const { t } = useTranslation();
   const [textEmail, setTextEmail] = React.useState('');
   const [textPassword, setTextPassword] = React.useState('');
@@ -67,7 +69,7 @@ export default function Login() {
           {t('loginScreen.forgot_your_password')}
         </SubTituloLink>
       </RowRight>
-      <MyButton onPress={() => Alert.alert('Ainda não funcionando')}>
+      <MyButton onPress={navigation.navigate('Menu')}>
         {t('loginScreen.login')}
       </MyButton>
       <RowDivider>

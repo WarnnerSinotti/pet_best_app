@@ -1,19 +1,19 @@
-/* import * as React from "react";
+import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Login from "../screen/Login/index";
-
+import Login from "../screens/Login";
+import Menu from "../screens/Menu";
 
 const Stack = createStackNavigator();
 
 export default function Routes() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Index">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
-          name="Index"
-          component={Index}
+          name="Login"
+          component={Login}
           options={{
             title: '',
             headerTransparent: false,
@@ -26,14 +26,7 @@ export default function Routes() {
           headerTransparent: true,
           headerShown: false,
         }}/>
-        <Stack.Screen name="Cadastro" component={Cadastro} 
-        options={{
-          title: '',
-          headerTransparent: true,
-          headerShown: false,
-        }}/> 
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
- */
