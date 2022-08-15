@@ -16,7 +16,7 @@ export default function Menu() {
       <Button title="Go back" onPress={() => navigation.goBack()} />
    
         <Title>Warnner</Title>
-        <MyRS color={'red'} background={'black'} title={"TESTE"} onPress={() => console.log('test')}>teste</MyRS>
+        <MyRS title={"TESTE"} onPress={() => console.log('test')}>teste</MyRS>
  
     </Container>
   );
