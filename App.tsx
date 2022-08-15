@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import Routes from './src/routes/Routes';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components/native';
 import { useColorScheme } from 'react-native';
 import './src/i18n/i18n';
 

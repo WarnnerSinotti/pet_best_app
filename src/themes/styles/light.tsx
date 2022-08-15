@@ -24,4 +24,9 @@ export default {
     h2: 48,
     h1: 56,
   },
+  FONT: {
+    title: {
+      fontFamily: 'Lexend'
+    }
+  }
 };

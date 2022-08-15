@@ -10,6 +10,6 @@ declare module 'styled-components' {
             secondary: string,
             terciary: string,
             quartenary: string,
-    }
+    },
 }
 };

@@ -5,6 +5,9 @@ import themes from '../../themes';
 import Google from '../../../assets/icons/google.svg';
 import Apple from '../../../assets/icons/apple.svg';
 
+
+
+
 export const MyTeste = (props: any) => {
   return (
     <View style={styles.searchSection}>

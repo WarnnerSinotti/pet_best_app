@@ -7,6 +7,7 @@ export const MyDivider = (props: any) => {
   return <Divider style={styles.divider} {...props} />;
 };
 
+
 const styles = StyleSheet.create({
   divider: {
     height: 2,

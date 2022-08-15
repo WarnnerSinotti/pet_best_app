@@ -1,90 +1,53 @@
-import React from 'react';
-import styled from "styled-components/native";
-import { StyleSheet, View } from 'react-native';
-import themes from '../../themes';
+import styled from 'styled-components/native';
 
 export const Container = styled.View`
-    background: ${(props:any) => props.theme.COLORS.background};
-    flex: 1;
-    align-items: center;
-    justify-content: center;
+  background: ${(props: any) => props.theme.COLORS.background};
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 `;
 
-export const Column = (props: any) => {
-    return (
-        <View style={styles.column} {...props} />
-    )
-}
+export const Column = styled.View`
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
-export const Row = (props: any) => {
-    return (
-        <View style={styles.row} {...props} />
-    )
-}
+export const Row = styled.View`
+  flex-direction: row;
+  width: 100%;
+  padding-left: 15px;
+`;
 
-export const RowDivider = (props: any) => {
-    return (
-        <View style={styles.rowDivider} {...props} />
-    )
-}
+export const RowDivider = styled.View`
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    padding-left: 15px;
+`;
 
-export const RowCenter = (props: any) => {
-    return (
-        <View style={styles.rowCenter} {...props} />
-    )
-}
+export const RowCenter = styled.View`
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+    padding-top: 5px;
+`;
 
-export const RowLeft = (props: any) => {
-    return (
-        <View style={styles.rowLeft} {...props} />
-    )
-}
+export const RowLeft = styled.View`
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 10px;
+    padding: 10px;
+`;
 
-export const RowRight = (props: any) => {
-    return (
-        <View style={styles.rowRight} {...props} />
-    )
-}
-
-const styles = StyleSheet.create({
-    column: {
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    row: {
-        paddingHorizontal: 15,
-        width: '100%',
-        flexDirection: 'row',
-    },
-    rowDivider:{
-        padding: 15,
-        paddingHorizontal: 20,
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
-    rowCenter: {
-        paddingHorizontal: 10,
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        padding: 10
-    },
-    rowLeft: {
-        paddingHorizontal: 10,
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        padding: 10
-    },
-    rowRight: {
-        paddingHorizontal: 10,
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        padding: 10
-    },
-
-  });
+export const RowRight = styled.View`
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-left: 10px;
+    padding: 10px;
+`;

@@ -23,6 +23,8 @@ import {
   MyButton,
   MyButtonGoogle,
   MyButtonApple,
+  MyButtonText,
+  MyByttonSocial,
 } from '../../components/Button';
 import themes from '../../themes';
 import { TextInputEmail } from '../../components/TextInput';
@@ -30,6 +32,8 @@ import { Divider } from '@react-native-material/core';
 import { MyDivider } from '../../components/Divider';
 import Mail from '../../../assets/icons/mail.svg';
 import Lock from '../../../assets/icons/lock.svg';
+import Google from '../../../assets/icons/google.svg';
+import Apple from '../../../assets/icons/apple.svg';
 
 export default function Login() {
   const navigation = useNavigation();
@@ -67,16 +71,17 @@ export default function Login() {
         onChangeText={setTextPassword}
         value={textPassword}
       />
-      <Mail height={20} width={20} color={'grey'}/>
-      <Lock height={20} width={20} color={'grey'}/>
+   
       <RowRight>
         <SubTituloLink onPress={() => Alert.alert('Ainda não funcionando')}>
           {t('loginScreen.forgot_your_password')}
         </SubTituloLink>
       </RowRight>
-      <MyButton onPress={() => navigation.navigate('Menu')}>
-        {t('loginScreen.login')}
-      </MyButton>
+      <RowCenter>
+        <MyButton onPress={() => navigation.navigate('Menu')}>
+        <MyButtonText>{t('loginScreen.login')}</MyButtonText>
+        </MyButton>
+      </RowCenter>
       <RowDivider>
         <MyDivider />
         <Titulo style={{ color: themes.light.COLORS.neutral }}>
@@ -84,13 +89,18 @@ export default function Login() {
         </Titulo>
         <MyDivider />
       </RowDivider>
-      <MyButtonGoogle onPress={() => Alert.alert('Ainda não funcionando')}>
-        {t('loginScreen.login_with_google')}
-      </MyButtonGoogle>
-
-      <MyButtonApple onPress={() => Alert.alert('Ainda não funcionando')}>
-        {t('loginScreen.login_with_apple')}
-      </MyButtonApple>
+      <RowCenter>
+      <MyByttonSocial onPress={() => Alert.alert('Ainda não funcionando')}>
+        <Google height={25} width={25} />
+      <MyButtonText>{t('loginScreen.login_with_google')}</MyButtonText>
+      </MyByttonSocial>
+      </RowCenter>
+      <RowCenter>
+      <MyByttonSocial onPress={() => Alert.alert('Ainda não funcionando')}>
+        <Apple height={25} width={25} />
+      <MyButtonText>{t('loginScreen.login_with_apple')}</MyButtonText>
+      </MyByttonSocial>
+      </RowCenter>
 
       <RowCenter>
         <SubTitulo>{t('loginScreen.new_to_my_pet_friend')}</SubTitulo>
