@@ -4,9 +4,9 @@ import themes from '../../themes';
 import styled from 'styled-components/native';
 
 export const Titulo = styled.Text`
-align-items: "flex-start",
-justifyContent: "flex-start",
-fontSize: ${(props) => props.theme.FONT_SIZE.h6},
+align-items: flex-start;
+justify-content: flex-start;
+font-size: ${(props) => props.theme.FONT_SIZE.h6};
 `;
 
 /* export const Titulo = (props: any) => {
@@ -14,10 +14,9 @@ fontSize: ${(props) => props.theme.FONT_SIZE.h6},
 }; */
 
 export const SubTitulo = styled.Text`
-align-items: "flex-start",
-    justifyContent: "flex-start",
-    fontSize: themes.light.FONT_SIZE.bodySmall,
-fontSize: ${(props) => props.theme.FONT_SIZE.bodySmall},
+align-items: flex-start;
+    justify-content: flex-start;
+font-size: ${(props) => props.theme.FONT_SIZE.bodySmall};
 `;
 
 /* export const SubTitulo = (props: any) => {
@@ -25,13 +24,15 @@ fontSize: ${(props) => props.theme.FONT_SIZE.bodySmall},
 }; */
 
 export const SubTituloLink = styled.Text`
-paddingRight: 10,
+
+color: ${props => props.theme.COLORS.secundary};
+  font-size: 44px;
+    
+`;
+/* padding-right: 10,
     align-items: "flex-start",
     justifyContent: "flex-start",
-    fontSize: ${(props) => props.theme.FONT_SIZE.bodySmall},
-    color: ${(props) => props.theme.FONT_SIZE.secondary},
-`;
-/* font-weight: "700", */
+    fontSfonize: ${(props) => props.theme.FONT_SIZE.bodySmall}, */
 
 /* export const SubTituloLink = (props: any) => {
   return <Text style={styles.subTituloLink} {...props} />;
