@@ -45,5 +45,8 @@
   "react-native-i18n-ts": {
     "model": "./src/locale/languages/en.json",
     "outputDir": "./typings"
+  },
+  "resolutions": {
+    "styled-components": "^5"
   }
 }

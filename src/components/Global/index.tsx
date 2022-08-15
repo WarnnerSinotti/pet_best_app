@@ -1,12 +1,14 @@
 import React from 'react';
+import styled from "styled-components/native";
 import { StyleSheet, View } from 'react-native';
 import themes from '../../themes';
 
-export const Container = (props: any) => {
-    return (
-        <View style={styles.container} {...props} />
-    )
-}
+export const Container = styled.View`
+    background: ${props => props.theme.COLORS.background};
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+`;
 
 export const Column = (props: any) => {
     return (
@@ -47,7 +49,7 @@ export const RowRight = (props: any) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        //backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center'
     },
