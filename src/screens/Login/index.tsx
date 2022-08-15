@@ -21,8 +21,6 @@ import { SubTitulo, SubTituloLink, Titulo } from '../../components/Text';
 import { useTranslation } from 'react-i18next';
 import {
   MyButton,
-  MyButtonGoogle,
-  MyButtonApple,
   MyButtonText,
   MyByttonSocial,
 } from '../../components/Button';
