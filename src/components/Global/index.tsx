@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import themes from '../../themes';
 
 export const Container = styled.View`
-    background: ${props => props.theme.COLORS.background};
+    background: ${(props:any) => props.theme.COLORS.background};
     flex: 1;
     align-items: center;
     justify-content: center;
@@ -47,12 +47,6 @@ export const RowRight = (props: any) => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        //backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
     column: {
         flexDirection: 'column',
         alignItems: 'center',

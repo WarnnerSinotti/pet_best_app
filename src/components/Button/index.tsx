@@ -5,6 +5,7 @@ import Google from '../../../assets/icons/google.svg';
 import Apple from '../../../assets/icons/apple.svg';
 import styled from 'styled-components/native';
 
+
 export const MyButton = (props: any) => {
   return (
     <TouchableOpacity style={styles.button} {...props}>
@@ -62,20 +63,20 @@ const styles = StyleSheet.create({
 });
 
 export const Wrapper = styled.View`
-  background: ${(props) => props.theme.COLORS.background};
+  background: ${(props: any) => props.theme.COLORS.background};
   flex: 1;
   align-items: center;
   justify-content: center;
 `;
 
 export const Title = styled.Text`
-  color: ${(props) => props.theme.COLORS.color};
+  color: ${(props: any) => props.theme.COLORS.color};
   font-size: 44px;
 `;
 
 export const MyRS = styled.Button`
-  background: ${(props) => props.theme.COLORS.secondary};
-  color: ${(props) => props.theme.COLORS.primary};
+  background: ${(props: any) => props.theme.COLORS.secondary};
+  color: ${(props: any) => props.theme.COLORS.primary};
   flex-direction: row;
   margin-top: 10;
   width: 342;

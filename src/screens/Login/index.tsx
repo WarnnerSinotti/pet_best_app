@@ -31,7 +31,7 @@ import { MyDivider } from '../../components/Divider';
 import Mail from '../../../assets/icons/mail.svg';
 import Lock from '../../../assets/icons/lock.svg';
 
-export default function Login({ navigation: any }) {
+export default function Login() {
   const navigation = useNavigation();
   const { t } = useTranslation();
   const [textEmail, setTextEmail] = React.useState('');
