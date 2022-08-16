@@ -6,8 +6,6 @@ import { ThemeProvider } from 'styled-components/native';
 import { useColorScheme } from 'react-native';
 import './src/i18n/i18n';
 import themes from './src/themes';
-
-import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 
 
