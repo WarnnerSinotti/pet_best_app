@@ -18,7 +18,7 @@ export default function App({}) {
 
 
   const [fontsLoaded] = useFonts({
-    'Lexend': require('./assets/fonts/Lexend-ExtraBold.ttf'),
+    'Lexend': require('./assets/fonts/Lexend-Bold.ttf'),
   });
 
   if (!fontsLoaded) {
