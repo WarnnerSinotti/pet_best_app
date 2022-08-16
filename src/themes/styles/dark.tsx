@@ -8,7 +8,7 @@ export default {
     terciary: '#FFA652',
     quartenary: '#97D86C',
     colorTextSubmit: '#FFFFFF',
-    colorTextSocialButton: '#393939',
+    colorTextSocialButton: '#7A7A7A',
   },
 
   FONT_SIZE: {
