@@ -11,9 +11,9 @@ export const InputIconView = styled.View`
   width: 100%;
   height: 44px;
   flex-direction: row;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  padding-left: 25px;
+  padding-left: 15px;
   background-color: ${(props: any) => props.theme.COLORS.background};
   border-radius: 8px ;
   border-width: 1px;
@@ -21,8 +21,9 @@ export const InputIconView = styled.View`
 `;
 
 export const InputText = styled.TextInput`
-  width: 100%;
-  padding-left: 3px;
+  width: 83%;
+  padding-left: 5px;
+  padding-right: 5px;
   color: ${(props: any) => props.theme.COLORS.color}
 `;
 

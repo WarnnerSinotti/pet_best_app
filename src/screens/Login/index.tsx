@@ -19,7 +19,6 @@ import themes from '../../themes';
 import {
   InputIconView,
   InputText,
-  TextInputEmail,
 } from '../../components/TextInputIcon';
 import { MyDivider } from '../../components/Divider';
 import Google from '../../../assets/icons/google.svg';
@@ -31,6 +30,11 @@ export default function Login(Props: any) {
   const { t } = useTranslation();
   const [textEmail, setTextEmail] = React.useState('');
   const [textPassword, setTextPassword] = React.useState('');
+  const [eyed, setEyed] = React.useState(true); 
+
+  const VisualPassword = () => {
+    setEyed((current) => !current);
+  };
 
   return (
     <Container>
@@ -45,7 +49,6 @@ export default function Login(Props: any) {
           }}
         />
       </RowCenter>
-
       <Row>
         <Titulo>{t('loginScreen.email')}</Titulo>
       </Row>
@@ -59,7 +62,6 @@ export default function Login(Props: any) {
           />
         </InputIconView>
       </RowCenter>
-
       <Row>
         <Titulo>{t('loginScreen.password')}</Titulo>
       </Row>
@@ -67,14 +69,20 @@ export default function Login(Props: any) {
         <InputIconView>
           <Ionicons name="key" size={20} color={'grey'} />
           <InputText
-            secureTextEntry={true} //ocultrar senha
+            secureTextEntry={eyed} //ocultrar senha
             placeholder={t('loginScreen.password')}
             onChangeText={setTextPassword}
             value={textPassword}
+          ></InputText>
+          <Ionicons
+            name="camera"
+            size={20}
+            color={'grey'}
+            onPress={VisualPassword}
           />
         </InputIconView>
       </RowCenter>
-
+     
       <RowRight>
         <SubTituloLink onPress={() => Alert.alert('Ainda não funcionando')}>
           {t('loginScreen.forgot_your_password')}
