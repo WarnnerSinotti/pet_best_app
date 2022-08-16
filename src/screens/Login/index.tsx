@@ -1,43 +1,40 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import {
-  Text,
-  StyleSheet,
-  Alert,
-  KeyboardAvoidingView,
-  Image,
-  View,
-} from 'react-native';
+import { Alert, KeyboardAvoidingView, Image } from 'react-native';
 import {
   Container,
-  Column,
   Row,
   RowCenter,
-  RowLeft,
   RowRight,
   RowDivider,
 } from '../../components/Global';
 import { SubTitulo, SubTituloLink, Titulo } from '../../components/Text';
 import { useTranslation } from 'react-i18next';
 import {
-  MyButton,
-  MyButtonText,
-  MyByttonSocial,
+  MyButtonSubmit,
+  MyButtonTextSubmit,
+  MyByttonSocialSubmit,
 } from '../../components/Button';
 import themes from '../../themes';
-import { TextInputEmail } from '../../components/TextInput';
-import { Divider } from '@react-native-material/core';
+import {
+  InputIconView,
+  InputText,
+} from '../../components/TextInputIcon';
 import { MyDivider } from '../../components/Divider';
-import Mail from '../../../assets/icons/mail.svg';
-import Lock from '../../../assets/icons/lock.svg';
 import Google from '../../../assets/icons/google.svg';
 import Apple from '../../../assets/icons/apple.svg';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
-export default function Login() {
+export default function Login(Props: any) {
   const navigation = useNavigation();
   const { t } = useTranslation();
   const [textEmail, setTextEmail] = React.useState('');
   const [textPassword, setTextPassword] = React.useState('');
+  const [eyed, setEyed] = React.useState(true); 
+
+  const VisualPassword = () => {
+    setEyed((current) => !current);
+  };
 
   return (
     <Container>
@@ -55,30 +52,46 @@ export default function Login() {
       <Row>
         <Titulo>{t('loginScreen.email')}</Titulo>
       </Row>
-      <TextInputEmail
-        placeholder={t('loginScreen.email')}
-        onChangeText={setTextEmail}
-        value={textEmail}
-      />
+      <RowCenter>
+        <InputIconView>
+          <Ionicons name="mail" size={20} color={'grey'} />
+          <InputText
+            placeholder={t('loginScreen.email')}
+            onChangeText={setTextEmail}
+            value={textEmail}
+          />
+        </InputIconView>
+      </RowCenter>
       <Row>
         <Titulo>{t('loginScreen.password')}</Titulo>
       </Row>
-      <TextInputEmail
-        secureTextEntry={true} //ocultrar senha
-        placeholder={t('loginScreen.password')}
-        onChangeText={setTextPassword}
-        value={textPassword}
-      />
-   
+      <RowCenter>
+        <InputIconView>
+          <Ionicons name="key" size={20} color={'grey'} />
+          <InputText
+            secureTextEntry={eyed} //ocultrar senha
+            placeholder={t('loginScreen.password')}
+            onChangeText={setTextPassword}
+            value={textPassword}
+          ></InputText>
+          <Ionicons
+            name="camera"
+            size={20}
+            color={'grey'}
+            onPress={VisualPassword}
+          />
+        </InputIconView>
+      </RowCenter>
+     
       <RowRight>
         <SubTituloLink onPress={() => Alert.alert('Ainda não funcionando')}>
           {t('loginScreen.forgot_your_password')}
         </SubTituloLink>
       </RowRight>
       <RowCenter>
-        <MyButton onPress={() => navigation.navigate('Menu')}>
-        <MyButtonText>{t('loginScreen.login')}</MyButtonText>
-        </MyButton>
+        <MyButtonSubmit onPress={() => navigation.navigate('Menu')}>
+          <MyButtonTextSubmit>{t('loginScreen.login')}</MyButtonTextSubmit>
+        </MyButtonSubmit>
       </RowCenter>
       <RowDivider>
         <MyDivider />
@@ -88,16 +101,26 @@ export default function Login() {
         <MyDivider />
       </RowDivider>
       <RowCenter>
-      <MyByttonSocial onPress={() => Alert.alert('Ainda não funcionando')}>
-        <Google height={25} width={25} />
-      <MyButtonText>{t('loginScreen.login_with_google')}</MyButtonText>
-      </MyByttonSocial>
+        <MyByttonSocialSubmit
+          testID={'Google_btn'}
+          onPress={() => Alert.alert('Ainda não funcionando')}
+        >
+          <Google height={25} width={25} />
+          <MyButtonTextSubmit>
+            {t('loginScreen.login_with_google')}
+          </MyButtonTextSubmit>
+        </MyByttonSocialSubmit>
       </RowCenter>
       <RowCenter>
-      <MyByttonSocial onPress={() => Alert.alert('Ainda não funcionando')}>
-        <Apple height={25} width={25} />
-      <MyButtonText>{t('loginScreen.login_with_apple')}</MyButtonText>
-      </MyByttonSocial>
+        <MyByttonSocialSubmit
+          testID={'Apple_btn'}
+          onPress={() => Alert.alert('Ainda não funcionando')}
+        >
+          <Apple height={25} width={25} />
+          <MyButtonTextSubmit>
+            {t('loginScreen.login_with_apple')}
+          </MyButtonTextSubmit>
+        </MyByttonSocialSubmit>
       </RowCenter>
 
       <RowCenter>
