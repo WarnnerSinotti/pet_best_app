@@ -1,8 +1,6 @@
 export default {
   COLORS: {
     background: '#FFFFFF',
-    whiteBackground: '#FFFFFF',
-    darkBackground: '#121212',
     neutral: '#C6C6C6',
     color: '#000',
     primary: '#FFBC01',

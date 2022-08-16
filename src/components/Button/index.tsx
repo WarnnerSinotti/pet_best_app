@@ -1,11 +1,6 @@
-import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, Image, View } from 'react-native';
-import themes from '../../themes';
-import Google from '../../../assets/icons/google.svg';
-import Apple from '../../../assets/icons/apple.svg';
 import styled from 'styled-components/native';
 
-export const MyButton = styled.TouchableOpacity`
+export const MyButtonSubmit = styled.TouchableOpacity`
   width: 100%;
   height: 44px;
   flex-direction: row;
@@ -15,11 +10,11 @@ export const MyButton = styled.TouchableOpacity`
   border-radius: 8px;
 `;
 
-export const MyButtonText = styled.Text`
+export const MyButtonTextSubmit = styled.Text`
   color: ${(props: any) => props.theme.COLORS.color};
   font-size: ${(props: any) => props.theme.FONT_SIZE.button};
 `
 
-export const MyByttonSocial = styled(MyButton)`
+export const MyByttonSocialSubmit = styled(MyButtonSubmit)`
   background-color: ${(props: any) => props.theme.COLORS.neutral};
 `;
