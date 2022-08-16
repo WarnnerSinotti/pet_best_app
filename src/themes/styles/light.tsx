@@ -7,6 +7,8 @@ export default {
     secondary: '#00AEAC',
     terciary: '#FF8734',
     quartenary: '#84C55B',
+    colorTextSubmit: '#FFFFFF',
+    colorTextSocialButton: '#393939',
   },
 
   FONT_SIZE: {
@@ -22,9 +24,7 @@ export default {
     h2: 48,
     h1: 56,
   },
-  FONT: {
-    title: {
-      fontFamily: 'Lexend'
-    }
+  FONTS: {
+    LEXEND: 'Lexend',
   }
 };

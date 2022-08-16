@@ -14,6 +14,7 @@ import {
   MyButtonSubmit,
   MyButtonTextSubmit,
   MyByttonSocialSubmit,
+  MyByttonSocialTextSubmit,
 } from '../../components/Button';
 import themes from '../../themes';
 import {
@@ -40,17 +41,22 @@ export default function Login(Props: any) {
     <Container>
       <RowCenter>
         <Image
-          source={require('../../../assets/img/logo.png')}
+          source={require('../../../assets/img/dog.png')}
           style={{
-            width: 200,
-            height: 250,
+            width: 150,
+            height: 150,
             justifyContent: 'center',
             alignContent: 'center',
           }}
         />
       </RowCenter>
+      <RowCenter>
+        <Titulo>
+          My Pet Friend
+        </Titulo>
+        </RowCenter>
       <Row>
-        <Titulo>{t('loginScreen.email')}</Titulo>
+        <SubTitulo>{t('loginScreen.email')}</SubTitulo>
       </Row>
       <RowCenter>
         <InputIconView>
@@ -63,7 +69,7 @@ export default function Login(Props: any) {
         </InputIconView>
       </RowCenter>
       <Row>
-        <Titulo>{t('loginScreen.password')}</Titulo>
+        <SubTitulo>{t('loginScreen.password')}</SubTitulo>
       </Row>
       <RowCenter>
         <InputIconView>
@@ -95,9 +101,9 @@ export default function Login(Props: any) {
       </RowCenter>
       <RowDivider>
         <MyDivider />
-        <Titulo style={{ color: themes.light.COLORS.neutral }}>
+        <SubTitulo style={{ color: themes.light.COLORS.neutral }}>
           {t('loginScreen.or')}
-        </Titulo>
+        </SubTitulo>
         <MyDivider />
       </RowDivider>
       <RowCenter>
@@ -106,9 +112,9 @@ export default function Login(Props: any) {
           onPress={() => Alert.alert('Ainda não funcionando')}
         >
           <Google height={25} width={25} />
-          <MyButtonTextSubmit>
+          <MyByttonSocialTextSubmit>
             {t('loginScreen.login_with_google')}
-          </MyButtonTextSubmit>
+          </MyByttonSocialTextSubmit>
         </MyByttonSocialSubmit>
       </RowCenter>
       <RowCenter>
@@ -117,9 +123,9 @@ export default function Login(Props: any) {
           onPress={() => Alert.alert('Ainda não funcionando')}
         >
           <Apple height={25} width={25} />
-          <MyButtonTextSubmit>
+          <MyByttonSocialTextSubmit>
             {t('loginScreen.login_with_apple')}
-          </MyButtonTextSubmit>
+          </MyByttonSocialTextSubmit>
         </MyByttonSocialSubmit>
       </RowCenter>
 
