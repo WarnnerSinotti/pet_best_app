@@ -18,7 +18,12 @@ export default function App({}) {
 
 
   const [fontsLoaded] = useFonts({
-    'Lexend': require('./assets/fonts/Lexend-Bold.ttf'),
+    'Lexend-Bold': require('./assets/fonts/Lexend-Bold.ttf'),
+    'Lexend-Light': require('./assets/fonts/Lexend-Light.ttf'),
+    'Lexend-Regular': require('./assets/fonts/Lexend-Regular.ttf'),
+    'Lexend-SemiBold': require('./assets/fonts/Lexend-SemiBold.ttf'),
+    'Nunito-Black': require('./assets/fonts/Nunito-Black.ttf'),
+    
   });
 
   if (!fontsLoaded) {

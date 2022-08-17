@@ -27,7 +27,11 @@ declare module 'styled-components' {
             h1: Number,
         },
         FONTS: {
-            LEXEND: string,
-        }
+            LEXEND_BOLD: string,
+            LEXEND_LIGHT: string,
+            LEXEND_REGULAR: string,
+            LEXEND_SEMI_BOLD: string,
+            NUNITO_BLACK: string,
+          },
     };
 }

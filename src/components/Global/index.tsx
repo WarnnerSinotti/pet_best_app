@@ -19,19 +19,11 @@ export const Row = styled.View`
   padding-left: 15px;
 `;
 
-export const RowDivider = styled.View`
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    padding-left: 15px;
-`;
-
 export const RowCenter = styled.View`
     width: 100%;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     padding: 10px;
     padding-top: 5px;
 `;

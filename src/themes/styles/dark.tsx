@@ -25,6 +25,10 @@ export default {
     h1: 56,
   },
   FONTS: {
-    LEXEND: 'Lexend',
-  }
+    LEXEND_BOLD: 'Lexend-Bold',
+    LEXEND_LIGHT: 'Lexend-Light',
+    LEXEND_REGULAR: 'Lexend-Regular',
+    LEXEND_SEMI_BOLD: 'Lexend-SemiBold',
+    NUNITO_BLACK: 'Nunito-Black',
+  },
 };

@@ -6,9 +6,8 @@ import {
   Row,
   RowCenter,
   RowRight,
-  RowDivider,
 } from '../../components/Global';
-import { SubTitulo, SubTituloLink, Titulo } from '../../components/Text';
+import { NameAppText, NewPetFriendText, ORText, SubTitulo, SubTituloLink} from '../../components/Text';
 import { useTranslation } from 'react-i18next';
 import {
   MyButtonSubmit,
@@ -22,9 +21,8 @@ import {
   InputText,
 } from '../../components/TextInputIcon';
 import { MyDivider } from '../../components/Divider';
-import Google from '../../../assets/icons/google.svg';
-import Apple from '../../../assets/icons/apple.svg';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { IconApple, IconEye, IconEyeOff, IconGoogle, IconLock, IconMail } from '../../components/SVG';
 
 export default function Login(Props: any) {
   const navigation = useNavigation();
@@ -36,6 +34,14 @@ export default function Login(Props: any) {
   const VisualPassword = () => {
     setEyed((current) => !current);
   };
+
+  /* const button = Button: any/
+
+  if (isLoggedIn) {
+    button = <LogoutButton onClick={this.handleLogoutClick} />;
+  } else {
+    button = <LoginButton onClick={this.handleLoginClick} />;
+  } */
 
   return (
     <Container>
@@ -51,16 +57,16 @@ export default function Login(Props: any) {
         />
       </RowCenter>
       <RowCenter>
-        <Titulo>
+        <NameAppText>
           My Pet Friend
-        </Titulo>
+        </NameAppText>
         </RowCenter>
       <Row>
         <SubTitulo>{t('loginScreen.email')}</SubTitulo>
       </Row>
       <RowCenter>
         <InputIconView>
-          <Ionicons name="mail" size={20} color={'grey'} />
+          <IconMail style={{ color: themes.light.COLORS.neutral }}/>
           <InputText
             placeholder={t('loginScreen.email')}
             onChangeText={setTextEmail}
@@ -73,22 +79,17 @@ export default function Login(Props: any) {
       </Row>
       <RowCenter>
         <InputIconView>
-          <Ionicons name="key" size={20} color={'grey'} />
+          <IconLock style={{ color: themes.light.COLORS.neutral }} />
           <InputText
             secureTextEntry={eyed} //ocultrar senha
             placeholder={t('loginScreen.password')}
             onChangeText={setTextPassword}
             value={textPassword}
           ></InputText>
-          <Ionicons
-            name="camera"
-            size={20}
-            color={'grey'}
-            onPress={VisualPassword}
-          />
+          <IconEyeOff style={{ color: themes.light.COLORS.neutral }}
+            onPress={VisualPassword} />
         </InputIconView>
       </RowCenter>
-     
       <RowRight>
         <SubTituloLink onPress={() => Alert.alert('Ainda não funcionando')}>
           {t('loginScreen.forgot_your_password')}
@@ -99,19 +100,19 @@ export default function Login(Props: any) {
           <MyButtonTextSubmit>{t('loginScreen.login')}</MyButtonTextSubmit>
         </MyButtonSubmit>
       </RowCenter>
-      <RowDivider>
-        <MyDivider />
-        <SubTitulo style={{ color: themes.light.COLORS.neutral }}>
+      <RowCenter>
+      <MyDivider />
+        <ORText>
           {t('loginScreen.or')}
-        </SubTitulo>
+        </ORText>
         <MyDivider />
-      </RowDivider>
+      </RowCenter>
       <RowCenter>
         <MyByttonSocialSubmit
           testID={'Google_btn'}
           onPress={() => Alert.alert('Ainda não funcionando')}
         >
-          <Google height={25} width={25} />
+          <IconGoogle/>
           <MyByttonSocialTextSubmit>
             {t('loginScreen.login_with_google')}
           </MyByttonSocialTextSubmit>
@@ -122,7 +123,7 @@ export default function Login(Props: any) {
           testID={'Apple_btn'}
           onPress={() => Alert.alert('Ainda não funcionando')}
         >
-          <Apple height={25} width={25} />
+          <IconApple/>
           <MyByttonSocialTextSubmit>
             {t('loginScreen.login_with_apple')}
           </MyByttonSocialTextSubmit>
@@ -130,7 +131,7 @@ export default function Login(Props: any) {
       </RowCenter>
 
       <RowCenter>
-        <SubTitulo>{t('loginScreen.new_to_my_pet_friend')}</SubTitulo>
+        <NewPetFriendText>{t('loginScreen.new_to_my_pet_friend')}</NewPetFriendText>
         <SubTituloLink onPress={() => Alert.alert('Ainda não funcionando')}>
           {t('loginScreen.sign_in')}
         </SubTituloLink>

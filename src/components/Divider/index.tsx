@@ -11,10 +11,9 @@ export const MyDivider = (props: any) => {
 const styles = StyleSheet.create({
   divider: {
     height: 2,
-    width: 147,
+    width: 150,
     alignContent: 'center',
     justifyContent: 'center',
-    borderRadius: 15,
     backgroundColor: themes.light.COLORS.neutral,
   },
 });
