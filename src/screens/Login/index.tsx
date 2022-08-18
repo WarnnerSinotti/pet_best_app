@@ -41,7 +41,11 @@ export default function Login(Props: any) {
   };
 
   return (
+    
     <Container>
+      <KeyboardAvoidingView
+    behavior='position'
+    >
       <RowCenter>
         <Image
           source={require('../../../assets/img/dog.png')}
@@ -100,6 +104,7 @@ export default function Login(Props: any) {
           <MyButtonTextSubmit>{t('loginScreen.login')}</MyButtonTextSubmit>
         </MyButtonSubmit>
       </RowCenter>
+      </KeyboardAvoidingView>
       <RowCenter>
         <MyDivider />
         <ORText>{t('loginScreen.or')}</ORText>
@@ -136,6 +141,8 @@ export default function Login(Props: any) {
           {t('loginScreen.sign_in')}
         </SubTituloLink>
       </RowCenter>
+     
     </Container>
+    
   );
 }
