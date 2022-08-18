@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Alert, KeyboardAvoidingView, Image } from 'react-native';
+import { Alert, KeyboardAvoidingView, Image, View } from 'react-native';
+import { Container, Row, RowCenter, RowRight } from '../../components/Global';
 import {
-  Container,
-  Row,
-  RowCenter,
-  RowRight,
-} from '../../components/Global';
-import { NameAppText, NewPetFriendText, ORText, SubTitulo, SubTituloLink} from '../../components/Text';
+  NameAppText,
+  NewPetFriendText,
+  ORText,
+  SubTitulo,
+  SubTituloLink,
+} from '../../components/Text';
 import { useTranslation } from 'react-i18next';
 import {
   MyButtonSubmit,
@@ -16,32 +17,28 @@ import {
   MyByttonSocialTextSubmit,
 } from '../../components/Button';
 import themes from '../../themes';
-import {
-  InputIconView,
-  InputText,
-} from '../../components/TextInputIcon';
+import { InputIconView, InputText } from '../../components/TextInput';
 import { MyDivider } from '../../components/Divider';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { IconApple, IconEye, IconEyeOff, IconGoogle, IconLock, IconMail } from '../../components/SVG';
+import {
+  IconApple,
+  IconEye,
+  IconEyeOff,
+  IconGoogle,
+  IconLock,
+  IconMail,
+} from '../../components/SVG';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Login(Props: any) {
   const navigation = useNavigation();
   const { t } = useTranslation();
   const [textEmail, setTextEmail] = React.useState('');
   const [textPassword, setTextPassword] = React.useState('');
-  const [eyed, setEyed] = React.useState(true); 
+  const [eyed, setEyed] = React.useState(true);
 
   const VisualPassword = () => {
     setEyed((current) => !current);
   };
-
-  /* const button = Button: any/
-
-  if (isLoggedIn) {
-    button = <LogoutButton onClick={this.handleLogoutClick} />;
-  } else {
-    button = <LoginButton onClick={this.handleLoginClick} />;
-  } */
 
   return (
     <Container>
@@ -57,16 +54,14 @@ export default function Login(Props: any) {
         />
       </RowCenter>
       <RowCenter>
-        <NameAppText>
-          My Pet Friend
-        </NameAppText>
-        </RowCenter>
+        <NameAppText>My Pet Friend</NameAppText>
+      </RowCenter>
       <Row>
         <SubTitulo>{t('loginScreen.email')}</SubTitulo>
       </Row>
       <RowCenter>
         <InputIconView>
-          <IconMail style={{ color: themes.light.COLORS.neutral }}/>
+          <IconMail style={{ color: themes.light.COLORS.neutral }} />
           <InputText
             placeholder={t('loginScreen.email')}
             onChangeText={setTextEmail}
@@ -86,8 +81,13 @@ export default function Login(Props: any) {
             onChangeText={setTextPassword}
             value={textPassword}
           ></InputText>
-          <IconEyeOff style={{ color: themes.light.COLORS.neutral }}
-            onPress={VisualPassword} />
+          <TouchableOpacity onPress={VisualPassword}>
+            {eyed ? (
+              <IconEyeOff style={{ color: themes.light.COLORS.neutral }} />
+            ) : (
+              <IconEye style={{ color: themes.light.COLORS.neutral }} />
+            )}
+          </TouchableOpacity>
         </InputIconView>
       </RowCenter>
       <RowRight>
@@ -101,10 +101,8 @@ export default function Login(Props: any) {
         </MyButtonSubmit>
       </RowCenter>
       <RowCenter>
-      <MyDivider />
-        <ORText>
-          {t('loginScreen.or')}
-        </ORText>
+        <MyDivider />
+        <ORText>{t('loginScreen.or')}</ORText>
         <MyDivider />
       </RowCenter>
       <RowCenter>
@@ -112,7 +110,7 @@ export default function Login(Props: any) {
           testID={'Google_btn'}
           onPress={() => Alert.alert('Ainda não funcionando')}
         >
-          <IconGoogle/>
+          <IconGoogle />
           <MyByttonSocialTextSubmit>
             {t('loginScreen.login_with_google')}
           </MyByttonSocialTextSubmit>
@@ -123,7 +121,7 @@ export default function Login(Props: any) {
           testID={'Apple_btn'}
           onPress={() => Alert.alert('Ainda não funcionando')}
         >
-          <IconApple/>
+          <IconApple />
           <MyByttonSocialTextSubmit>
             {t('loginScreen.login_with_apple')}
           </MyByttonSocialTextSubmit>
@@ -131,7 +129,9 @@ export default function Login(Props: any) {
       </RowCenter>
 
       <RowCenter>
-        <NewPetFriendText>{t('loginScreen.new_to_my_pet_friend')}</NewPetFriendText>
+        <NewPetFriendText>
+          {t('loginScreen.new_to_my_pet_friend')}
+        </NewPetFriendText>
         <SubTituloLink onPress={() => Alert.alert('Ainda não funcionando')}>
           {t('loginScreen.sign_in')}
         </SubTituloLink>

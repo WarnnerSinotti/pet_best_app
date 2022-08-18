@@ -12,7 +12,7 @@ export const MyButtonSubmit = styled.TouchableOpacity`
 
 export const MyButtonTextSubmit = styled.Text`
   color: ${(props: any) => props.theme.COLORS.colorTextSubmit};
-  font-size: ${(props: any) => props.theme.FONT_SIZE.button};
+  font-size: ${(props: any) => props.theme.FONT_SIZE.button}px;
 `;
 
 export const MyByttonSocialSubmit = styled(MyButtonSubmit)`
@@ -22,5 +22,5 @@ export const MyByttonSocialSubmit = styled(MyButtonSubmit)`
 export const MyByttonSocialTextSubmit = styled(MyButtonTextSubmit)`
   padding-left: 10px;
   color: ${(props: any) => props.theme.COLORS.colorTextSocialButton};
-  font-size: ${(props: any) => props.theme.FONT_SIZE.button};
+  font-size: ${(props: any) => props.theme.FONT_SIZE.button}px;
 `;

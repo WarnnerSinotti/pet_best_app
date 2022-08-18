@@ -1,11 +1,4 @@
-import React from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
-import themes from '../../themes';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import Mail from '../../../assets/icons/mail.svg';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
-
 
 export const InputIconView = styled.View`
   width: 100%;
