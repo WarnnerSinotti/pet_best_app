@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Login from "../screens/Login";
 import Menu from "../screens/Menu";
+import Step01 from "../screens/Step01";
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,12 @@ export default function Routes() {
           }}
         />
         <Stack.Screen name="Menu" component={Menu} 
+        options={{
+          title: '',
+          headerTransparent: true,
+          headerShown: false,
+        }}/>
+        <Stack.Screen name="Step01" component={Step01} 
         options={{
           title: '',
           headerTransparent: true,

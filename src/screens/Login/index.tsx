@@ -100,7 +100,7 @@ export default function Login(Props: any) {
         </SubTituloLink>
       </RowRight>
       <RowCenter>
-        <MyButtonSubmit onPress={() => navigation.navigate('Menu')}>
+        <MyButtonSubmit onPress={() => navigation.navigate('Step01')}>
           <MyButtonTextSubmit>{t('loginScreen.login')}</MyButtonTextSubmit>
         </MyButtonSubmit>
       </RowCenter>

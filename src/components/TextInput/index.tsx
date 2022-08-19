@@ -10,7 +10,8 @@ export const InputIconView = styled.View`
   background-color: ${(props: any) => props.theme.COLORS.background};
   border-radius: 8px ;
   border-width: 1px;
-  border-color: ${(props: any) => props.theme.COLORS.neutral};;
+  border-color: ${(props: any) => props.theme.COLORS.neutral};
+ 
 `;
 
 export const InputText = styled.TextInput`
