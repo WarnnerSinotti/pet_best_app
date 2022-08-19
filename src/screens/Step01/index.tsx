@@ -17,8 +17,8 @@ export default function Step01() {
       <Image
           source={require('../../../assets/img/step01.jpg')}
           style={{
-            width: 400,
-            height: 400,
+            width: '100%',
+            height: '40%',
             justifyContent: 'center',
             alignContent: 'center',
             
