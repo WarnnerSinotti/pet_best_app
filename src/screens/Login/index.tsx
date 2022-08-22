@@ -13,8 +13,8 @@ import { useTranslation } from 'react-i18next';
 import {
   MyButtonSubmit,
   MyButtonTextSubmit,
-  MyByttonSocialSubmit,
-  MyByttonSocialTextSubmit,
+  MyButtonSocialSubmit,
+  MyButtonSocialTextSubmit,
 } from '../../components/Button';
 import themes from '../../themes';
 import { InputIconView, InputText } from '../../components/TextInput';
@@ -111,26 +111,26 @@ export default function Login(Props: any) {
         <MyDivider />
       </RowCenter>
       <RowCenter>
-        <MyByttonSocialSubmit
+        <MyButtonSocialSubmit
           testID={'Google_btn'}
           onPress={() => Alert.alert('Ainda não funcionando')}
         >
           <IconGoogle />
-          <MyByttonSocialTextSubmit>
+          <MyButtonSocialTextSubmit>
             {t('loginScreen.login_with_google')}
-          </MyByttonSocialTextSubmit>
-        </MyByttonSocialSubmit>
+          </MyButtonSocialTextSubmit>
+        </MyButtonSocialSubmit>
       </RowCenter>
       <RowCenter>
-        <MyByttonSocialSubmit
+        <MyButtonSocialSubmit
           testID={'Apple_btn'}
           onPress={() => Alert.alert('Ainda não funcionando')}
         >
           <IconApple />
-          <MyByttonSocialTextSubmit>
+          <MyButtonSocialTextSubmit>
             {t('loginScreen.login_with_apple')}
-          </MyByttonSocialTextSubmit>
-        </MyByttonSocialSubmit>
+          </MyButtonSocialTextSubmit>
+        </MyButtonSocialSubmit>
       </RowCenter>
 
       <RowCenter>

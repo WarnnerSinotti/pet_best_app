@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
-import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
+import { MyButtonNext, MyButtonSubmit, MyButtonTextNext, MyButtonTextSubmit } from '../../components/Button';
 import { Image } from 'react-native';
 import { Container } from '../../components/Global';
 import { SubTitulo, Titulo } from '../../components/Text';
@@ -31,9 +31,9 @@ export default function Step01() {
         <SubTitulo>
           adicionar os  - Step01
         </SubTitulo>
-        <MyButtonSubmit onPress={() => navigation.navigate('Step02')}>
-        <MyButtonTextSubmit>{t('loginScreen.next')}</MyButtonTextSubmit>
-        </MyButtonSubmit>
+        <MyButtonNext onPress={() => navigation.navigate('Step02')}>
+        <MyButtonTextNext>{t('loginScreen.next')}</MyButtonTextNext>
+        </MyButtonNext>
       </CardContainer>
       
     </Container>

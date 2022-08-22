@@ -15,11 +15,21 @@ export const MyButtonTextSubmit = styled.Text`
   font-size: ${(props: any) => props.theme.FONT_SIZE.button}px;
 `;
 
-export const MyByttonSocialSubmit = styled(MyButtonSubmit)`
+export const MyButtonSocialSubmit = styled(MyButtonSubmit)`
   background-color: ${(props: any) => props.theme.COLORS.neutral};
 `;
 
-export const MyByttonSocialTextSubmit = styled(MyButtonTextSubmit)`
+export const MyButtonSocialTextSubmit = styled(MyButtonTextSubmit)`
+  padding-left: 10px;
+  color: ${(props: any) => props.theme.COLORS.colorTextSocialButton};
+  font-size: ${(props: any) => props.theme.FONT_SIZE.button}px;
+`;
+
+export const MyButtonNext = styled(MyButtonSubmit)`
+  background-color: ${(props: any) => props.theme.COLORS.neutral};
+`;
+
+export const MyButtonTextNext = styled(MyButtonTextSubmit)`
   padding-left: 10px;
   color: ${(props: any) => props.theme.COLORS.colorTextSocialButton};
   font-size: ${(props: any) => props.theme.FONT_SIZE.button}px;
