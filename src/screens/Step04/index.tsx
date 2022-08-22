@@ -1,16 +1,13 @@
-import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { useTranslation } from 'react-i18next';
-
+import React from 'react';
 import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
 import { Image } from 'react-native';
 import { Container } from '../../components/Global';
 import { SubTitulo, Titulo } from '../../components/Text';
 import { CardContainer, } from '../../components/Card';
 
-export default function Step01() {
+export default function Step04() {
   const navigation = useNavigation();
-  const { t } = useTranslation();
 
   return (
     <Container>
@@ -29,11 +26,9 @@ export default function Step01() {
         ></Image>
       <CardContainer>
         <SubTitulo>
-          adicionar os  - Step01
+          Step04
         </SubTitulo>
-        <MyButtonSubmit onPress={() => navigation.navigate('Step02')}>
-        <MyButtonTextSubmit>{t('loginScreen.next')}</MyButtonTextSubmit>
-        </MyButtonSubmit>
+        <MyButtonSubmit onPress={() => navigation.navigate('Menu')}></MyButtonSubmit>
       </CardContainer>
       
     </Container>
