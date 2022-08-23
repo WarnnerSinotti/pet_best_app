@@ -1,13 +1,37 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Modalize } from 'react-native-modalize';
 import { Container } from '../../components/Global';
-import { SubTitulo } from '../../components/Text';
+import { SubTitulo, Titulo } from '../../components/Text';
+
 
 
 export default function Menu() {
+
+  const [count, setCount] = useState(0);
+  const [comidas, setComidas] = React.useState('');
+  const [position, setPosition] = React.useState(0);
+
+  const opcoes = [
+    'Hamburger', 
+    'Chachorro-quente', 
+    'Lasanha', 
+    'Strogonoff'
+  ];
+
+  useEffect(() => {
+    setComidas(opcoes[position]);
+  }, [position]);
+
+  const posicionClick = () => {
+    const pos = position + 1 === opcoes.length 
+      ? 0 
+      : position + 1;
+    setPosition(pos);
+  }
+
 
   const navigation = useNavigation();
 
@@ -20,6 +44,8 @@ export default function Menu() {
   return (
     <Container>
       <MyButtonTextSubmit>MENU</MyButtonTextSubmit>
+      <Titulo>{comidas}</Titulo>
+      <MyButtonSubmit onPress={() => posicionClick()}><MyButtonTextSubmit>contador</MyButtonTextSubmit></MyButtonSubmit>
       <MyButtonSubmit onPress={() => navigation.navigate('Login')} >
         <MyButtonTextSubmit>Voltar</MyButtonTextSubmit>
         </MyButtonSubmit>

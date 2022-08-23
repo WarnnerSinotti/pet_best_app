@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
@@ -12,7 +12,6 @@ import themes from '../../themes';
 export default function Step01() {
   const navigation = useNavigation();
   const { t } = useTranslation();
-
 
 
   return (
