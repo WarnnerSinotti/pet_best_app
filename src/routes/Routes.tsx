@@ -36,7 +36,7 @@ export default function Routes() {
           headerTransparent: true,
           headerShown: false,
         }}/>
-        <Stack.Screen name="Step02" component={Step02} 
+        <Stack.Screen name="Step02" component={Step02}
         options={{
           title: '',
           headerTransparent: true,

@@ -6,9 +6,9 @@ import { Modalize } from 'react-native-modalize';
 import { Container } from '../../components/Global';
 import { SubTitulo, Titulo } from '../../components/Text';
 
-
-
 export default function Menu() {
+
+  const page: string = "Login"
 
   const [count, setCount] = useState(0);
   const [comidas, setComidas] = React.useState('');
@@ -30,10 +30,10 @@ export default function Menu() {
       ? 0 
       : position + 1;
     setPosition(pos);
-  }
+  };
 
 
-  const navigation = useNavigation();
+  const navigation: any = useNavigation();
 
   const modalizeRef = useRef<Modalize>(null);
 

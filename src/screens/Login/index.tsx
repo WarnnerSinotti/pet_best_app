@@ -30,8 +30,9 @@ import {
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Login(Props: any) {
-  const navigation = useNavigation();
-  const { t } = useTranslation();
+
+  const navigation: any = useNavigation();
+  const { t } = useTranslation('translation');
   const [textEmail, setTextEmail] = React.useState('');
   const [textPassword, setTextPassword] = React.useState('');
   const [eyed, setEyed] = React.useState(true);
