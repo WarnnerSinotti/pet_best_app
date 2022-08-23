@@ -26,11 +26,11 @@ export const MyButtonSocialTextSubmit = styled(MyButtonTextSubmit)`
 `;
 
 export const MyButtonNext = styled(MyButtonSubmit)`
-  background-color: ${(props: any) => props.theme.COLORS.neutral};
+  width: 60%;
 `;
 
 export const MyButtonTextNext = styled(MyButtonTextSubmit)`
-  padding-left: 10px;
-  color: ${(props: any) => props.theme.COLORS.colorTextSocialButton};
+  font-family: ${(props: any) => props.theme.FONTS.LEXEND_REGULAR};
   font-size: ${(props: any) => props.theme.FONT_SIZE.button}px;
 `;
+

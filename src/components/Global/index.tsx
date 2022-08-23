@@ -28,6 +28,14 @@ export const RowCenter = styled.View`
     padding-top: 5px;
 `;
 
+export const RowCenterCard = styled.View`
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+`;
+
 export const RowLeft = styled.View`
     width: 100%;
     flex-direction: row;

@@ -5,7 +5,7 @@ export const Titulo = styled.Text`
   align-items: flex-start;
   justify-content: flex-start;
   color: ${(props: any) => props.theme.COLORS.color};
-  font-size: ${({ ...props }) => props.theme.FONT_SIZE.h6}px;
+  font-size: ${({ ...props }) => props.theme.FONT_SIZE.h5}px;
   font-family: ${(props: any) => props.theme.FONTS.LEXEND_BOLD};
 `;
 
@@ -31,6 +31,17 @@ export const SubTituloLink = styled.Text`
   font-size: ${({ ...props }) => props.theme.FONT_SIZE.caption}px;
   color: ${(props: any) => props.theme.COLORS.secondary};
   font-family: ${(props: any) => props.theme.FONTS.LEXEND_BOLD};
+`;
+
+//BODY
+export const BodyText = styled(SubTituloLink)`
+  padding-left: 24px;
+  padding-right: 24px;
+  padding: 10px;
+  text-align: center;
+  font-size: ${({ ...props }) => props.theme.FONT_SIZE.body}px;
+  color: ${(props: any) => props.theme.COLORS.color};
+  font-family: ${(props: any) => props.theme.FONTS.LEXEND_LIGHT};
 `;
 
 //OR-OU LOGIN

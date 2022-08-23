@@ -41,69 +41,66 @@ export default function Login(Props: any) {
   };
 
   return (
-    
     <Container>
-      <KeyboardAvoidingView
-    behavior='position'
-    >
-      <RowCenter>
-        <Image
-          source={require('../../../assets/img/dog.png')}
-          style={{
-            width: 150,
-            height: 150,
-            justifyContent: 'center',
-            alignContent: 'center',
-          }}
-        />
-      </RowCenter>
-      <RowCenter>
-        <NameAppText>My Pet Friend</NameAppText>
-      </RowCenter>
-      <Row>
-        <SubTitulo>{t('loginScreen.email')}</SubTitulo>
-      </Row>
-      <RowCenter>
-        <InputIconView>
-          <IconMail style={{ color: themes.light.COLORS.neutral }} />
-          <InputText
-            placeholder={t('loginScreen.email')}
-            onChangeText={setTextEmail}
-            value={textEmail}
+      <KeyboardAvoidingView behavior="position">
+        <RowCenter>
+          <Image
+            source={require('../../../assets/img/dog.png')}
+            style={{
+              width: 150,
+              height: 150,
+              justifyContent: 'center',
+              alignContent: 'center',
+            }}
           />
-        </InputIconView>
-      </RowCenter>
-      <Row>
-        <SubTitulo>{t('loginScreen.password')}</SubTitulo>
-      </Row>
-      <RowCenter>
-        <InputIconView>
-          <IconLock style={{ color: themes.light.COLORS.neutral }} />
-          <InputText
-            secureTextEntry={eyed} //ocultrar senha
-            placeholder={t('loginScreen.password')}
-            onChangeText={setTextPassword}
-            value={textPassword}
-          ></InputText>
-          <TouchableOpacity onPress={VisualPassword}>
-            {eyed ? (
-              <IconEyeOff style={{ color: themes.light.COLORS.neutral }} />
-            ) : (
-              <IconEye style={{ color: themes.light.COLORS.neutral }} />
-            )}
-          </TouchableOpacity>
-        </InputIconView>
-      </RowCenter>
-      <RowRight>
-        <SubTituloLink onPress={() => Alert.alert('Ainda não funcionando')}>
-          {t('loginScreen.forgot_your_password')}
-        </SubTituloLink>
-      </RowRight>
-      <RowCenter>
-        <MyButtonSubmit onPress={() => navigation.navigate('Step01')}>
-          <MyButtonTextSubmit>{t('loginScreen.login')}</MyButtonTextSubmit>
-        </MyButtonSubmit>
-      </RowCenter>
+        </RowCenter>
+        <RowCenter>
+          <NameAppText>My Pet Friend</NameAppText>
+        </RowCenter>
+        <Row>
+          <SubTitulo>{t('loginScreen.email')}</SubTitulo>
+        </Row>
+        <RowCenter>
+          <InputIconView>
+            <IconMail style={{ color: themes.light.COLORS.neutral }} />
+            <InputText
+              placeholder={t('loginScreen.email')}
+              onChangeText={setTextEmail}
+              value={textEmail}
+            />
+          </InputIconView>
+        </RowCenter>
+        <Row>
+          <SubTitulo>{t('loginScreen.password')}</SubTitulo>
+        </Row>
+        <RowCenter>
+          <InputIconView>
+            <IconLock style={{ color: themes.light.COLORS.neutral }} />
+            <InputText
+              secureTextEntry={eyed} //ocultrar senha
+              placeholder={t('loginScreen.password')}
+              onChangeText={setTextPassword}
+              value={textPassword}
+            ></InputText>
+            <TouchableOpacity onPress={VisualPassword}>
+              {eyed ? (
+                <IconEyeOff style={{ color: themes.light.COLORS.neutral }} />
+              ) : (
+                <IconEye style={{ color: themes.light.COLORS.neutral }} />
+              )}
+            </TouchableOpacity>
+          </InputIconView>
+        </RowCenter>
+        <RowRight>
+          <SubTituloLink onPress={() => Alert.alert('Ainda não funcionando')}>
+            {t('loginScreen.forgot_your_password')}
+          </SubTituloLink>
+        </RowRight>
+        <RowCenter>
+          <MyButtonSubmit onPress={() => navigation.navigate('Step01')}>
+            <MyButtonTextSubmit>{t('loginScreen.login')}</MyButtonTextSubmit>
+          </MyButtonSubmit>
+        </RowCenter>
       </KeyboardAvoidingView>
       <RowCenter>
         <MyDivider />
@@ -141,8 +138,6 @@ export default function Login(Props: any) {
           {t('loginScreen.sign_in')}
         </SubTituloLink>
       </RowCenter>
-     
     </Container>
-    
   );
 }

@@ -20,7 +20,7 @@ export default function Menu() {
   return (
     <Container>
       <MyButtonTextSubmit>MENU</MyButtonTextSubmit>
-      <MyButtonSubmit onPress={() => navigation.goBack()} >
+      <MyButtonSubmit onPress={() => navigation.navigate('Login')} >
         <MyButtonTextSubmit>Voltar</MyButtonTextSubmit>
         </MyButtonSubmit>
 
