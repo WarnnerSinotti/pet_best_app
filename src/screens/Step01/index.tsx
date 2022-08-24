@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
 import { MyButtonNext, MyButtonTextNext } from '../../components/Button';
-import { Image, View } from 'react-native';
+import { Image } from 'react-native';
 import { Container, RowCenterCard } from '../../components/Global';
 import { BodyText, Titulo } from '../../components/Text';
 import { CardContainer, CardProgress } from '../../components/Card';
@@ -27,21 +27,21 @@ export default function Step01() {
       ID: 2,
       Title: t('stepCardScreen.titleStep02'),
       Message: t('stepCardScreen.bodyStep02'),
-      Background:  themes.light.COLORS.terciary,
+      Background: themes.light.COLORS.terciary,
       image: require('../../../assets/img/card/shop.jpg'),
     },
     {
       ID: 3,
       Title: t('stepCardScreen.titleStep03'),
       Message: t('stepCardScreen.bodyStep03'),
-      Background:  themes.light.COLORS.primary,
+      Background: themes.light.COLORS.primary,
       image: require('../../../assets/img/card/clinic.jpg'),
     },
     {
       ID: 4,
       Title: t('stepCardScreen.titleStep04'),
       Message: t('stepCardScreen.bodyStep04'),
-      Background:  themes.light.COLORS.quartenary,
+      Background: themes.light.COLORS.quartenary,
       image: require('../../../assets/img/card/wallet.jpg'),
     },
   ];
@@ -61,22 +61,40 @@ export default function Step01() {
           ></Image>
           <CardContainer>
             <RowCenterCard>
-              <CardProgress
-                /* style={{ backgroundColor: themes.light.COLORS.primary }} */
-              />
-              <CardProgress />
-              <CardProgress />
-              <CardProgress />
+              {step == 1 ? (
+                <CardProgress
+                  style={{ backgroundColor: themes.light.COLORS.secondary }}
+                />
+              ) : (
+                <CardProgress />
+              )}
+              {step == 2 ? (
+                <CardProgress
+                  style={{ backgroundColor: themes.light.COLORS.terciary }}
+                />
+              ) : (
+                <CardProgress />
+              )}
+              {step == 3 ? (
+                <CardProgress
+                  style={{ backgroundColor: themes.light.COLORS.primary }}
+                />
+              ) : (
+                <CardProgress />
+              )}
+              {step == 4 ? (
+                <CardProgress
+                  style={{ backgroundColor: themes.light.COLORS.quartenary }}
+                />
+              ) : (
+                <CardProgress />
+              )}
             </RowCenterCard>
             <RowCenterCard>
-              <Titulo style={{ marginBottom: 16 }}>
-              {post.Title}
-              </Titulo>
+              <Titulo style={{ marginBottom: 16 }}>{post.Title}</Titulo>
             </RowCenterCard>
             <RowCenterCard>
-              <BodyText style={{ marginBottom: 32 }}>
-                {post.Message}
-              </BodyText>
+              <BodyText style={{ marginBottom: 32 }}>{post.Message}</BodyText>
             </RowCenterCard>
             <RowCenterCard>
               <MyButtonNext
