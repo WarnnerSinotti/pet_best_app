@@ -9,7 +9,7 @@
     "login_with_google": "Entrar Com Google",
     "login_with_apple": "Entrar Com Apple",
     "new_to_my_pet_friend": "Pronto Para My Pet Friend APP?",
-    "sign_in": "Cadastre-se",
+    "sign_up": "Cadastre-se",
     "next": "Próximo"
   },
   "stepCardScreen":{
@@ -20,6 +20,9 @@
     "bodyStep01": "TRADUZIR - The largest pet shop network specializing in services and sale of products for pets",
     "bodyStep02": "TRADUZIR - Find out products with the best pricing and promotions, pickup or delivery your orders",
     "bodyStep03": "TRADUZIR - Need a pet consultation or service? Make an appointment quickly and easily",
-    "bodyStep04": "TRADUZIR - Keep track of what your pets need and earn points to use with our products and services"
+    "bodyStep04": "TRADUZIR - Keep track of what your pets need and earn points to use with our products and services",
+    "buttonNext": "Próximo",
+    "buttonNextGetStart": "Começar",
+    "skip": "Fechar"
   }
 }

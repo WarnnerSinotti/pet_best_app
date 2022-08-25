@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/img/dog.png",
+      "image": "./assets/slug.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

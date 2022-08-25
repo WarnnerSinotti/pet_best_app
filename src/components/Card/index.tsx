@@ -4,10 +4,10 @@ export const CardContainer = styled.View`
   width: 100%;
   height: 55%;
   position: 'absolute';
-  bottom: 20px;
+  bottom: 10px;
   padding: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 2px;
+  padding-right: 2px;
   background-color: ${(props: any) => props.theme.COLORS.background};
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;

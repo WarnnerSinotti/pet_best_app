@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
+import { MotiView } from 'moti';
 
 import { MyButtonNext, MyButtonTextNext } from '../../components/Button';
 import { Image } from 'react-native';
 import { Container, RowCenterCard } from '../../components/Global';
-import { BodyText, Titulo } from '../../components/Text';
+import {
+  BodyText,
+  CaptionText,
+  SubTituloLink,
+  Titulo,
+} from '../../components/Text';
 import { CardContainer, CardProgress } from '../../components/Card';
 import themes from '../../themes';
+import Menu from '../Menu';
 
-export default function Step01() {
+export default function Step01({ ...props }) {
   const navigation = useNavigation();
   const { t } = useTranslation();
 
@@ -20,6 +27,7 @@ export default function Step01() {
       ID: 1,
       Title: t('stepCardScreen.titleStep01'),
       Message: t('stepCardScreen.bodyStep01'),
+      TextButton: t('stepCardScreen.buttonNext'),
       Background: themes.light.COLORS.secondary,
       image: require('../../../assets/img/card/myPetFriend.jpg'),
     },
@@ -27,6 +35,7 @@ export default function Step01() {
       ID: 2,
       Title: t('stepCardScreen.titleStep02'),
       Message: t('stepCardScreen.bodyStep02'),
+      TextButton: t('stepCardScreen.buttonNext'),
       Background: themes.light.COLORS.terciary,
       image: require('../../../assets/img/card/shop.jpg'),
     },
@@ -34,6 +43,7 @@ export default function Step01() {
       ID: 3,
       Title: t('stepCardScreen.titleStep03'),
       Message: t('stepCardScreen.bodyStep03'),
+      TextButton: t('stepCardScreen.buttonNext'),
       Background: themes.light.COLORS.primary,
       image: require('../../../assets/img/card/clinic.jpg'),
     },
@@ -41,6 +51,7 @@ export default function Step01() {
       ID: 4,
       Title: t('stepCardScreen.titleStep04'),
       Message: t('stepCardScreen.bodyStep04'),
+      TextButton: t('stepCardScreen.buttonNextGetStart'),
       Background: themes.light.COLORS.quartenary,
       image: require('../../../assets/img/card/wallet.jpg'),
     },
@@ -62,30 +73,74 @@ export default function Step01() {
           <CardContainer>
             <RowCenterCard>
               {step == 1 ? (
-                <CardProgress
-                  style={{ backgroundColor: themes.light.COLORS.secondary }}
-                />
+                <MotiView
+                  from={{ scale: 1, opacity: 15 }}
+                  animate={{
+                    scale: [
+                      { value: 0.5, type: 'timing' },
+                      { value: 1, type: 'spring' },
+                    ],
+                    opacity: 1,
+                  }}
+                >
+                  <CardProgress
+                    style={{ backgroundColor: themes.light.COLORS.secondary }}
+                  />
+                </MotiView>
               ) : (
                 <CardProgress />
               )}
               {step == 2 ? (
-                <CardProgress
-                  style={{ backgroundColor: themes.light.COLORS.terciary }}
-                />
+                <MotiView
+                  from={{ scale: 1, opacity: 15 }}
+                  animate={{
+                    scale: [
+                      { value: 0.5, type: 'timing' },
+                      { value: 1, type: 'spring' },
+                    ],
+                    opacity: 1,
+                  }}
+                >
+                  <CardProgress
+                    style={{ backgroundColor: themes.light.COLORS.terciary }}
+                  />
+                </MotiView>
               ) : (
                 <CardProgress />
               )}
               {step == 3 ? (
-                <CardProgress
-                  style={{ backgroundColor: themes.light.COLORS.primary }}
-                />
+                <MotiView
+                  from={{ scale: 1, opacity: 15 }}
+                  animate={{
+                    scale: [
+                      { value: 0.5, type: 'timing' },
+                      { value: 1, type: 'spring' },
+                    ],
+                    opacity: 1,
+                  }}
+                >
+                  <CardProgress
+                    style={{ backgroundColor: themes.light.COLORS.primary }}
+                  />
+                </MotiView>
               ) : (
                 <CardProgress />
               )}
               {step == 4 ? (
-                <CardProgress
-                  style={{ backgroundColor: themes.light.COLORS.quartenary }}
-                />
+                <MotiView
+                  from={{ scale: 1, opacity: 15 }}
+                  animate={{
+                    scale: [
+                      { value: 0.5, type: 'timing' },
+                      { value: 1, type: 'spring' },
+                    ],
+                    opacity: 1,
+                  }}
+                >
+                  <CardProgress
+                    style={{ backgroundColor: themes.light.COLORS.quartenary }}
+                  />
+                </MotiView>
               ) : (
                 <CardProgress />
               )}
@@ -101,9 +156,19 @@ export default function Step01() {
                 style={{ backgroundColor: post.Background }}
                 onPress={() => Click()}
               >
-                <MyButtonTextNext>{t('loginScreen.next')}</MyButtonTextNext>
+                <MyButtonTextNext>{post.TextButton}</MyButtonTextNext>
               </MyButtonNext>
             </RowCenterCard>
+            {step === 4 ? (
+              <></>
+            ) : (
+              <CaptionText
+                style={{ marginTop: 25 }}
+                onPress={() => navigation.navigate('Menu')}
+              >
+                {t('stepCardScreen.skip')}
+              </CaptionText>
+            )}
           </CardContainer>
         </Container>
       );

@@ -4,11 +4,16 @@ import Mail from '../../../assets/icons/mail.svg';
 import Lock from '../../../assets/icons/lock.svg';
 import Eye from '../../../assets/icons/eye.svg';
 import EyeOff from '../../../assets/icons/eye-off.svg';
+import Slug from '../../../assets/icons/slug.svg';
 
 const tamanho = {
   height: 25,
   width: 25
 }
+
+export const IconSlug = (props: any) => {
+  return <Slug height={tamanho.height} width={tamanho.width} {...props} />;
+};
 
 export const IconApple = (props: any) => {
   return <Apple height={tamanho.height} width={tamanho.width} {...props} />;

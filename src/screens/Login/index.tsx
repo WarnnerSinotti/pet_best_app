@@ -136,7 +136,7 @@ export default function Login(Props: any) {
           {t('loginScreen.new_to_my_pet_friend')}
         </NewPetFriendText>
         <SubTituloLink onPress={() => Alert.alert('Ainda não funcionando')}>
-          {t('loginScreen.sign_in')}
+          {t('loginScreen.sign_up')}
         </SubTituloLink>
       </RowCenter>
     </Container>
