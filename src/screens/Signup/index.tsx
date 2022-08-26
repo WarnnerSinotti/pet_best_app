@@ -66,7 +66,7 @@ export default function Signup(Props: any) {
 
         <CardContainerSingup>
         <RowCenter>
-          <NameAppText>Adicionar complementos</NameAppText>
+          <NameAppText>Adicionar Complementos</NameAppText>
         </RowCenter>
         <Row>
           <SubTitulo>{t('loginScreen.email')}</SubTitulo>
