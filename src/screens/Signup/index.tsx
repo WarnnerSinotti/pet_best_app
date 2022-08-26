@@ -66,7 +66,7 @@ export default function Signup(Props: any) {
 
         <CardContainerSingup>
         <RowCenter>
-          <NameAppText>My Pet Friend</NameAppText>
+          <NameAppText>Adicionar complementos</NameAppText>
         </RowCenter>
         <Row>
           <SubTitulo>{t('loginScreen.email')}</SubTitulo>
