@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "petBest",
-    "slug": "petBest",
+    "name": "myPetFriend",
+    "slug": "myPetFriend",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/slug.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
