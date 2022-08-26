@@ -13,7 +13,6 @@ export const CardContainer = styled.View`
   border-top-right-radius: 20px;
   justify-content: baseline;
   align-items: center;
- 
 `;
 
 export const CardProgress = styled.View`
@@ -26,3 +25,7 @@ export const CardProgress = styled.View`
   background-color: ${(props: any) => props.theme.COLORS.neutral};
 `
 
+export const CardContainerSingup = styled(CardContainer)`
+  height: 100%;
+  bottom: 0px;
+`

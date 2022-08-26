@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Alert, KeyboardAvoidingView, Image, View } from 'react-native';
-import { Container, Row, RowCenter, RowRight } from '../../components/Global';
+import {
+  CollumSignup,
+  Container,
+  ContainerSignup,
+  Row,
+  RowCenter,
+  RowRight,
+  RowSignup,
+  RowSigun,
+} from '../../components/Global';
 import {
   NameAppText,
   NewPetFriendText,
   ORText,
   SubTitulo,
   SubTituloLink,
+  Titulo,
 } from '../../components/Text';
 import { useTranslation } from 'react-i18next';
 import {
@@ -28,8 +38,9 @@ import {
   IconMail,
 } from '../../components/SVG';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { CardContainer, CardContainerSingup } from '../../components/Card';
 
-export default function Login(Props: any) {
+export default function Signup(Props: any) {
   const navigation: any = useNavigation();
   const { t } = useTranslation('translation');
   const [textEmail, setTextEmail] = React.useState('');
@@ -41,19 +52,19 @@ export default function Login(Props: any) {
   };
 
   return (
-    <Container>
+    <ContainerSignup>
       <KeyboardAvoidingView behavior="position">
-        <RowCenter>
-          <Image
-            source={require('../../../assets/img/dog.png')}
-            style={{
-              width: 150,
-              height: 150,
-              justifyContent: 'center',
-              alignContent: 'center',
-            }}
-          />
-        </RowCenter>
+        <CollumSignup>
+        <RowSignup>
+          <SubTitulo>Welcome To My Pet Friend</SubTitulo>
+        </RowSignup>
+        <RowSignup>
+        <Titulo>Creat Yout Account</Titulo>
+        </RowSignup>
+        </CollumSignup>
+        </KeyboardAvoidingView>
+
+        <CardContainerSingup>
         <RowCenter>
           <NameAppText>My Pet Friend</NameAppText>
         </RowCenter>
@@ -91,17 +102,13 @@ export default function Login(Props: any) {
             </TouchableOpacity>
           </InputIconView>
         </RowCenter>
-        <RowRight>
-          <SubTituloLink onPress={() => Alert.alert('Ainda não funcionando')}>
-            {t('loginScreen.forgot_your_password')}
-          </SubTituloLink>
-        </RowRight>
+        
         <RowCenter>
           <MyButtonSubmit onPress={() => navigation.navigate('Step01')}>
             <MyButtonTextSubmit>{t('loginScreen.login')}</MyButtonTextSubmit>
           </MyButtonSubmit>
         </RowCenter>
-      </KeyboardAvoidingView>
+
       <RowCenter>
         <MyDivider />
         <ORText>{t('loginScreen.or')}</ORText>
@@ -134,10 +141,12 @@ export default function Login(Props: any) {
         <NewPetFriendText>
           {t('loginScreen.new_to_my_pet_friend')}
         </NewPetFriendText>
-        <SubTituloLink onPress={() => navigation.navigate('Signup')}>
+        <SubTituloLink onPress={() => Alert.alert('Ainda não funcionando')}>
           {t('loginScreen.sign_up')}
         </SubTituloLink>
       </RowCenter>
-    </Container>
+
+        </CardContainerSingup>
+    </ContainerSignup>
   );
 }

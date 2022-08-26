@@ -9,12 +9,10 @@ import { Container, RowCenterCard } from '../../components/Global';
 import {
   BodyText,
   CaptionText,
-  SubTituloLink,
   Titulo,
 } from '../../components/Text';
 import { CardContainer, CardProgress } from '../../components/Card';
 import themes from '../../themes';
-import Menu from '../Menu';
 
 export default function Step01({ ...props }) {
   const navigation = useNavigation();
