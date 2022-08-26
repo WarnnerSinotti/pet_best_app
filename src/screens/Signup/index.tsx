@@ -56,7 +56,7 @@ export default function Signup(Props: any) {
       <KeyboardAvoidingView behavior="position">
         <CollumSignup>
         <RowSignup>
-          <SubTitulo>Welcome To My Pet Friend</SubTitulo>
+          <SubTitulo>Welcome To My Pet Friend </SubTitulo>
         </RowSignup>
         <RowSignup>
         <Titulo>Creat Yout Account</Titulo>
