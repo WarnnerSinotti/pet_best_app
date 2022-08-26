@@ -12,6 +12,10 @@
     "sign_up": "Cadastre-se",
     "next": "Próximo"
   },
+  "singupScreen":{
+    "welcomeToMyPetFriend": "Bem Vindo ao My Pet Friend",
+    "creatYourAccount": "Criar Sua Conta"
+  },
   "stepCardScreen":{
     "titleStep01": "My Pet Friend",
     "titleStep02": "Compras",

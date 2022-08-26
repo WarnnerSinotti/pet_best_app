@@ -56,10 +56,10 @@ export default function Signup(Props: any) {
       <KeyboardAvoidingView behavior="position">
         <CollumSignup>
         <RowSignup>
-          <SubTitulo>Welcome To My Pet Friend </SubTitulo>
+          <SubTitulo>{t('signup.Screen.welcomeToMyPetFriend')}</SubTitulo>
         </RowSignup>
         <RowSignup>
-        <Titulo>Creat Yout Account</Titulo>
+        <Titulo>{t('signup.Screen.creatYourAccount')}</Titulo>
         </RowSignup>
         </CollumSignup>
         </KeyboardAvoidingView>
