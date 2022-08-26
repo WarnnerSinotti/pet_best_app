@@ -39,6 +39,7 @@ import {
 } from '../../components/SVG';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { CardContainer, CardContainerSingup } from '../../components/Card';
+import { MotiView } from 'moti';
 
 export default function Signup(Props: any) {
   const navigation: any = useNavigation();
@@ -64,6 +65,13 @@ export default function Signup(Props: any) {
         </CollumSignup>
         </KeyboardAvoidingView>
 
+        <MotiView 
+        from={{ translateY: 200 }}
+        animate={{
+          translateY: 0
+        }}
+        
+        >
         <CardContainerSingup>
         <RowCenter>
           <NameAppText>Adicionar Components</NameAppText>
@@ -147,6 +155,7 @@ export default function Signup(Props: any) {
       </RowCenter>
 
         </CardContainerSingup>
+        </MotiView>
     </ContainerSignup>
   );
 }
