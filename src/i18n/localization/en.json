@@ -14,7 +14,19 @@
   },
   "singupScreen":{
     "welcomeToMyPetFriend": "Welcome To My Pet Friend",
-    "creatYourAccount": "Creat Your Account"
+    "creatYourAccount": "Creat Your Account",
+    "name": "Name",
+    "dateOfBirth": "Date of Birth",
+    "day": "DD",
+    "month": "MM",
+    "year": "YYYY",
+    "messageBirth": "We want to give a special treat on your birthday",
+    "email": "Email",
+    "createPassword": "Create a Password",
+    "caracteres": "At least 8 characters",
+    "signupButton": "Sign up",
+    "alreadyHaveAnAccount": "Already have an account?",
+    "sign_in": "Log in"
   },
   "stepCardScreen":{
     "titleStep01": "My Pet Friend",

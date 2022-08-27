@@ -28,4 +28,5 @@ export const CardProgress = styled.View`
 export const CardContainerSingup = styled(CardContainer)`
   height: 100%;
   bottom: 0px;
+  align-items: flex-start;
 `

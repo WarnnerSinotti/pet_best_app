@@ -13,8 +13,20 @@
     "next": "Próximo"
   },
   "singupScreen":{
-    "welcomeToMyPetFriend": "Bem Vindo ao My Pet Friend",
-    "creatYourAccount": "Criar Sua Conta"
+    "welcomeToMyPetFriend": "Bem Vindo Para My Pet Friend",
+    "creatYourAccount": "Crie Sua Conta",
+    "name": "Nome",
+    "dateOfBirth": "Data de seu Aniversário",
+    "day": "DD",
+    "month": "MM",
+    "year": "YYYY",
+    "messageBirth": "Queremos Commemorar Juntos está Data Especial, o seu Aniversário!",
+    "email": "Email",
+    "createPassword": "Criar uma senha",
+    "caracteres": "Acima de 8 caracteres",
+    "signupButton": "Inscrever-se",
+    "alreadyHaveAnAccount": "Já possui uma conta?",
+    "sign_in": "Log in"
   },
   "stepCardScreen":{
     "titleStep01": "My Pet Friend",

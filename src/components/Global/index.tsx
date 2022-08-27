@@ -16,8 +16,8 @@ export const ContainerSignup = styled(Container)`
 
 export const Column = styled.View`
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
 `;
 
 export const Row = styled.View`
@@ -47,6 +47,7 @@ export const RowLeft = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: flex-start;
   padding-left: 10px;
   padding: 10px;
 `;

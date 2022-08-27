@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 
-export const InputIconView = styled.View`
+//INPUTS VIEW
+export const InputView = styled.View`
   width: 100%;
   height: 44px;
   flex-direction: row;
@@ -14,9 +15,16 @@ export const InputIconView = styled.View`
  
 `;
 
+//TEXTS INPUTS
 export const InputText = styled.TextInput`
-  width: 83%;
+  width: 100%;
   padding-left: 5px;
   padding-right: 5px;
   color: ${(props: any) => props.theme.COLORS.color}
+`;
+
+
+export const InputTextBirth = styled(InputText)`
+  width: 100%;
+  justify-content: center;
 `;

@@ -17,7 +17,7 @@ import {
   MyButtonSocialTextSubmit,
 } from '../../components/Button';
 import themes from '../../themes';
-import { InputIconView, InputText } from '../../components/TextInput';
+import { InputView, InputText } from '../../components/TextInput';
 import { MyDivider } from '../../components/Divider';
 import {
   IconApple,
@@ -61,26 +61,28 @@ export default function Login(Props: any) {
           <SubTitulo>{t('loginScreen.email')}</SubTitulo>
         </Row>
         <RowCenter>
-          <InputIconView>
+          <InputView>
             <IconMail style={{ color: themes.light.COLORS.neutral }} />
             <InputText
               placeholder={t('loginScreen.email')}
               onChangeText={setTextEmail}
               value={textEmail}
+              keyboardType="email-address"
             />
-          </InputIconView>
+          </InputView>
         </RowCenter>
         <Row>
           <SubTitulo>{t('loginScreen.password')}</SubTitulo>
         </Row>
         <RowCenter>
-          <InputIconView>
+          <InputView>
             <IconLock style={{ color: themes.light.COLORS.neutral }} />
-            <InputText
+            <InputText style={{ width: '80%'}}
               secureTextEntry={eyed} //ocultrar senha
               placeholder={t('loginScreen.password')}
               onChangeText={setTextPassword}
               value={textPassword}
+              maxLength={20}
             ></InputText>
             <TouchableOpacity onPress={VisualPassword}>
               {eyed ? (
@@ -89,7 +91,7 @@ export default function Login(Props: any) {
                 <IconEye style={{ color: themes.light.COLORS.neutral }} />
               )}
             </TouchableOpacity>
-          </InputIconView>
+          </InputView>
         </RowCenter>
         <RowRight>
           <SubTituloLink onPress={() => Alert.alert('Ainda não funcionando')}>

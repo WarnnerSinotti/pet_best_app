@@ -35,7 +35,6 @@ export const SubTituloLink = styled.Text`
 
 //BODY
 export const BodyText = styled(SubTituloLink)`
-  padding: 10px;
   text-align: center;
   font-size: ${({ ...props }) => props.theme.FONT_SIZE.body}px;
   color: ${(props: any) => props.theme.COLORS.color};
