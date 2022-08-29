@@ -13,6 +13,7 @@ import {
   RowSignup,
 } from '../../components/Global';
 import {
+  BodySmallText,
   BodyText,
   NameAppText,
   NewPetFriendText,
@@ -70,10 +71,10 @@ export default function Signup(Props: any) {
     <ContainerSignup>
       <CollumSignup>
         <RowSignup>
-          <SubTitulo>{t('singupScreen.welcomeToMyPetFriend')}</SubTitulo>
+          <BodySmallText style={{color: themes.light.COLORS.colorTextSubmit}}>{t('singupScreen.welcomeToMyPetFriend')}</BodySmallText>
         </RowSignup>
         <RowSignup>
-          <Titulo>{t('singupScreen.creatYourAccount')}</Titulo>
+          <Titulo style={{color: themes.light.COLORS.colorTextSubmit}}>{t('singupScreen.creatYourAccount')}</Titulo>
         </RowSignup>
       </CollumSignup>
 
@@ -277,7 +278,7 @@ export default function Signup(Props: any) {
             <NewPetFriendText>
               {t('singupScreen.alreadyHaveAnAccount')}
             </NewPetFriendText>
-            <SubTituloLink onPress={() => Alert.alert('Ainda não funcionando')}>
+            <SubTituloLink onPress={() => navigation.navigate('Login')}>
               {t('singupScreen.sign_in')}
             </SubTituloLink>
           </RowCenter>

@@ -12,6 +12,13 @@
     "sign_up": "Cadastre-se",
     "next": "Próximo"
   },
+  "forgotScreen": {
+    "forgot_your_password": "Esqueceu seu email?",
+    "no_worries": "Não se preocupe, Enviaremos um código de recuperação de senha",
+    "email": "Email",
+    "emailPlaceholder": "Dígite seu email",
+    "sendCode": "Enviar Código"
+  },
   "singupScreen":{
     "welcomeToMyPetFriend": "Bem Vindo Para My Pet Friend",
     "creatYourAccount": "Crie Sua Conta",

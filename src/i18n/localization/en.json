@@ -12,7 +12,14 @@
     "sign_up": "Sign Up",
     "next": "Next"
   },
-  "singupScreen":{
+  "forgotScreen": {
+    "forgot_your_password": "Forgot your password?",
+    "no_worries": "No worries, we’ll send you a code to reset",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "sendCode": "Send Code"
+  },
+  "singupScreen": {
     "welcomeToMyPetFriend": "Welcome To My Pet Friend",
     "creatYourAccount": "Creat Your Account",
     "name": "Name",
@@ -28,7 +35,7 @@
     "alreadyHaveAnAccount": "Already have an account?",
     "sign_in": "Log in"
   },
-  "stepCardScreen":{
+  "stepCardScreen": {
     "titleStep01": "My Pet Friend",
     "titleStep02": "Shop",
     "titleStep03": "Clinic",
