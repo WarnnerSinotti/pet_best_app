@@ -88,7 +88,7 @@ export default function Signup(Props: any) {
           <Row>
             <BodyText>{t('singupScreen.name')}</BodyText>
           </Row>
-          <RowCenter>
+          <RowCenter style={{padding: 8}}>
             <InputView>
               <IconName style={{ color: themes.light.COLORS.neutral }} />
               <InputText
@@ -98,11 +98,11 @@ export default function Signup(Props: any) {
               />
             </InputView>
           </RowCenter>
-          <Row>
+          <Row >
             <BodyText>{t('singupScreen.dateOfBirth')}</BodyText>
           </Row>
 
-          <RowLeft>
+          <Row style={{padding: 8}}>
             <InputView style={{ width: '20%', justifyContent: 'center' }}>
               <InputTextBirth
                 type="number"
@@ -135,8 +135,8 @@ export default function Signup(Props: any) {
                 maxLength={4} //Fazer Tratamento
               />
             </InputView>
-          </RowLeft>
-          <Row>
+          </Row>
+          <Row style={{padding: 8}}>
             <BodyText>{t('singupScreen.email')}</BodyText>
           </Row>
           <RowCenter>
@@ -150,7 +150,7 @@ export default function Signup(Props: any) {
               />
             </InputView>
           </RowCenter>
-          <Row>
+          <Row style={{padding: 8}}>
             <BodyText>{t('singupScreen.createPassword')}</BodyText>
           </Row>
           <RowCenter>
@@ -172,7 +172,7 @@ export default function Signup(Props: any) {
               </TouchableOpacity>
             </InputView>
           </RowCenter>
-          <RowLeft>
+          <RowLeft style={{padding: 8}}>
           {password.length > 0 ? (
                   <ProgressSignup 
                     style={{ backgroundColor: themes.light.COLORS.secondary }}
@@ -238,7 +238,7 @@ export default function Signup(Props: any) {
                 <ProgressSignup />
               )}
           </RowLeft>
-          <RowCenter>
+          <RowCenter style={{padding: 14}}>
             <MyButtonSubmit onPress={() => navigation.navigate('Menu')}>
               <MyButtonTextSubmit>
                 {t('singupScreen.signupButton')}
@@ -246,12 +246,12 @@ export default function Signup(Props: any) {
             </MyButtonSubmit>
           </RowCenter>
 
-          <RowCenter>
+          <RowCenter style={{padding: 6}}>
             <MyDivider />
             <ORText>{t('loginScreen.or')}</ORText>
             <MyDivider />
           </RowCenter>
-          <RowCenter>
+          <RowCenter style={{padding: 14}}>
             <MyButtonSocialSubmit
               testID={'Google_btn'}
               onPress={() => Alert.alert('Ainda não funcionando')}
@@ -274,7 +274,7 @@ export default function Signup(Props: any) {
             </MyButtonSocialSubmit>
           </RowCenter>
 
-          <RowCenter>
+          <RowCenter style={{padding: 24}}>
             <NewPetFriendText>
               {t('singupScreen.alreadyHaveAnAccount')}
             </NewPetFriendText>

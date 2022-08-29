@@ -23,7 +23,7 @@ export const Column = styled.View`
 export const Row = styled.View`
   flex-direction: row;
   width: 100%;
-  padding-left: 12px;
+  padding-left: 24px;
 `;
 
 export const RowCenter = styled.View`

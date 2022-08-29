@@ -22,8 +22,6 @@ export const SubTitulo = styled.Text`
   font-size: ${({ ...props }) => props.theme.FONT_SIZE.h6}px;
   color: ${(props: any) => props.theme.COLORS.color};
   font-family: ${(props: any) => props.theme.FONTS.LEXEND_BOLD};
-  padding-left: 12px;
-  padding-right: 12px;
 `;
 
 //SUB TITULO COM LINK
@@ -53,8 +51,8 @@ export const BodySmallText = styled(SubTituloLink)`
 
 //OR-OU LOGIN
 export const ORText = styled(SubTituloLink)`
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: ${(props: any) => props.theme.COLORS.neutral};
 `;
 

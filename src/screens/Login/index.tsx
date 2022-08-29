@@ -37,6 +37,7 @@ export default function Login(Props: any) {
   const { t } = useTranslation('translation');
   const [textEmail, setTextEmail] = React.useState('');
   const [textPassword, setTextPassword] = React.useState('');
+  const [forgotEmail, setForgotEmail] = React.useState('');
   const [eyed, setEyed] = React.useState(true);
 
   const modalizeRef = useRef<Modalize>(null);
@@ -159,10 +160,10 @@ export default function Login(Props: any) {
       {/* FORGOT */}
       <Modalize
         openAnimationConfig={{
-          timing: { duration: 15000 },
-          spring: { speed: 0.1 },
+          timing: { duration: 500 },
+          spring: { speed: 1 },
         }}
-        snapPoint={300}
+        snapPoint={600}
         ref={modalizeRef}
       >
         <RowCenter style={{paddingTop: 24}}>
@@ -179,8 +180,8 @@ export default function Login(Props: any) {
             <IconMail style={{ color: themes.light.COLORS.neutral }} />
             <InputText
               placeholder={t('forgotScreen.emailPlaceholder')}
-              onChangeText={setTextEmail}
-              value={textEmail}
+              onChangeText={setForgotEmail}
+              value={forgotEmail}
               keyboardType="email-address"
             />
           </InputView>
