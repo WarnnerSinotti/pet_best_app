@@ -11,8 +11,6 @@ export const CardContainer = styled.View`
   background-color: ${(props: any) => props.theme.COLORS.background};
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  justify-content: baseline;
-  align-items: center;
 `;
 
 export const CardProgress = styled.View`

@@ -37,7 +37,7 @@ export const SubTituloLink = styled.Text`
 export const BodyText = styled(SubTituloLink)`
   text-align: center;
   font-size: ${({ ...props }) => props.theme.FONT_SIZE.body}px;
-  color: ${(props: any) => props.theme.COLORS.color};
+  color: ${(props: any) => props.theme.COLORS.colorTextSingup};
   font-family: ${(props: any) => props.theme.FONTS.LEXEND_LIGHT};
 `;
 
@@ -58,8 +58,9 @@ export const ORText = styled(SubTituloLink)`
 
 //CaptionText (Skip)
 export const CaptionText = styled(SubTituloLink)`
-font-family: ${(props: any) => props.theme.FONTS.LEXEND_LIGHT};
+  font-family: ${(props: any) => props.theme.FONTS.LEXEND_LIGHT};
   color: ${(props: any) => props.theme.COLORS.color};
+  text-align: center;
 `;
 
 //TEXT - MYPET FRIEND

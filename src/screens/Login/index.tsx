@@ -1,7 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Alert, KeyboardAvoidingView, Image, View } from 'react-native';
-import { Container, Row, RowCenter, RowLeft, RowRight } from '../../components/Global';
+import {
+  Container,
+  Row,
+  RowCenter,
+  RowLeft,
+  RowRight,
+} from '../../components/Global';
 import {
   BodyText,
   NameAppText,
@@ -40,6 +46,32 @@ export default function Login(Props: any) {
   const [forgotEmail, setForgotEmail] = React.useState('');
   const [eyed, setEyed] = React.useState(true);
 
+  const [step, setStep] = useState(1);
+
+  const steps = [
+    {
+      ID: 1,
+      Title: t('stepCardScreen.titleStep01'),
+      Message: t('stepCardScreen.bodyStep01'),
+      TitleInput: t('stepCardScreen.buttonNext'),
+      TitleButton: t('stepCardScreen.buttonNext'),
+    },
+    {
+      ID: 2,
+      Title: t('stepCardScreen.titleStep01'),
+      Message: t('stepCardScreen.bodyStep01'),
+      TitleInput: t('stepCardScreen.buttonNext'),
+      TitleButton: t('stepCardScreen.buttonNext'),
+    },
+    {
+      ID: 3,
+      Title: t('stepCardScreen.titleStep01'),
+      Message: t('stepCardScreen.bodyStep01'),
+      TitleInput: t('stepCardScreen.buttonNext'),
+      TitleButton: t('stepCardScreen.buttonNext'),
+    },
+  ];
+
   const modalizeRef = useRef<Modalize>(null);
 
   const onOpen = () => {
@@ -50,10 +82,90 @@ export default function Login(Props: any) {
     modalizeRef.current?.close('default');
   };
 
-
   const VisualPassword = () => {
     setEyed((current) => !current);
   };
+
+  const Click = () => {
+    if (step === 4) {
+      console.log('adicionar caminho');
+    }
+    setStep(step + 1);
+  };
+  const listItems = steps.map((post) => {
+    if (step == post.ID) {
+      return (
+        <Container key={post.ID}>
+          {step == 1 ? (
+            <View>
+              <RowCenter style={{ paddingTop: 24 }}>
+                <Titulo>{post.Title}</Titulo>
+              </RowCenter>
+              <RowCenter style={{ paddingTop: 4 }}>
+                <BodyText>{post.Message}</BodyText>
+              </RowCenter>
+              <RowLeft style={{ paddingTop: 24 }}>
+                <BodyText>{post.TitleInput}</BodyText>
+              </RowLeft>
+              <RowCenter style={{ paddingTop: 8 }}>
+                <InputView>
+                  <IconMail style={{ color: themes.light.COLORS.neutral }} />
+                  <InputText
+                    placeholder={t('forgotScreen.emailPlaceholder')}
+                    onChangeText={setForgotEmail}
+                    value={forgotEmail}
+                    keyboardType="email-address"
+                  />
+                </InputView>
+              </RowCenter>
+              <RowCenter style={{ paddingTop: 24 }}>
+                <MyButtonSubmit onPress={() => Click()}>
+                  <MyButtonTextSubmit>
+                  {post.Title}
+                  </MyButtonTextSubmit>
+                </MyButtonSubmit>
+              </RowCenter>
+            </View>
+          ) : (
+           null
+          )}
+          { step == 2 ? (
+             <View>
+             <RowCenter style={{ paddingTop: 24 }}>
+               <Titulo>{t('forgotScreen.forgot_your_password')}</Titulo>
+             </RowCenter>
+             <RowCenter style={{ paddingTop: 4 }}>
+               <BodyText>{t('forgotScreen.no_worries')}</BodyText>
+             </RowCenter>
+             <RowLeft style={{ paddingTop: 24 }}>
+               <BodyText>{t('forgotScreen.email')}</BodyText>
+             </RowLeft>
+             <RowCenter style={{ paddingTop: 8 }}>
+               <InputView>
+                 <IconMail style={{ color: themes.light.COLORS.neutral }} />
+                 <InputText
+                   placeholder={t('forgotScreen.emailPlaceholder')}
+                   onChangeText={setForgotEmail}
+                   value={forgotEmail}
+                   keyboardType="email-address"
+                 />
+               </InputView>
+             </RowCenter>
+             <RowCenter style={{ paddingTop: 24 }}>
+               <MyButtonSubmit onPress={() => onClose()}>
+                 <MyButtonTextSubmit>
+                   {t('forgotScreen.sendCode')}
+                 </MyButtonTextSubmit>
+               </MyButtonSubmit>
+             </RowCenter>
+           </View>
+          ) :  (null
+
+  )}
+        </Container>
+      );
+    }
+  });
 
   return (
     <Container>
@@ -75,7 +187,7 @@ export default function Login(Props: any) {
         <Row>
           <SubTitulo>{t('loginScreen.email')}</SubTitulo>
         </Row>
-        <RowCenter style={{paddingTop: 6}}>
+        <RowCenter style={{ paddingTop: 6 }}>
           <InputView>
             <IconMail style={{ color: themes.light.COLORS.neutral }} />
             <InputText
@@ -86,10 +198,10 @@ export default function Login(Props: any) {
             />
           </InputView>
         </RowCenter>
-        <Row style={{paddingTop: 16}}>
+        <Row style={{ paddingTop: 16 }}>
           <SubTitulo>{t('loginScreen.password')}</SubTitulo>
         </Row>
-        <RowCenter style={{paddingTop: 6}}>
+        <RowCenter style={{ paddingTop: 6 }}>
           <InputView>
             <IconLock style={{ color: themes.light.COLORS.neutral }} />
             <InputText
@@ -109,23 +221,23 @@ export default function Login(Props: any) {
             </TouchableOpacity>
           </InputView>
         </RowCenter>
-        <RowRight style={{paddingTop: 8}}>
+        <RowRight style={{ paddingTop: 8 }}>
           <SubTituloLink onPress={() => onOpen()}>
             {t('loginScreen.forgot_your_password')}
           </SubTituloLink>
         </RowRight>
-        <RowCenter style={{paddingTop: 32}}>
+        <RowCenter style={{ paddingTop: 32 }}>
           <MyButtonSubmit onPress={() => navigation.navigate('Step01')}>
             <MyButtonTextSubmit>{t('loginScreen.login')}</MyButtonTextSubmit>
           </MyButtonSubmit>
         </RowCenter>
       </KeyboardAvoidingView>
-      <RowCenter style={{paddingTop: 40}}>
+      <RowCenter style={{ paddingTop: 40 }}>
         <MyDivider />
         <ORText>{t('loginScreen.or')}</ORText>
         <MyDivider />
       </RowCenter>
-      <RowCenter style={{paddingTop: 40}}>
+      <RowCenter style={{ paddingTop: 40 }}>
         <MyButtonSocialSubmit
           testID={'Google_btn'}
           onPress={() => Alert.alert('Ainda não funcionando')}
@@ -136,7 +248,7 @@ export default function Login(Props: any) {
           </MyButtonSocialTextSubmit>
         </MyButtonSocialSubmit>
       </RowCenter>
-      <RowCenter style={{paddingTop: 16}}>
+      <RowCenter style={{ paddingTop: 16 }}>
         <MyButtonSocialSubmit
           testID={'Apple_btn'}
           onPress={() => Alert.alert('Ainda não funcionando')}
@@ -148,7 +260,7 @@ export default function Login(Props: any) {
         </MyButtonSocialSubmit>
       </RowCenter>
 
-      <RowCenter style={{paddingTop: 42}}>
+      <RowCenter style={{ paddingTop: 42 }}>
         <NewPetFriendText>
           {t('loginScreen.new_to_my_pet_friend')}
         </NewPetFriendText>
@@ -166,31 +278,7 @@ export default function Login(Props: any) {
         snapPoint={600}
         ref={modalizeRef}
       >
-        <RowCenter style={{paddingTop: 24}}>
-        <Titulo>{t('forgotScreen.forgot_your_password')}</Titulo>
-        </RowCenter>
-        <RowCenter style={{paddingTop: 4}}>
-        <BodyText>{t('forgotScreen.no_worries')}</BodyText>
-        </RowCenter>
-        <RowLeft style={{paddingTop: 24}}>
-        <BodyText>{t('forgotScreen.email')}</BodyText>
-        </RowLeft>
-        <RowCenter style={{paddingTop: 8}}>
-          <InputView>
-            <IconMail style={{ color: themes.light.COLORS.neutral }} />
-            <InputText
-              placeholder={t('forgotScreen.emailPlaceholder')}
-              onChangeText={setForgotEmail}
-              value={forgotEmail}
-              keyboardType="email-address"
-            />
-          </InputView>
-        </RowCenter>
-        <RowCenter style={{paddingTop: 24}}>
-        <MyButtonSubmit  onPress={() => onClose()}>
-          <MyButtonTextSubmit>{t('forgotScreen.sendCode')}</MyButtonTextSubmit>
-        </MyButtonSubmit>
-        </RowCenter>
+        {listItems}
       </Modalize>
     </Container>
   );

@@ -66,15 +66,18 @@ export default function Signup(Props: any) {
     setEyed((current) => !current);
   };
 
-
   return (
     <ContainerSignup>
       <CollumSignup>
         <RowSignup>
-          <BodySmallText style={{color: themes.light.COLORS.colorTextSubmit}}>{t('singupScreen.welcomeToMyPetFriend')}</BodySmallText>
+          <BodySmallText style={{ color: themes.light.COLORS.colorTextSubmit }}>
+            {t('singupScreen.welcomeToMyPetFriend')}
+          </BodySmallText>
         </RowSignup>
         <RowSignup>
-          <Titulo style={{color: themes.light.COLORS.colorTextSubmit}}>{t('singupScreen.creatYourAccount')}</Titulo>
+          <Titulo style={{ color: themes.light.COLORS.colorTextSubmit }}>
+            {t('singupScreen.creatYourAccount')}
+          </Titulo>
         </RowSignup>
       </CollumSignup>
 
@@ -88,7 +91,7 @@ export default function Signup(Props: any) {
           <Row>
             <BodyText>{t('singupScreen.name')}</BodyText>
           </Row>
-          <RowCenter style={{padding: 8}}>
+          <RowCenter style={{ padding: 4 }}>
             <InputView>
               <IconName style={{ color: themes.light.COLORS.neutral }} />
               <InputText
@@ -98,12 +101,22 @@ export default function Signup(Props: any) {
               />
             </InputView>
           </RowCenter>
-          <Row >
+          <Row style={{ padding: 8 }}>
             <BodyText>{t('singupScreen.dateOfBirth')}</BodyText>
           </Row>
-
-          <Row style={{padding: 8}}>
-            <InputView style={{ width: '20%', justifyContent: 'center' }}>
+          <Row style={{ padding: 2 }}>
+            <BodySmallText style={{ paddingLeft: 2, color: themes.light.COLORS.neutral }}>
+              {t('singupScreen.dayText')}
+            </BodySmallText>
+            <BodySmallText style={{ paddingLeft: 62, color: themes.light.COLORS.neutral }}>
+              {t('singupScreen.monthText')}
+            </BodySmallText>
+            <BodySmallText style={{ paddingLeft: 44, color: themes.light.COLORS.neutral }}>
+              {t('singupScreen.yearText')}
+            </BodySmallText>
+          </Row>
+          <Row style={{ padding: 2 }}>
+            <InputView style={{ width: '22%', justifyContent: 'center' }}>
               <InputTextBirth
                 type="number"
                 placeholder={t('singupScreen.day')}
@@ -114,7 +127,7 @@ export default function Signup(Props: any) {
               />
             </InputView>
             <InputView
-              style={{ width: '20%', justifyContent: 'center', marginLeft: 16 }}
+              style={{ width: '22%', justifyContent: 'center', marginLeft: 16 }}
             >
               <InputTextBirth
                 placeholder={t('singupScreen.month')}
@@ -125,7 +138,7 @@ export default function Signup(Props: any) {
               />
             </InputView>
             <InputView
-              style={{ width: '28%', justifyContent: 'center', marginLeft: 16 }}
+              style={{ width: '25%', justifyContent: 'center', marginLeft: 16 }}
             >
               <InputTextBirth
                 placeholder={t('singupScreen.year')}
@@ -136,7 +149,10 @@ export default function Signup(Props: any) {
               />
             </InputView>
           </Row>
-          <Row style={{padding: 8}}>
+          <BodySmallText style={{ paddingLeft: 25, color: themes.light.COLORS.neutral}}>
+              {t('singupScreen.messageBirth')}
+            </BodySmallText>
+          <Row style={{ padding: 8 }}>
             <BodyText>{t('singupScreen.email')}</BodyText>
           </Row>
           <RowCenter>
@@ -150,7 +166,7 @@ export default function Signup(Props: any) {
               />
             </InputView>
           </RowCenter>
-          <Row style={{padding: 8}}>
+          <Row style={{ padding: 8 }}>
             <BodyText>{t('singupScreen.createPassword')}</BodyText>
           </Row>
           <RowCenter>
@@ -172,73 +188,65 @@ export default function Signup(Props: any) {
               </TouchableOpacity>
             </InputView>
           </RowCenter>
-          <RowLeft style={{padding: 8}}>
-          {password.length > 0 ? (
-                  <ProgressSignup 
-                    style={{ backgroundColor: themes.light.COLORS.secondary }}
-                    />
-              
-              ) : (
-                <ProgressSignup />
-              )}
-              {password.length > 1 ? (
-                  <ProgressSignup 
-                    style={{ backgroundColor: themes.light.COLORS.secondary }}
-                    />
-              
-              ) : (
-                <ProgressSignup />
-              )}
-              {password.length > 3 ? (
-                  <ProgressSignup 
-                    style={{ backgroundColor: themes.light.COLORS.secondary }}
-                    />
-              
-              ) : (
-                <ProgressSignup />
-              )}
-              {password.length > 3 ? (
-                  <ProgressSignup 
-                    style={{ backgroundColor: themes.light.COLORS.secondary }}
-                    />
-              
-              ) : (
-                <ProgressSignup />
-              )}
-              {password.length > 4 ? (
-                  <ProgressSignup 
-                    style={{ backgroundColor: themes.light.COLORS.secondary }}
-                    />
-              
-              ) : (
-                <ProgressSignup />
-              )}
-              {password.length > 5 ? (
-                  <ProgressSignup 
-                    style={{ backgroundColor: themes.light.COLORS.secondary }}
-                    />
-              
-              ) : (
-                <ProgressSignup />
-              )}
-              {password.toLocaleString.length > 6 ? (
-                  <ProgressSignup 
-                    style={{ backgroundColor: themes.light.COLORS.secondary }}
-                    />
-              
-              ) : (
-                <ProgressSignup />
-              )}
-              {password.toLocaleString.length > 7 ? (
-                  <ProgressSignup 
-                    style={{ backgroundColor: themes.light.COLORS.secondary }}
-                    />
-              
-              ) : (
-                <ProgressSignup />
-              )}
+          <RowLeft style={{ padding: 8 }}>
+            {password.length > 0 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
+            {password.length > 1 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
+            {password.length > 3 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
+            {password.length > 3 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
+            {password.length > 4 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
+            {password.length > 5 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
+            {password.toLocaleString.length > 6 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
+            {password.toLocaleString.length > 7 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
           </RowLeft>
-          <RowCenter style={{padding: 14}}>
+          <RowCenter style={{ padding: 14 }}>
             <MyButtonSubmit onPress={() => navigation.navigate('Menu')}>
               <MyButtonTextSubmit>
                 {t('singupScreen.signupButton')}
@@ -246,12 +254,12 @@ export default function Signup(Props: any) {
             </MyButtonSubmit>
           </RowCenter>
 
-          <RowCenter style={{padding: 6}}>
+          <RowCenter style={{ padding: 6 }}>
             <MyDivider />
             <ORText>{t('loginScreen.or')}</ORText>
             <MyDivider />
           </RowCenter>
-          <RowCenter style={{padding: 14}}>
+          <RowCenter style={{ padding: 14 }}>
             <MyButtonSocialSubmit
               testID={'Google_btn'}
               onPress={() => Alert.alert('Ainda não funcionando')}
@@ -274,7 +282,7 @@ export default function Signup(Props: any) {
             </MyButtonSocialSubmit>
           </RowCenter>
 
-          <RowCenter style={{padding: 24}}>
+          <RowCenter style={{ padding: 24 }}>
             <NewPetFriendText>
               {t('singupScreen.alreadyHaveAnAccount')}
             </NewPetFriendText>

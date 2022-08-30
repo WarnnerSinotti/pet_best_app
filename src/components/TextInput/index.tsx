@@ -12,7 +12,6 @@ export const InputView = styled.View`
   border-radius: 8px ;
   border-width: 1px;
   border-color: ${(props: any) => props.theme.COLORS.neutral};
- 
 `;
 
 //TEXTS INPUTS
@@ -25,6 +24,8 @@ export const InputText = styled.TextInput`
 
 
 export const InputTextBirth = styled(InputText)`
-  width: 100%;
   justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 0px;
 `;

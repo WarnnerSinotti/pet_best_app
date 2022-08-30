@@ -158,7 +158,7 @@ export default function Step01({ ...props }) {
               </MyButtonNext>
             </RowCenterCard>
             {step === 4 ? (
-              <></>
+              null
             ) : (
               <CaptionText
                 style={{ marginTop: 25 }}

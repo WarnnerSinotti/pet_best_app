@@ -9,6 +9,7 @@ export default {
     quartenary: '#97D86C',
     colorTextSubmit: '#FFFFFF',
     colorTextSocialButton: '#7A7A7A',
+    colorTextSingup: '#9e9999',
   },
 
   FONT_SIZE: {
