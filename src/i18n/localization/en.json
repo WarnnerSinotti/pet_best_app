@@ -12,7 +12,33 @@
     "sign_up": "Sign Up",
     "next": "Next"
   },
-  "stepCardScreen":{
+  "forgotScreen": {
+    "forgot_your_password": "Forgot your password?",
+    "no_worries": "No worries, we’ll send you a code to reset",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "sendCode": "Send Code"
+  },
+  "singupScreen": {
+    "welcomeToMyPetFriend": "Welcome To My Pet Friend",
+    "creatYourAccount": "Creat Your Account",
+    "name": "Name",
+    "dateOfBirth": "Date of Birth",
+    "dayText": "Day",
+    "monthText": "Month",
+    "yearText": "Year",
+    "day": "DD",
+    "month": "MM",
+    "year": "YYYY",
+    "messageBirth": "We want to give a special treat on your birthday",
+    "email": "Email",
+    "createPassword": "Create a Password",
+    "caracteres": "At least 8 characters",
+    "signupButton": "Sign up",
+    "alreadyHaveAnAccount": "Already have an account?",
+    "sign_in": "Log in"
+  },
+  "stepCardScreen": {
     "titleStep01": "My Pet Friend",
     "titleStep02": "Shop",
     "titleStep03": "Clinic",

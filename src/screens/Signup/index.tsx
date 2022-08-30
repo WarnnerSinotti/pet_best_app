@@ -3,15 +3,18 @@ import { useNavigation } from '@react-navigation/native';
 import { Alert, KeyboardAvoidingView, Image, View } from 'react-native';
 import {
   CollumSignup,
+  Column,
   Container,
   ContainerSignup,
   Row,
   RowCenter,
+  RowLeft,
   RowRight,
   RowSignup,
-  RowSigun,
 } from '../../components/Global';
 import {
+  BodySmallText,
+  BodyText,
   NameAppText,
   NewPetFriendText,
   ORText,
@@ -27,7 +30,11 @@ import {
   MyButtonSocialTextSubmit,
 } from '../../components/Button';
 import themes from '../../themes';
-import { InputIconView, InputText } from '../../components/TextInput';
+import {
+  InputText,
+  InputTextBirth,
+  InputView,
+} from '../../components/TextInput';
 import { MyDivider } from '../../components/Divider';
 import {
   IconApple,
@@ -36,15 +43,23 @@ import {
   IconGoogle,
   IconLock,
   IconMail,
+  IconName,
 } from '../../components/SVG';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { CardContainer, CardContainerSingup } from '../../components/Card';
+import { MotiView } from 'moti';
+import { ProgressSignup } from '../../components/Progress';
 
 export default function Signup(Props: any) {
   const navigation: any = useNavigation();
   const { t } = useTranslation('translation');
-  const [textEmail, setTextEmail] = React.useState('');
-  const [textPassword, setTextPassword] = React.useState('');
+
+  const [name, setName] = React.useState('');
+  const [day, setDay] = React.useState('');
+  const [month, setMonth] = React.useState('');
+  const [year, setYear] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
   const [eyed, setEyed] = React.useState(true);
 
   const VisualPassword = () => {
@@ -53,100 +68,230 @@ export default function Signup(Props: any) {
 
   return (
     <ContainerSignup>
-      <KeyboardAvoidingView behavior="position">
-        <CollumSignup>
+      <CollumSignup>
         <RowSignup>
-          <SubTitulo>Welcome To My Pet Friend</SubTitulo>
+          <BodySmallText style={{ color: themes.light.COLORS.colorTextSubmit }}>
+            {t('singupScreen.welcomeToMyPetFriend')}
+          </BodySmallText>
         </RowSignup>
         <RowSignup>
-        <Titulo>Creat Yout Account</Titulo>
+          <Titulo style={{ color: themes.light.COLORS.colorTextSubmit }}>
+            {t('singupScreen.creatYourAccount')}
+          </Titulo>
         </RowSignup>
-        </CollumSignup>
-        </KeyboardAvoidingView>
+      </CollumSignup>
 
+      <MotiView
+        from={{ translateY: 200 }}
+        animate={{
+          translateY: 0,
+        }}
+      >
         <CardContainerSingup>
-        <RowCenter>
-          <NameAppText>My Pet Friend</NameAppText>
-        </RowCenter>
-        <Row>
-          <SubTitulo>{t('loginScreen.email')}</SubTitulo>
-        </Row>
-        <RowCenter>
-          <InputIconView>
-            <IconMail style={{ color: themes.light.COLORS.neutral }} />
-            <InputText
-              placeholder={t('loginScreen.email')}
-              onChangeText={setTextEmail}
-              value={textEmail}
-            />
-          </InputIconView>
-        </RowCenter>
-        <Row>
-          <SubTitulo>{t('loginScreen.password')}</SubTitulo>
-        </Row>
-        <RowCenter>
-          <InputIconView>
-            <IconLock style={{ color: themes.light.COLORS.neutral }} />
-            <InputText
-              secureTextEntry={eyed} //ocultrar senha
-              placeholder={t('loginScreen.password')}
-              onChangeText={setTextPassword}
-              value={textPassword}
-            ></InputText>
-            <TouchableOpacity onPress={VisualPassword}>
-              {eyed ? (
-                <IconEyeOff style={{ color: themes.light.COLORS.neutral }} />
-              ) : (
-                <IconEye style={{ color: themes.light.COLORS.neutral }} />
-              )}
-            </TouchableOpacity>
-          </InputIconView>
-        </RowCenter>
-        
-        <RowCenter>
-          <MyButtonSubmit onPress={() => navigation.navigate('Step01')}>
-            <MyButtonTextSubmit>{t('loginScreen.login')}</MyButtonTextSubmit>
-          </MyButtonSubmit>
-        </RowCenter>
+          <Row>
+            <BodyText>{t('singupScreen.name')}</BodyText>
+          </Row>
+          <RowCenter style={{ padding: 4 }}>
+            <InputView>
+              <IconName style={{ color: themes.light.COLORS.neutral }} />
+              <InputText
+                placeholder={t('singupScreen.name')}
+                onChangeText={setName}
+                value={name}
+              />
+            </InputView>
+          </RowCenter>
+          <Row style={{ padding: 8 }}>
+            <BodyText>{t('singupScreen.dateOfBirth')}</BodyText>
+          </Row>
+          <Row style={{ padding: 2 }}>
+            <BodySmallText style={{ paddingLeft: 2, color: themes.light.COLORS.neutral }}>
+              {t('singupScreen.dayText')}
+            </BodySmallText>
+            <BodySmallText style={{ paddingLeft: 62, color: themes.light.COLORS.neutral }}>
+              {t('singupScreen.monthText')}
+            </BodySmallText>
+            <BodySmallText style={{ paddingLeft: 44, color: themes.light.COLORS.neutral }}>
+              {t('singupScreen.yearText')}
+            </BodySmallText>
+          </Row>
+          <Row style={{ padding: 2 }}>
+            <InputView style={{ width: '22%', justifyContent: 'center' }}>
+              <InputTextBirth
+                type="number"
+                placeholder={t('singupScreen.day')}
+                onChangeText={setDay}
+                value={day}
+                keyboardType="numeric"
+                maxLength={2}
+              />
+            </InputView>
+            <InputView
+              style={{ width: '22%', justifyContent: 'center', marginLeft: 16 }}
+            >
+              <InputTextBirth
+                placeholder={t('singupScreen.month')}
+                onChangeText={setMonth}
+                value={month}
+                keyboardType="numeric"
+                maxLength={2}
+              />
+            </InputView>
+            <InputView
+              style={{ width: '25%', justifyContent: 'center', marginLeft: 16 }}
+            >
+              <InputTextBirth
+                placeholder={t('singupScreen.year')}
+                onChangeText={setYear}
+                value={year}
+                keyboardType="numeric"
+                maxLength={4} //Fazer Tratamento
+              />
+            </InputView>
+          </Row>
+          <BodySmallText style={{ paddingLeft: 25, color: themes.light.COLORS.neutral}}>
+              {t('singupScreen.messageBirth')}
+            </BodySmallText>
+          <Row style={{ padding: 8 }}>
+            <BodyText>{t('singupScreen.email')}</BodyText>
+          </Row>
+          <RowCenter>
+            <InputView>
+              <IconMail style={{ color: themes.light.COLORS.neutral }} />
+              <InputText
+                placeholder={t('loginScreen.email')}
+                onChangeText={setEmail}
+                value={email}
+                keyboardType="email-address"
+              />
+            </InputView>
+          </RowCenter>
+          <Row style={{ padding: 8 }}>
+            <BodyText>{t('singupScreen.createPassword')}</BodyText>
+          </Row>
+          <RowCenter>
+            <InputView>
+              <InputText
+                style={{ width: '88%' }}
+                secureTextEntry={eyed} //ocultrar senha
+                placeholder={t('singupScreen.caracteres')}
+                onChangeText={setPassword}
+                value={password}
+                maxLength={20} //FAZER TRATAMENTO
+              ></InputText>
+              <TouchableOpacity onPress={VisualPassword}>
+                {eyed ? (
+                  <IconEyeOff style={{ color: themes.light.COLORS.neutral }} />
+                ) : (
+                  <IconEye style={{ color: themes.light.COLORS.neutral }} />
+                )}
+              </TouchableOpacity>
+            </InputView>
+          </RowCenter>
+          <RowLeft style={{ padding: 8 }}>
+            {password.length > 0 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
+            {password.length > 1 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
+            {password.length > 3 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
+            {password.length > 3 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
+            {password.length > 4 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
+            {password.length > 5 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
+            {password.toLocaleString.length > 6 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
+            {password.toLocaleString.length > 7 ? (
+              <ProgressSignup
+                style={{ backgroundColor: themes.light.COLORS.secondary }}
+              />
+            ) : (
+              <ProgressSignup />
+            )}
+          </RowLeft>
+          <RowCenter style={{ padding: 14 }}>
+            <MyButtonSubmit onPress={() => navigation.navigate('Menu')}>
+              <MyButtonTextSubmit>
+                {t('singupScreen.signupButton')}
+              </MyButtonTextSubmit>
+            </MyButtonSubmit>
+          </RowCenter>
 
-      <RowCenter>
-        <MyDivider />
-        <ORText>{t('loginScreen.or')}</ORText>
-        <MyDivider />
-      </RowCenter>
-      <RowCenter>
-        <MyButtonSocialSubmit
-          testID={'Google_btn'}
-          onPress={() => Alert.alert('Ainda não funcionando')}
-        >
-          <IconGoogle />
-          <MyButtonSocialTextSubmit>
-            {t('loginScreen.login_with_google')}
-          </MyButtonSocialTextSubmit>
-        </MyButtonSocialSubmit>
-      </RowCenter>
-      <RowCenter>
-        <MyButtonSocialSubmit
-          testID={'Apple_btn'}
-          onPress={() => Alert.alert('Ainda não funcionando')}
-        >
-          <IconApple />
-          <MyButtonSocialTextSubmit>
-            {t('loginScreen.login_with_apple')}
-          </MyButtonSocialTextSubmit>
-        </MyButtonSocialSubmit>
-      </RowCenter>
+          <RowCenter style={{ padding: 6 }}>
+            <MyDivider />
+            <ORText>{t('loginScreen.or')}</ORText>
+            <MyDivider />
+          </RowCenter>
+          <RowCenter style={{ padding: 14 }}>
+            <MyButtonSocialSubmit
+              testID={'Google_btn'}
+              onPress={() => Alert.alert('Ainda não funcionando')}
+            >
+              <IconGoogle />
+              <MyButtonSocialTextSubmit>
+                {t('loginScreen.login_with_google')}
+              </MyButtonSocialTextSubmit>
+            </MyButtonSocialSubmit>
+          </RowCenter>
+          <RowCenter>
+            <MyButtonSocialSubmit
+              testID={'Apple_btn'}
+              onPress={() => Alert.alert('Ainda não funcionando')}
+            >
+              <IconApple />
+              <MyButtonSocialTextSubmit>
+                {t('loginScreen.login_with_apple')}
+              </MyButtonSocialTextSubmit>
+            </MyButtonSocialSubmit>
+          </RowCenter>
 
-      <RowCenter>
-        <NewPetFriendText>
-          {t('loginScreen.new_to_my_pet_friend')}
-        </NewPetFriendText>
-        <SubTituloLink onPress={() => Alert.alert('Ainda não funcionando')}>
-          {t('loginScreen.sign_up')}
-        </SubTituloLink>
-      </RowCenter>
-
+          <RowCenter style={{ padding: 24 }}>
+            <NewPetFriendText>
+              {t('singupScreen.alreadyHaveAnAccount')}
+            </NewPetFriendText>
+            <SubTituloLink onPress={() => navigation.navigate('Login')}>
+              {t('singupScreen.sign_in')}
+            </SubTituloLink>
+          </RowCenter>
         </CardContainerSingup>
+      </MotiView>
     </ContainerSignup>
   );
 }

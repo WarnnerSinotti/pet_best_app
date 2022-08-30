@@ -53,7 +53,7 @@ export default function Routes() {
             gestureEnabled: true,
             cardStyleInterpolator:
               CardStyleInterpolators.forFadeFromBottomAndroid,
-            headerShown: true, //desabilitar depois ativando titulo
+            headerShown: false, //desabilitar depois ativando titulo
           }}
         />
       </Stack.Navigator>

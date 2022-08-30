@@ -5,6 +5,7 @@ import Lock from '../../../assets/icons/lock.svg';
 import Eye from '../../../assets/icons/eye.svg';
 import EyeOff from '../../../assets/icons/eye-off.svg';
 import Slug from '../../../assets/icons/slug.svg';
+import Name from '../../../assets/icons/name.svg'
 
 const tamanho = {
   height: 25,
@@ -37,4 +38,8 @@ export const IconEye = (props: any) => {
 
 export const IconEyeOff = (props: any) => {
   return <EyeOff height={tamanho.height} width={tamanho.width} {...props} />;
+};
+
+export const IconName = (props: any) => {
+  return <Slug height={tamanho.height} width={tamanho.width} {...props} />;
 };

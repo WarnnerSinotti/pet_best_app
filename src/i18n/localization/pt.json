@@ -12,6 +12,32 @@
     "sign_up": "Cadastre-se",
     "next": "Próximo"
   },
+  "forgotScreen": {
+    "forgot_your_password": "Esqueceu seu email?",
+    "no_worries": "Não se preocupe, Enviaremos um código de recuperação de senha",
+    "email": "Email",
+    "emailPlaceholder": "Dígite seu email",
+    "sendCode": "Enviar Código"
+  },
+  "singupScreen":{
+    "welcomeToMyPetFriend": "Bem Vindo Para My Pet Friend",
+    "creatYourAccount": "Crie Sua Conta",
+    "name": "Nome",
+    "dateOfBirth": "Data de seu Aniversário",
+    "dayText": "Dia",
+    "monthText": "Mês",
+    "yearText": "Ano",
+    "day": "DD",
+    "month": "MM",
+    "year": "YYYY",
+    "messageBirth": "Queremos Commemorar Juntos está Data Especial, o seu Aniversário!",
+    "email": "Email",
+    "createPassword": "Criar uma senha",
+    "caracteres": "Acima de 8 caracteres",
+    "signupButton": "Inscrever-se",
+    "alreadyHaveAnAccount": "Já possui uma conta?",
+    "sign_in": "Log in"
+  },
   "stepCardScreen":{
     "titleStep01": "My Pet Friend",
     "titleStep02": "Compras",
