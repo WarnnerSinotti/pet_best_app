@@ -44,6 +44,7 @@ export default function Login(Props: any) {
   const [textEmail, setTextEmail] = React.useState('');
   const [textPassword, setTextPassword] = React.useState('');
   const [forgotEmail, setForgotEmail] = React.useState('');
+  const [Code1, setCode1] = React.useState('');
   const [eyed, setEyed] = React.useState(true);
 
   const [step, setStep] = useState(1);
@@ -51,24 +52,24 @@ export default function Login(Props: any) {
   const steps = [
     {
       ID: 1,
-      Title: t('stepCardScreen.titleStep01'),
-      Message: t('stepCardScreen.bodyStep01'),
-      TitleInput: t('stepCardScreen.buttonNext'),
-      TitleButton: t('stepCardScreen.buttonNext'),
+      Title: t('forgotScreen.forgotYourPassword'),
+      Message: t('forgotScreen.noWorries'),
+      TitleInput: t('forgotScreen.email'),
+      TitleButton: t('forgotScreen.sendCode'),
     },
     {
       ID: 2,
-      Title: t('stepCardScreen.titleStep01'),
-      Message: t('stepCardScreen.bodyStep01'),
-      TitleInput: t('stepCardScreen.buttonNext'),
-      TitleButton: t('stepCardScreen.buttonNext'),
+      Title: t('forgotScreen.checkYourEmail'),
+      Message: t('forgotScreen.verificationCode'),
+      TitleInput: t('forgotScreen.enterCode'),
+      TitleButton: t('forgotScreen.done'),
     },
     {
       ID: 3,
-      Title: t('stepCardScreen.titleStep01'),
-      Message: t('stepCardScreen.bodyStep01'),
-      TitleInput: t('stepCardScreen.buttonNext'),
-      TitleButton: t('stepCardScreen.buttonNext'),
+      Title: t('forgotScreen.newPassword'),
+      Message: t('forgotScreen.mustBeDifferentUsedPasswords'),
+      TitleInput: t('forgotScreen.password'),
+      TitleButton: t('forgotScreen.resetPassword'),
     },
   ];
 
@@ -78,35 +79,42 @@ export default function Login(Props: any) {
     modalizeRef.current?.open('default');
   };
 
-  const onClose = () => {
-    modalizeRef.current?.close('default');
-  };
 
   const VisualPassword = () => {
     setEyed((current) => !current);
   };
 
+  /*   const SendCodeView = () => {
+    <Row>
+      <InputView>
+        <InputText>APARECER CODE VIEW</InputText>
+      </InputView>
+    </Row>;
+  }; */
+
   const Click = () => {
-    if (step === 4) {
-      console.log('adicionar caminho');
+    if (step === 3) {
+      modalizeRef.current?.close('default');
+      setStep(1)
     }
     setStep(step + 1);
   };
+
   const listItems = steps.map((post) => {
     if (step == post.ID) {
       return (
         <Container key={post.ID}>
-          {step == 1 ? (
-            <View>
-              <RowCenter style={{ paddingTop: 24 }}>
-                <Titulo>{post.Title}</Titulo>
-              </RowCenter>
-              <RowCenter style={{ paddingTop: 4 }}>
-                <BodyText>{post.Message}</BodyText>
-              </RowCenter>
-              <RowLeft style={{ paddingTop: 24 }}>
-                <BodyText>{post.TitleInput}</BodyText>
-              </RowLeft>
+          <View>
+            <RowCenter style={{ paddingTop: 24 }}>
+              <Titulo>{post.Title}</Titulo>
+            </RowCenter>
+            <RowCenter style={{ paddingTop: 4 }}>
+              <BodyText>{post.Message}</BodyText>
+            </RowCenter>
+            <RowLeft style={{ paddingTop: 24 }}>
+              <BodyText>{post.TitleInput}</BodyText>
+            </RowLeft>
+            {step == 1 ? (
               <RowCenter style={{ paddingTop: 8 }}>
                 <InputView>
                   <IconMail style={{ color: themes.light.COLORS.neutral }} />
@@ -118,50 +126,43 @@ export default function Login(Props: any) {
                   />
                 </InputView>
               </RowCenter>
-              <RowCenter style={{ paddingTop: 24 }}>
-                <MyButtonSubmit onPress={() => Click()}>
-                  <MyButtonTextSubmit>
-                  {post.Title}
-                  </MyButtonTextSubmit>
-                </MyButtonSubmit>
+            ) : step == 2 ? (
+              <RowCenter style={{ paddingTop: 8 }}>
+                <InputView>
+                  <IconMail style={{ color: themes.light.COLORS.neutral }} />
+                  <InputText
+                    placeholder={'STEP02'}
+                    onChangeText={setCode1}
+                    value={Code1}
+                    keyboardType="email-address"
+                  />
+                </InputView>
               </RowCenter>
-            </View>
-          ) : (
-           null
-          )}
-          { step == 2 ? (
-             <View>
-             <RowCenter style={{ paddingTop: 24 }}>
-               <Titulo>{t('forgotScreen.forgot_your_password')}</Titulo>
-             </RowCenter>
-             <RowCenter style={{ paddingTop: 4 }}>
-               <BodyText>{t('forgotScreen.no_worries')}</BodyText>
-             </RowCenter>
-             <RowLeft style={{ paddingTop: 24 }}>
-               <BodyText>{t('forgotScreen.email')}</BodyText>
-             </RowLeft>
-             <RowCenter style={{ paddingTop: 8 }}>
-               <InputView>
-                 <IconMail style={{ color: themes.light.COLORS.neutral }} />
-                 <InputText
-                   placeholder={t('forgotScreen.emailPlaceholder')}
-                   onChangeText={setForgotEmail}
-                   value={forgotEmail}
-                   keyboardType="email-address"
-                 />
-               </InputView>
-             </RowCenter>
-             <RowCenter style={{ paddingTop: 24 }}>
-               <MyButtonSubmit onPress={() => onClose()}>
-                 <MyButtonTextSubmit>
-                   {t('forgotScreen.sendCode')}
-                 </MyButtonTextSubmit>
-               </MyButtonSubmit>
-             </RowCenter>
-           </View>
-          ) :  (null
+            ) : step == 3 ? (
+              <RowCenter style={{ paddingTop: 8 }}>
+                <InputView>
+                  <IconMail style={{ color: themes.light.COLORS.neutral }} />
+                  <InputText
+                    placeholder={'STEP03'}
+                    onChangeText={setCode1}
+                    value={Code1}
+                    keyboardType="email-address"
+                  />
+                </InputView>
+              </RowCenter>
+            ) : null}
 
-  )}
+            <RowCenter style={{ paddingTop: 24 }}>
+              <MyButtonSubmit onPress={() => Click()}>
+                <MyButtonTextSubmit>{post.TitleButton}</MyButtonTextSubmit>
+              </MyButtonSubmit>
+            </RowCenter>
+            {step == 2 ? (
+              <RowCenter style={{ paddingTop: 8 }}>
+                <BodyText>ADICIONAR Didn’t receive the link? Resend</BodyText>
+              </RowCenter>
+            ) : null}
+          </View>
         </Container>
       );
     }

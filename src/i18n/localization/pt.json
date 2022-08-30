@@ -13,11 +13,22 @@
     "next": "Próximo"
   },
   "forgotScreen": {
-    "forgot_your_password": "Esqueceu seu email?",
-    "no_worries": "Não se preocupe, Enviaremos um código de recuperação de senha",
+    "forgotYourPassword": "Forgot your password?",
+    "noWorries": "No worries, we’ll send you a code to reset",
     "email": "Email",
-    "emailPlaceholder": "Dígite seu email",
-    "sendCode": "Enviar Código"
+    "emailPlaceholder": "Enter your email",
+    "sendCode": "Send Code",
+    "checkYourEmail": "Check your email",
+    "verificationCode": "We sent a verification code to your email",
+    "enterCode": "Enter your verification code",
+    "done": "Done",
+    "receiveTheLink": "Didn’t receive the link? Resend",
+    "resend": "Resend",
+    "newPassword": "New password",
+    "mustBeDifferentUsedPasswords": "Must be different from previous used passwords",
+    "password": "Password",
+    "enterYourNewPassword": "Enter your new password",
+    "resetPassword": "Reset password"
   },
   "singupScreen":{
     "welcomeToMyPetFriend": "Bem Vindo Para My Pet Friend",
