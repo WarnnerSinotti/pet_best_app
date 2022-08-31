@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Alert, KeyboardAvoidingView, Image, View } from 'react-native';
 import {
@@ -25,7 +25,13 @@ import {
   MyButtonSocialTextSubmit,
 } from '../../components/Button';
 import themes from '../../themes';
-import { InputView, InputText } from '../../components/TextInput';
+import {
+  InputView,
+  InputText,
+  InputViewCode,
+  InputTextCode,
+  InputTextCenter,
+} from '../../components/TextInput';
 import { MyDivider } from '../../components/Divider';
 import {
   IconApple,
@@ -46,10 +52,12 @@ export default function Login(Props: any) {
   const [forgotEmail, setForgotEmail] = React.useState('');
   const [Code1, setCode1] = React.useState('');
   const [eyed, setEyed] = React.useState(true);
-
+  const [eyedReset, setEyedReset] = React.useState(true);
+  const [resetPassword, setResetPassword] = React.useState('');
+  
   const [step, setStep] = useState(1);
 
-  const steps = [
+  const group = [
     {
       ID: 1,
       Title: t('forgotScreen.forgotYourPassword'),
@@ -79,91 +87,140 @@ export default function Login(Props: any) {
     modalizeRef.current?.open('default');
   };
 
-
   const VisualPassword = () => {
     setEyed((current) => !current);
+    
   };
 
-  /*   const SendCodeView = () => {
-    <Row>
-      <InputView>
-        <InputText>APARECER CODE VIEW</InputText>
-      </InputView>
-    </Row>;
-  }; */
+  const VisualResetPassword = () => {
+    setEyedReset((current) => !current);
+  };
+
+ 
 
   const Click = () => {
     if (step === 3) {
       modalizeRef.current?.close('default');
-      setStep(1)
+      setStep(1);
     }
     setStep(step + 1);
   };
 
-  const listItems = steps.map((post) => {
-    if (step == post.ID) {
+  const listItems = group.map((dados) => {
+    if (step == dados.ID) {
       return (
-        <Container key={post.ID}>
-          <View>
-            <RowCenter style={{ paddingTop: 24 }}>
-              <Titulo>{post.Title}</Titulo>
+        <View key={dados.ID}>
+          <RowCenter style={{ paddingTop: 24 }}>
+            <Titulo>{dados.Title}</Titulo>
+          </RowCenter>
+          <RowCenter style={{ paddingTop: 4 }}>
+            <BodyText>{dados.Message}</BodyText>
+          </RowCenter>
+          <RowLeft style={{ paddingTop: 24 }}>
+            <BodyText>{dados.TitleInput}</BodyText>
+          </RowLeft>
+          {step == 1 ? (
+            <RowCenter style={{ paddingTop: 8 }}>
+              <InputView>
+                <IconMail
+                  style={{ marginLeft: 10, color: themes.light.COLORS.neutral }}
+                />
+                <InputText
+                  style={{ marginLeft: 8 }}
+                  placeholder={t('forgotScreen.emailPlaceholder')}
+                  onChangeText={setForgotEmail}
+                  value={forgotEmail}
+                  keyboardType="email-address"
+                />
+              </InputView>
             </RowCenter>
-            <RowCenter style={{ paddingTop: 4 }}>
-              <BodyText>{post.Message}</BodyText>
+          ) : step == 2 ? (
+            <RowCenter style={{ paddingTop: 8 }}>
+              <InputViewCode>
+                <InputTextCenter
+                  onChangeText={setCode1}
+                  value={Code1}
+                  keyboardType="numeric"
+                >
+                  1
+                </InputTextCenter>
+              </InputViewCode>
+              <InputViewCode
+                style={{ marginLeft: 12 }}
+                onChangeText={setCode1}
+                value={Code1}
+                keyboardType="numeric"
+              >
+                <InputTextCenter>2</InputTextCenter>
+              </InputViewCode>
+              <InputViewCode
+                style={{ marginLeft: 12 }}
+                onChangeText={setCode1}
+                value={Code1}
+                keyboardType="numeric"
+              >
+                <InputTextCenter>3</InputTextCenter>
+              </InputViewCode>
+              <InputViewCode
+                style={{ marginLeft: 12 }}
+                onChangeText={setCode1}
+                value={Code1}
+                keyboardType="numeric"
+              >
+                <InputTextCenter>4</InputTextCenter>
+              </InputViewCode>
+              <InputViewCode
+                style={{ marginLeft: 12 }}
+                onChangeText={setCode1}
+                value={Code1}
+                keyboardType="numeric"
+              >
+                <InputTextCenter>5</InputTextCenter>
+              </InputViewCode>
             </RowCenter>
-            <RowLeft style={{ paddingTop: 24 }}>
-              <BodyText>{post.TitleInput}</BodyText>
-            </RowLeft>
-            {step == 1 ? (
-              <RowCenter style={{ paddingTop: 8 }}>
-                <InputView>
-                  <IconMail style={{ color: themes.light.COLORS.neutral }} />
-                  <InputText
-                    placeholder={t('forgotScreen.emailPlaceholder')}
-                    onChangeText={setForgotEmail}
-                    value={forgotEmail}
-                    keyboardType="email-address"
-                  />
-                </InputView>
-              </RowCenter>
-            ) : step == 2 ? (
-              <RowCenter style={{ paddingTop: 8 }}>
-                <InputView>
-                  <IconMail style={{ color: themes.light.COLORS.neutral }} />
-                  <InputText
-                    placeholder={'STEP02'}
-                    onChangeText={setCode1}
-                    value={Code1}
-                    keyboardType="email-address"
-                  />
-                </InputView>
-              </RowCenter>
-            ) : step == 3 ? (
-              <RowCenter style={{ paddingTop: 8 }}>
-                <InputView>
-                  <IconMail style={{ color: themes.light.COLORS.neutral }} />
-                  <InputText
-                    placeholder={'STEP03'}
-                    onChangeText={setCode1}
-                    value={Code1}
-                    keyboardType="email-address"
-                  />
-                </InputView>
-              </RowCenter>
-            ) : null}
+          ) : step == 3 ? (
+            <RowCenter style={{ paddingTop: 8 }}>
+              <InputView>
+                <IconLock
+                  style={{ marginLeft: 10, color: themes.light.COLORS.neutral }}
+                />
+                <InputText
+                  style={{ marginLeft: 8, width: '74%' }}
+                  placeholder={t('forgotScreen.enterYourNewPassword')}
+                  secureTextEntry={eyedReset} //ocultrar senha
+                  onChangeText={setResetPassword}
+                  value={resetPassword}
+                  maxLength={20}
+                />
+                <TouchableOpacity onPress={() => VisualResetPassword()}>
+                  {eyedReset ? (
+                    <IconEyeOff
+                      style={{ color: themes.light.COLORS.neutral }}
+                    />
+                  ) : (
+                    <IconEye style={{ color: themes.light.COLORS.neutral }} />
+                  )}
+                </TouchableOpacity>
+              </InputView>
+            </RowCenter>
+          ) : null}
 
-            <RowCenter style={{ paddingTop: 24 }}>
-              <MyButtonSubmit onPress={() => Click()}>
-                <MyButtonTextSubmit>{post.TitleButton}</MyButtonTextSubmit>
-              </MyButtonSubmit>
+          <RowCenter style={{ paddingTop: 24 }}>
+            <MyButtonSubmit onPress={() => Click()}>
+              <MyButtonTextSubmit>{dados.TitleButton}</MyButtonTextSubmit>
+            </MyButtonSubmit>
+          </RowCenter>
+          {step == 2 ? (
+            <RowCenter style={{ paddingTop: 26 }}>
+              <NewPetFriendText>
+                {t('forgotScreen.receiveTheLink')}
+              </NewPetFriendText>
+              <SubTituloLink onPress={() => Click()}>
+                {t('forgotScreen.resend')}
+              </SubTituloLink>
             </RowCenter>
-            {step == 2 ? (
-              <RowCenter style={{ paddingTop: 8 }}>
-                <BodyText>ADICIONAR Didn’t receive the link? Resend</BodyText>
-              </RowCenter>
-            ) : null}
-          </View>
-        </Container>
+          ) : null}
+        </View>
       );
     }
   });
@@ -190,8 +247,11 @@ export default function Login(Props: any) {
         </Row>
         <RowCenter style={{ paddingTop: 6 }}>
           <InputView>
-            <IconMail style={{ color: themes.light.COLORS.neutral }} />
+            <IconMail
+              style={{ marginLeft: 10, color: themes.light.COLORS.neutral }}
+            />
             <InputText
+              style={{ marginLeft: 8 }}
               placeholder={t('loginScreen.email')}
               onChangeText={setTextEmail}
               value={textEmail}
@@ -204,9 +264,11 @@ export default function Login(Props: any) {
         </Row>
         <RowCenter style={{ paddingTop: 6 }}>
           <InputView>
-            <IconLock style={{ color: themes.light.COLORS.neutral }} />
+            <IconLock
+              style={{ marginLeft: 10, color: themes.light.COLORS.neutral }}
+            />
             <InputText
-              style={{ width: '80%' }}
+              style={{ marginLeft: 8, width: '72%' }}
               secureTextEntry={eyed} //ocultrar senha
               placeholder={t('loginScreen.password')}
               onChangeText={setTextPassword}

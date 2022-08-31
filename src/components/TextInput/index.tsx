@@ -5,27 +5,34 @@ export const InputView = styled.View`
   width: 100%;
   height: 44px;
   flex-direction: row;
-  justify-content: left;
   align-items: center;
-  padding-left: 15px;
   background-color: ${(props: any) => props.theme.COLORS.background};
-  border-radius: 8px ;
+  border-radius: 8px;
   border-width: 1px;
   border-color: ${(props: any) => props.theme.COLORS.neutral};
 `;
 
 //TEXTS INPUTS
 export const InputText = styled.TextInput`
+  align-items: flex-start;
+  justify-content: flex-start;
   width: 100%;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: ${(props: any) => props.theme.COLORS.color}
+  color: ${(props: any) => props.theme.COLORS.color};
 `;
-
 
 export const InputTextBirth = styled(InputText)`
   justify-content: center;
   align-items: center;
-  padding-left: 10px;
-  padding-right: 0px;
+  text-align: center;
+`;
+
+export const InputViewCode = styled(InputView)`
+  width: 17%;
+`;
+
+export const InputTextCenter = styled.TextInput`
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  color: ${(props: any) => props.theme.COLORS.color};
 `;

@@ -22,7 +22,7 @@
     "verificationCode": "We sent a verification code to your email",
     "enterCode": "Enter your verification code",
     "done": "Done",
-    "receiveTheLink": "Didn’t receive the link? Resend",
+    "receiveTheLink": "Didn’t receive the link?",
     "resend": "Resend",
     "newPassword": "New password",
     "mustBeDifferentUsedPasswords": "Must be different from previous used passwords",
