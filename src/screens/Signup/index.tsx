@@ -3,22 +3,16 @@ import { useNavigation } from '@react-navigation/native';
 import { Alert, KeyboardAvoidingView, Image, View } from 'react-native';
 import {
   CollumSignup,
-  Column,
-  Container,
   ContainerSignup,
   Row,
   RowCenter,
   RowLeft,
-  RowRight,
-  RowSignup,
 } from '../../components/Global';
 import {
   BodySmallText,
   BodyText,
-  NameAppText,
   NewPetFriendText,
   ORText,
-  SubTitulo,
   SubTituloLink,
   Titulo,
 } from '../../components/Text';
@@ -41,7 +35,6 @@ import {
   IconEye,
   IconEyeOff,
   IconGoogle,
-  IconLock,
   IconMail,
   IconName,
 } from '../../components/SVG';
@@ -69,16 +62,13 @@ export default function Signup(Props: any) {
   return (
     <ContainerSignup>
       <CollumSignup>
-        <RowSignup>
           <BodySmallText style={{ color: themes.light.COLORS.colorTextSubmit }}>
             {t('singupScreen.welcomeToMyPetFriend')}
           </BodySmallText>
-        </RowSignup>
-        <RowSignup>
-          <Titulo style={{ color: themes.light.COLORS.colorTextSubmit }}>
+          <Titulo style={{ textAlign: 'center', color: themes.light.COLORS.colorTextSubmit }}>
             {t('singupScreen.creatYourAccount')}
           </Titulo>
-        </RowSignup>
+     
       </CollumSignup>
 
       <MotiView
@@ -93,8 +83,8 @@ export default function Signup(Props: any) {
           </Row>
           <RowCenter style={{ padding: 4 }}>
             <InputView>
-              <IconName style={{ color: themes.light.COLORS.neutral }} />
-              <InputText
+              <IconName style={{ marginLeft: 10, color: themes.light.COLORS.neutral }} />
+              <InputText  style={{ marginLeft: 8 }}
                 placeholder={t('singupScreen.name')}
                 onChangeText={setName}
                 value={name}
@@ -115,6 +105,7 @@ export default function Signup(Props: any) {
               {t('singupScreen.yearText')}
             </BodySmallText>
           </Row>
+    
           <Row style={{ padding: 2 }}>
             <InputView style={{ width: '22%', justifyContent: 'center' }}>
               <InputTextBirth
@@ -157,8 +148,8 @@ export default function Signup(Props: any) {
           </Row>
           <RowCenter>
             <InputView>
-              <IconMail style={{ color: themes.light.COLORS.neutral }} />
-              <InputText
+              <IconMail style={{ marginLeft: 10, color: themes.light.COLORS.neutral }} />
+              <InputText style={{ marginLeft: 8}}
                 placeholder={t('loginScreen.email')}
                 onChangeText={setEmail}
                 value={email}
@@ -171,8 +162,8 @@ export default function Signup(Props: any) {
           </Row>
           <RowCenter>
             <InputView>
-              <InputText
-                style={{ width: '88%' }}
+              <InputText 
+                style={{ marginLeft: 10, width: '84%' }}
                 secureTextEntry={eyed} //ocultrar senha
                 placeholder={t('singupScreen.caracteres')}
                 onChangeText={setPassword}
@@ -231,14 +222,14 @@ export default function Signup(Props: any) {
             ) : (
               <ProgressSignup />
             )}
-            {password.toLocaleString.length > 6 ? (
+            {password.length > 6 ? (
               <ProgressSignup
                 style={{ backgroundColor: themes.light.COLORS.secondary }}
               />
             ) : (
               <ProgressSignup />
             )}
-            {password.toLocaleString.length > 7 ? (
+            {password.length > 7 ? (
               <ProgressSignup
                 style={{ backgroundColor: themes.light.COLORS.secondary }}
               />
