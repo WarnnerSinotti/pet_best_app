@@ -29,7 +29,6 @@ import {
   InputView,
   InputText,
   InputViewCode,
-  InputTextCode,
   InputTextCenter,
 } from '../../components/TextInput';
 import { MyDivider } from '../../components/Divider';
@@ -42,7 +41,7 @@ import {
   IconMail,
 } from '../../components/SVG';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Modalize } from 'react-native-modalize';
+import { Modalize, useModalize } from 'react-native-modalize';
 
 export default function Login(Props: any) {
   const navigation: any = useNavigation();
@@ -54,7 +53,7 @@ export default function Login(Props: any) {
   const [eyed, setEyed] = React.useState(true);
   const [eyedReset, setEyedReset] = React.useState(true);
   const [resetPassword, setResetPassword] = React.useState('');
-  
+
   const [step, setStep] = useState(1);
 
   const group = [
@@ -81,27 +80,27 @@ export default function Login(Props: any) {
     },
   ];
 
-  const modalizeRef = useRef<Modalize>(null);
+  const { ref, open, close } = useModalize();
+
+  /* const modalizeRef = useRef<Modalize>(null);
 
   const onOpen = () => {
-    modalizeRef.current?.open('default');
-  };
+    modalizeRef.current?.open();
+  
+  }; */
 
   const VisualPassword = () => {
     setEyed((current) => !current);
-    
   };
 
   const VisualResetPassword = () => {
+    console.log('entrar aqui');
     setEyedReset((current) => !current);
   };
 
- 
-
   const Click = () => {
     if (step === 3) {
-      modalizeRef.current?.close('default');
-      setStep(1);
+      close;
     }
     setStep(step + 1);
   };
@@ -192,7 +191,7 @@ export default function Login(Props: any) {
                   value={resetPassword}
                   maxLength={20}
                 />
-                <TouchableOpacity onPress={() => VisualResetPassword()}>
+                <TouchableOpacity onPress={VisualResetPassword}>
                   {eyedReset ? (
                     <IconEyeOff
                       style={{ color: themes.light.COLORS.neutral }}
@@ -284,17 +283,18 @@ export default function Login(Props: any) {
             </TouchableOpacity>
           </InputView>
         </RowCenter>
-        <RowRight style={{ paddingTop: 8 }}>
-          <SubTituloLink onPress={() => onOpen()}>
-            {t('loginScreen.forgot_your_password')}
-          </SubTituloLink>
-        </RowRight>
-        <RowCenter style={{ paddingTop: 32 }}>
-          <MyButtonSubmit onPress={() => navigation.navigate('Step01')}>
-            <MyButtonTextSubmit>{t('loginScreen.login')}</MyButtonTextSubmit>
-          </MyButtonSubmit>
-        </RowCenter>
       </KeyboardAvoidingView>
+      <RowRight style={{ paddingTop: 8 }}>
+        <SubTituloLink onPress={open}>
+          {t('loginScreen.forgot_your_password')}
+        </SubTituloLink>
+      </RowRight>
+      <RowCenter style={{ paddingTop: 32 }}>
+        <MyButtonSubmit onPress={() => navigation.navigate('Step01')}>
+          <MyButtonTextSubmit>{t('loginScreen.login')}</MyButtonTextSubmit>
+        </MyButtonSubmit>
+      </RowCenter>
+
       <RowCenter style={{ paddingTop: 40 }}>
         <MyDivider />
         <ORText>{t('loginScreen.or')}</ORText>
@@ -339,7 +339,7 @@ export default function Login(Props: any) {
           spring: { speed: 1 },
         }}
         snapPoint={600}
-        ref={modalizeRef}
+        ref={ref}
       >
         {listItems}
       </Modalize>
