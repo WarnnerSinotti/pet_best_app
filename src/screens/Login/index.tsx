@@ -23,6 +23,7 @@ import {
   MyButtonTextSubmit,
   MyButtonSocialSubmit,
   MyButtonSocialTextSubmit,
+  MyButtonNext,
 } from '../../components/Button';
 import themes from '../../themes';
 import {
@@ -95,7 +96,7 @@ export default function Login(Props: any) {
 
   const VisualResetPassword = () => {
     console.log('entrar aqui');
-    setEyedReset((current) => !current);
+    
   };
 
   const Click = () => {
@@ -103,6 +104,7 @@ export default function Login(Props: any) {
       close;
     }
     setStep(step + 1);
+    console.log(step)
   };
 
   const listItems = group.map((dados) => {
@@ -184,14 +186,21 @@ export default function Login(Props: any) {
                   style={{ marginLeft: 10, color: themes.light.COLORS.neutral }}
                 />
                 <InputText
-                  style={{ marginLeft: 8, width: '74%' }}
+                  style={{ marginLeft: 8, width: '72%' }}
                   placeholder={t('forgotScreen.enterYourNewPassword')}
-                  secureTextEntry={eyedReset} //ocultrar senha
+                  secureTextEntry={eyedReset} //ocultar senha
                   onChangeText={setResetPassword}
                   value={resetPassword}
-                  maxLength={20}
+                  maxLength={3}
                 />
-                <TouchableOpacity onPress={VisualResetPassword}>
+               <TouchableOpacity onPress={VisualResetPassword}>
+              {eyed ? (
+                <IconEyeOff style={{ color: themes.light.COLORS.neutral }} />
+              ) : (
+                <IconEye style={{ color: themes.light.COLORS.neutral }} />
+              )}
+            </TouchableOpacity>
+               {/*  <TouchableOpacity onPress={VisualResetPassword}>
                   {eyedReset ? (
                     <IconEyeOff
                       style={{ color: themes.light.COLORS.neutral }}
@@ -199,7 +208,7 @@ export default function Login(Props: any) {
                   ) : (
                     <IconEye style={{ color: themes.light.COLORS.neutral }} />
                   )}
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </InputView>
             </RowCenter>
           ) : null}
@@ -268,7 +277,7 @@ export default function Login(Props: any) {
             />
             <InputText
               style={{ marginLeft: 8, width: '72%' }}
-              secureTextEntry={eyed} //ocultrar senha
+              secureTextEntry={eyed} //ocultar senha
               placeholder={t('loginScreen.password')}
               onChangeText={setTextPassword}
               value={textPassword}
@@ -323,6 +332,7 @@ export default function Login(Props: any) {
         </MyButtonSocialSubmit>
       </RowCenter>
 
+
       <RowCenter style={{ paddingTop: 42 }}>
         <NewPetFriendText>
           {t('loginScreen.new_to_my_pet_friend')}
@@ -333,7 +343,7 @@ export default function Login(Props: any) {
       </RowCenter>
 
       {/* FORGOT */}
-      <Modalize
+      <Modalize 
         openAnimationConfig={{
           timing: { duration: 500 },
           spring: { speed: 1 },
