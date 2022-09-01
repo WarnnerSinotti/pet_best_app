@@ -9,6 +9,7 @@ import Login from '../screens/Login';
 import Menu from '../screens/Menu';
 import Step01 from '../screens/Step01';
 import Signup from '../screens/Signup';
+import Teste from '../screens/Teste';
 
 const Stack = createStackNavigator();
 
@@ -49,6 +50,18 @@ export default function Routes() {
           component={Signup}
           options={{
             title: 'signup',
+            headerTransparent: true,
+            gestureEnabled: true,
+            cardStyleInterpolator:
+              CardStyleInterpolators.forFadeFromBottomAndroid,
+            headerShown: false, //desabilitar depois ativando titulo
+          }}
+        />
+        <Stack.Screen
+          name="Teste"
+          component={Teste}
+          options={{
+            title: 'Teste',
             headerTransparent: true,
             gestureEnabled: true,
             cardStyleInterpolator:

@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Alert, KeyboardAvoidingView, Image, View, Modal } from 'react-native';
+import { Alert, KeyboardAvoidingView, Image, View } from 'react-native';
 import {
   Container,
   Row,
@@ -42,8 +42,9 @@ import {
   IconMail,
 } from '../../components/SVG';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Modalize, useModalize } from 'react-native-modalize';
 
-export default function Login(Props: any) {
+export default function Backup(Props: any) {
   const navigation: any = useNavigation();
   const { t } = useTranslation('translation');
   const [textEmail, setTextEmail] = React.useState('');
@@ -53,7 +54,6 @@ export default function Login(Props: any) {
   const [eyed, setEyed] = React.useState(true);
   const [eyedReset, setEyedReset] = React.useState(true);
   const [resetPassword, setResetPassword] = React.useState('');
-  const [active, setActive] = useState(false);
 
   const [step, setStep] = useState(1);
 
@@ -81,6 +81,7 @@ export default function Login(Props: any) {
     },
   ];
 
+  const { ref, open, close } = useModalize();
 
   /* const modalizeRef = useRef<Modalize>(null);
 
@@ -94,17 +95,16 @@ export default function Login(Props: any) {
   };
 
   const VisualResetPassword = () => {
-    setEyedReset((current) => !current);
+    console.log('entrar aqui');
+    
   };
 
   const Click = () => {
     if (step === 3) {
-      setActive(false)
-      setStep(1)
-      console.log(setStep)
+      close;
     }
     setStep(step + 1);
-    console.log(step);
+    console.log(step)
   };
 
   const listItems = group.map((dados) => {
@@ -191,17 +191,24 @@ export default function Login(Props: any) {
                   secureTextEntry={eyedReset} //ocultar senha
                   onChangeText={setResetPassword}
                   value={resetPassword}
-                  maxLength={20}
+                  maxLength={3}
                 />
-                <TouchableOpacity onPress={VisualResetPassword}>
-                  {eyed ? (
+               <TouchableOpacity onPress={VisualResetPassword}>
+              {eyed ? (
+                <IconEyeOff style={{ color: themes.light.COLORS.neutral }} />
+              ) : (
+                <IconEye style={{ color: themes.light.COLORS.neutral }} />
+              )}
+            </TouchableOpacity>
+               {/*  <TouchableOpacity onPress={VisualResetPassword}>
+                  {eyedReset ? (
                     <IconEyeOff
                       style={{ color: themes.light.COLORS.neutral }}
                     />
                   ) : (
                     <IconEye style={{ color: themes.light.COLORS.neutral }} />
                   )}
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </InputView>
             </RowCenter>
           ) : null}
@@ -287,7 +294,7 @@ export default function Login(Props: any) {
         </RowCenter>
       </KeyboardAvoidingView>
       <RowRight style={{ paddingTop: 8 }}>
-        <SubTituloLink onPress={() => setActive(true)}>
+        <SubTituloLink onPress={open}>
           {t('loginScreen.forgot_your_password')}
         </SubTituloLink>
       </RowRight>
@@ -325,6 +332,7 @@ export default function Login(Props: any) {
         </MyButtonSocialSubmit>
       </RowCenter>
 
+
       <RowCenter style={{ paddingTop: 42 }}>
         <NewPetFriendText>
           {t('loginScreen.new_to_my_pet_friend')}
@@ -334,19 +342,17 @@ export default function Login(Props: any) {
         </SubTituloLink>
       </RowCenter>
 
-
-      <MyButtonNext onPress={() => navigation.navigate('Teste')}></MyButtonNext>
-
       {/* FORGOT */}
-      <Modal
-      animationType="slide"
-        visible={active}
-        transparent={true}  
-        >
-        <View >
+      <Modalize 
+        openAnimationConfig={{
+          timing: { duration: 500 },
+          spring: { speed: 1 },
+        }}
+        snapPoint={600}
+        ref={ref}
+      >
         {listItems}
-        </View>
-      </Modal>
+      </Modalize>
     </Container>
   );
 }
