@@ -200,15 +200,6 @@ export default function Backup(Props: any) {
                 <IconEye style={{ color: themes.light.COLORS.neutral }} />
               )}
             </TouchableOpacity>
-               {/*  <TouchableOpacity onPress={VisualResetPassword}>
-                  {eyedReset ? (
-                    <IconEyeOff
-                      style={{ color: themes.light.COLORS.neutral }}
-                    />
-                  ) : (
-                    <IconEye style={{ color: themes.light.COLORS.neutral }} />
-                  )}
-                </TouchableOpacity> */}
               </InputView>
             </RowCenter>
           ) : null}
