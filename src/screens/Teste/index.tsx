@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationHelpersContext, useNavigation } from '@react-navigation/native';
 import BottomSheet from '@gorhom/bottom-sheet';
 
 import {
@@ -49,7 +49,7 @@ const Teste = () => {
   const [Code1, setCode1] = React.useState('');
   const [eyed, setEyed] = React.useState(true);
   const [eyedReset, setEyedReset] = React.useState(true);
-  const [resetPassword, setResetPassword] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
   const [step, setStep] = useState(1);
 
@@ -81,14 +81,10 @@ const Teste = () => {
     setEyed((current) => !current);
   };
 
-  const VisualResetPassword = () => {
-    console.log('entrar aqui');
-    
-  };
 
   const Click = () => {
     if (step === 3) {
-      close;
+     navigation.navigate('Login')
     }
     setStep(step + 1);
     console.log(step)
@@ -175,12 +171,12 @@ const Teste = () => {
                 <InputText
                   style={{ marginLeft: 8, width: '72%' }}
                   placeholder={t('forgotScreen.enterYourNewPassword')}
-                  secureTextEntry={eyedReset} //ocultar senha
-                  onChangeText={setResetPassword}
-                  value={resetPassword}
+                  secureTextEntry={eyed} //ocultar senha
+                  onChangeText={setPassword}
+                  value={password}
                   maxLength={3}
                 />
-               <TouchableOpacity onPress={VisualResetPassword}>
+               <TouchableOpacity onPress={VisualPassword}>
               {eyed ? (
                 <IconEyeOff style={{ color: themes.light.COLORS.neutral }} />
               ) : (
@@ -222,11 +218,14 @@ const Teste = () => {
   // callbacks
   const handleSheetChanges = useCallback((index: number) => {
     console.log('handleSheetChanges', index);
+    if (index===0){
+    navigation.navigate('Login')
+  }
   }, []);
 
   // renders
   return (
-    <View style={styles.container}>
+    //<View style={styles.container}>
       <BottomSheet
         ref={bottomSheetRef}
         index={1}
@@ -234,11 +233,10 @@ const Teste = () => {
         onChange={handleSheetChanges}
       >
         <View style={styles.contentContainer}>
-          <Text>Awesome 🎉</Text>
           {listItems}
         </View>
       </BottomSheet>
-    </View>
+   // </View>
   );
 };
 
@@ -246,7 +244,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor: 'grey',
+    backgroundColor: 'red',
   },
   contentContainer: {
     flex: 1,

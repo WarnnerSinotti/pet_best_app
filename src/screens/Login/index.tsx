@@ -1,6 +1,13 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Alert, KeyboardAvoidingView, Image, View, Modal } from 'react-native';
+import BottomSheet from '@gorhom/bottom-sheet';
 import {
   Container,
   Row,
@@ -24,6 +31,7 @@ import {
   MyButtonSocialSubmit,
   MyButtonSocialTextSubmit,
   MyButtonNext,
+  MyButtonTextNext,
 } from '../../components/Button';
 import themes from '../../themes';
 import {
@@ -81,14 +89,19 @@ export default function Login(Props: any) {
     },
   ];
 
+  // ref
+  const bottomSheetRef = useRef<BottomSheet>(null);
 
-  /* const modalizeRef = useRef<Modalize>(null);
+  // variables
+  const snapPoints = useMemo(() => ['1%', '50%'], []);
 
-  const onOpen = () => {
-    modalizeRef.current?.open();
-  
-  }; */
-
+  // callbacks
+  const handleSheetChanges = useCallback((index: number) => {
+    console.log('handleSheetChanges', index);
+    if (index === 0) {
+      navigation.navigate('Login');
+    }
+  }, []);
   const VisualPassword = () => {
     setEyed((current) => !current);
   };
@@ -99,9 +112,9 @@ export default function Login(Props: any) {
 
   const Click = () => {
     if (step === 3) {
-      setActive(false)
-      setStep(1)
-      console.log(setStep)
+      setActive(false);
+      setStep(1);
+      console.log(setStep);
     }
     setStep(step + 1);
     console.log(step);
@@ -334,19 +347,19 @@ export default function Login(Props: any) {
         </SubTituloLink>
       </RowCenter>
 
+      {/* Adicionando BottomSheet */}
+      <BottomSheet
+        ref={bottomSheetRef}
+        index={1}
+        snapPoints={snapPoints}
+        onChange={handleSheetChanges}
+      >
+        <View>{listItems}</View>
+      </BottomSheet>
 
-      <MyButtonNext onPress={() => navigation.navigate('Teste')}></MyButtonNext>
-
-      {/* FORGOT */}
-      <Modal
-      animationType="slide"
-        visible={active}
-        transparent={true}  
-        >
-        <View >
-        {listItems}
-        </View>
-      </Modal>
+      <MyButtonNext onPress={() => navigation.navigate('Teste')}>
+        <MyButtonTextNext>oi</MyButtonTextNext>
+      </MyButtonNext>
     </Container>
   );
 }
