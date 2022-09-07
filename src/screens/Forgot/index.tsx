@@ -1,46 +1,29 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { NavigationHelpersContext, useNavigation } from '@react-navigation/native';
+import { View, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import BottomSheet from '@gorhom/bottom-sheet';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useTranslation } from 'react-i18next';
 
-import {
-  Container,
-  Row,
-  RowCenter,
-  RowLeft,
-  RowRight,
-} from '../../components/Global';
+import { RowCenter, RowLeft } from '../../components/Global';
 import {
   BodyText,
-  NameAppText,
   NewPetFriendText,
-  ORText,
-  SubTitulo,
   SubTituloLink,
   Titulo,
 } from '../../components/Text';
-import { useTranslation } from 'react-i18next';
-import {
-  MyButtonSubmit,
-  MyButtonTextSubmit,
-} from '../../components/Button';
-import themes from '../../themes';
+import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
 import {
   InputView,
   InputText,
   InputViewCode,
   InputTextCenter,
 } from '../../components/TextInput';
-import {
-  IconEye,
-  IconEyeOff,
-  IconLock,
-  IconMail,
-} from '../../components/SVG';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { IconEye, IconEyeOff, IconLock, IconMail } from '../../components/SVG';
 
-const Teste = () => {
+import themes from '../../themes';
 
+const Forgot = () => {
   const navigation: any = useNavigation();
   const { t } = useTranslation('translation');
   const [textEmail, setTextEmail] = React.useState('');
@@ -76,18 +59,17 @@ const Teste = () => {
       TitleButton: t('forgotScreen.resetPassword'),
     },
   ];
-  
+
   const VisualPassword = () => {
     setEyed((current) => !current);
   };
 
-
   const Click = () => {
     if (step === 3) {
-     navigation.navigate('Login')
+      navigation.navigate('Login');
     }
     setStep(step + 1);
-    console.log(step)
+    console.log(step);
   };
 
   const listItems = group.map((dados) => {
@@ -176,22 +158,32 @@ const Teste = () => {
                   value={password}
                   maxLength={3}
                 />
-               <TouchableOpacity onPress={VisualPassword}>
-              {eyed ? (
-                <IconEyeOff style={{ color: themes.light.COLORS.neutral }} />
-              ) : (
-                <IconEye style={{ color: themes.light.COLORS.neutral }} />
-              )}
-            </TouchableOpacity>
+                <TouchableOpacity onPress={VisualPassword}>
+                  {eyed ? (
+                    <IconEyeOff
+                      style={{ color: themes.light.COLORS.neutral }}
+                    />
+                  ) : (
+                    <IconEye style={{ color: themes.light.COLORS.neutral }} />
+                  )}
+                </TouchableOpacity>
               </InputView>
             </RowCenter>
           ) : null}
 
-          <RowCenter style={{ paddingTop: 24 }}>
-            <MyButtonSubmit onPress={() => Click()}>
-              <MyButtonTextSubmit>{dados.TitleButton}</MyButtonTextSubmit>
-            </MyButtonSubmit>
-          </RowCenter>
+          {step == 2 ? (
+            <RowCenter style={{ paddingTop: 24 }}>
+              <MyButtonSubmit onPress={() => navigation.navigate('Login')}>
+                <MyButtonTextSubmit>{dados.TitleButton}</MyButtonTextSubmit>
+              </MyButtonSubmit>
+            </RowCenter>
+          ) : (
+            <RowCenter style={{ paddingTop: 24 }}>
+              <MyButtonSubmit onPress={() => Click()}>
+                <MyButtonTextSubmit>{dados.TitleButton}</MyButtonTextSubmit>
+              </MyButtonSubmit>
+            </RowCenter>
+          )}
           {step == 2 ? (
             <RowCenter style={{ paddingTop: 26 }}>
               <NewPetFriendText>
@@ -207,36 +199,23 @@ const Teste = () => {
     }
   });
 
-  
-  
   // ref
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   // variables
-  const snapPoints = useMemo(() => ['1%', '50%'], []);
-
-  // callbacks
-  const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
-    if (index===0){
-    navigation.navigate('Login')
-  }
-  }, []);
+  const snapPoints = useMemo(() => [1, '50%'], []);
 
   // renders
   return (
-    //<View style={styles.container}>
-      <BottomSheet
-        ref={bottomSheetRef}
-        index={1}
-        snapPoints={snapPoints}
-        onChange={handleSheetChanges}
-      >
-        <View style={styles.contentContainer}>
-          {listItems}
-        </View>
-      </BottomSheet>
-   // </View>
+    <BottomSheet
+      ref={bottomSheetRef}
+      index={1}
+      snapPoints={snapPoints}
+      //onChange={handleSheetChanges}
+      handleIndicatorStyle={{ backgroundColor: themes.light.COLORS.secondary}}
+    >
+      <View style={styles.contentContainer}>{listItems}</View>
+    </BottomSheet>
   );
 };
 
@@ -245,6 +224,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     backgroundColor: 'red',
+    
   },
   contentContainer: {
     flex: 1,
@@ -252,4 +232,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Teste;
+export default Forgot;

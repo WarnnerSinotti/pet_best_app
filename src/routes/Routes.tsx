@@ -9,7 +9,7 @@ import Login from '../screens/Login';
 import Menu from '../screens/Menu';
 import Step01 from '../screens/Step01';
 import Signup from '../screens/Signup';
-import Teste from '../screens/Teste';
+import Forgot from '../screens/Forgot';
 
 const Stack = createStackNavigator();
 
@@ -58,10 +58,10 @@ export default function Routes() {
           }}
         />
         <Stack.Screen
-          name="Teste"
-          component={Teste}
+          name="Forgot"
+          component={Forgot}
           options={{
-            title: 'Teste',
+            title: 'Forgot',
             headerTransparent: true,
             gestureEnabled: true,
             cardStyleInterpolator:

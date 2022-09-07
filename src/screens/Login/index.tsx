@@ -1,45 +1,24 @@
-import React, {
-  useRef,
-  useState,
-  useEffect,
-  useMemo,
-  useCallback,
-} from 'react';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Alert, KeyboardAvoidingView, Image, View, Modal } from 'react-native';
-import BottomSheet from '@gorhom/bottom-sheet';
+import { Alert, KeyboardAvoidingView, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useTranslation } from 'react-i18next';
+
+import { Container, Row, RowCenter, RowRight } from '../../components/Global';
 import {
-  Container,
-  Row,
-  RowCenter,
-  RowLeft,
-  RowRight,
-} from '../../components/Global';
-import {
-  BodyText,
   NameAppText,
   NewPetFriendText,
   ORText,
   SubTitulo,
   SubTituloLink,
-  Titulo,
 } from '../../components/Text';
-import { useTranslation } from 'react-i18next';
 import {
   MyButtonSubmit,
   MyButtonTextSubmit,
   MyButtonSocialSubmit,
   MyButtonSocialTextSubmit,
-  MyButtonNext,
-  MyButtonTextNext,
 } from '../../components/Button';
-import themes from '../../themes';
-import {
-  InputView,
-  InputText,
-  InputViewCode,
-  InputTextCenter,
-} from '../../components/TextInput';
+import { InputView, InputText } from '../../components/TextInput';
 import { MyDivider } from '../../components/Divider';
 import {
   IconApple,
@@ -49,195 +28,19 @@ import {
   IconLock,
   IconMail,
 } from '../../components/SVG';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+
+import themes from '../../themes';
 
 export default function Login(Props: any) {
   const navigation: any = useNavigation();
   const { t } = useTranslation('translation');
   const [textEmail, setTextEmail] = React.useState('');
   const [textPassword, setTextPassword] = React.useState('');
-  const [forgotEmail, setForgotEmail] = React.useState('');
-  const [Code1, setCode1] = React.useState('');
   const [eyed, setEyed] = React.useState(true);
-  const [eyedReset, setEyedReset] = React.useState(true);
-  const [resetPassword, setResetPassword] = React.useState('');
-  const [active, setActive] = useState(false);
 
-  const [step, setStep] = useState(1);
-
-  const group = [
-    {
-      ID: 1,
-      Title: t('forgotScreen.forgotYourPassword'),
-      Message: t('forgotScreen.noWorries'),
-      TitleInput: t('forgotScreen.email'),
-      TitleButton: t('forgotScreen.sendCode'),
-    },
-    {
-      ID: 2,
-      Title: t('forgotScreen.checkYourEmail'),
-      Message: t('forgotScreen.verificationCode'),
-      TitleInput: t('forgotScreen.enterCode'),
-      TitleButton: t('forgotScreen.done'),
-    },
-    {
-      ID: 3,
-      Title: t('forgotScreen.newPassword'),
-      Message: t('forgotScreen.mustBeDifferentUsedPasswords'),
-      TitleInput: t('forgotScreen.password'),
-      TitleButton: t('forgotScreen.resetPassword'),
-    },
-  ];
-
-  // ref
-  const bottomSheetRef = useRef<BottomSheet>(null);
-
-  // variables
-  const snapPoints = useMemo(() => ['1%', '50%'], []);
-
-  // callbacks
-  const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
-    if (index === 0) {
-      navigation.navigate('Login');
-    }
-  }, []);
   const VisualPassword = () => {
     setEyed((current) => !current);
   };
-
-  const VisualResetPassword = () => {
-    setEyedReset((current) => !current);
-  };
-
-  const Click = () => {
-    if (step === 3) {
-      setActive(false);
-      setStep(1);
-      console.log(setStep);
-    }
-    setStep(step + 1);
-    console.log(step);
-  };
-
-  const listItems = group.map((dados) => {
-    if (step == dados.ID) {
-      return (
-        <View key={dados.ID}>
-          <RowCenter style={{ paddingTop: 24 }}>
-            <Titulo>{dados.Title}</Titulo>
-          </RowCenter>
-          <RowCenter style={{ paddingTop: 4 }}>
-            <BodyText>{dados.Message}</BodyText>
-          </RowCenter>
-          <RowLeft style={{ paddingTop: 24 }}>
-            <BodyText>{dados.TitleInput}</BodyText>
-          </RowLeft>
-          {step == 1 ? (
-            <RowCenter style={{ paddingTop: 8 }}>
-              <InputView>
-                <IconMail
-                  style={{ marginLeft: 10, color: themes.light.COLORS.neutral }}
-                />
-                <InputText
-                  style={{ marginLeft: 8 }}
-                  placeholder={t('forgotScreen.emailPlaceholder')}
-                  onChangeText={setForgotEmail}
-                  value={forgotEmail}
-                  keyboardType="email-address"
-                />
-              </InputView>
-            </RowCenter>
-          ) : step == 2 ? (
-            <RowCenter style={{ paddingTop: 8 }}>
-              <InputViewCode>
-                <InputTextCenter
-                  onChangeText={setCode1}
-                  value={Code1}
-                  keyboardType="numeric"
-                >
-                  1
-                </InputTextCenter>
-              </InputViewCode>
-              <InputViewCode
-                style={{ marginLeft: 12 }}
-                onChangeText={setCode1}
-                value={Code1}
-                keyboardType="numeric"
-              >
-                <InputTextCenter>2</InputTextCenter>
-              </InputViewCode>
-              <InputViewCode
-                style={{ marginLeft: 12 }}
-                onChangeText={setCode1}
-                value={Code1}
-                keyboardType="numeric"
-              >
-                <InputTextCenter>3</InputTextCenter>
-              </InputViewCode>
-              <InputViewCode
-                style={{ marginLeft: 12 }}
-                onChangeText={setCode1}
-                value={Code1}
-                keyboardType="numeric"
-              >
-                <InputTextCenter>4</InputTextCenter>
-              </InputViewCode>
-              <InputViewCode
-                style={{ marginLeft: 12 }}
-                onChangeText={setCode1}
-                value={Code1}
-                keyboardType="numeric"
-              >
-                <InputTextCenter>5</InputTextCenter>
-              </InputViewCode>
-            </RowCenter>
-          ) : step == 3 ? (
-            <RowCenter style={{ paddingTop: 8 }}>
-              <InputView>
-                <IconLock
-                  style={{ marginLeft: 10, color: themes.light.COLORS.neutral }}
-                />
-                <InputText
-                  style={{ marginLeft: 8, width: '72%' }}
-                  placeholder={t('forgotScreen.enterYourNewPassword')}
-                  secureTextEntry={eyedReset} //ocultar senha
-                  onChangeText={setResetPassword}
-                  value={resetPassword}
-                  maxLength={20}
-                />
-                <TouchableOpacity onPress={VisualResetPassword}>
-                  {eyed ? (
-                    <IconEyeOff
-                      style={{ color: themes.light.COLORS.neutral }}
-                    />
-                  ) : (
-                    <IconEye style={{ color: themes.light.COLORS.neutral }} />
-                  )}
-                </TouchableOpacity>
-              </InputView>
-            </RowCenter>
-          ) : null}
-
-          <RowCenter style={{ paddingTop: 24 }}>
-            <MyButtonSubmit onPress={() => Click()}>
-              <MyButtonTextSubmit>{dados.TitleButton}</MyButtonTextSubmit>
-            </MyButtonSubmit>
-          </RowCenter>
-          {step == 2 ? (
-            <RowCenter style={{ paddingTop: 26 }}>
-              <NewPetFriendText>
-                {t('forgotScreen.receiveTheLink')}
-              </NewPetFriendText>
-              <SubTituloLink onPress={() => Click()}>
-                {t('forgotScreen.resend')}
-              </SubTituloLink>
-            </RowCenter>
-          ) : null}
-        </View>
-      );
-    }
-  });
 
   return (
     <Container>
@@ -300,7 +103,7 @@ export default function Login(Props: any) {
         </RowCenter>
       </KeyboardAvoidingView>
       <RowRight style={{ paddingTop: 8 }}>
-        <SubTituloLink onPress={() => setActive(true)}>
+        <SubTituloLink onPress={() => navigation.navigate('Forgot')}>
           {t('loginScreen.forgot_your_password')}
         </SubTituloLink>
       </RowRight>
@@ -346,20 +149,6 @@ export default function Login(Props: any) {
           {t('loginScreen.sign_up')}
         </SubTituloLink>
       </RowCenter>
-
-      {/* Adicionando BottomSheet */}
-      <BottomSheet
-        ref={bottomSheetRef}
-        index={1}
-        snapPoints={snapPoints}
-        onChange={handleSheetChanges}
-      >
-        <View>{listItems}</View>
-      </BottomSheet>
-
-      <MyButtonNext onPress={() => navigation.navigate('Teste')}>
-        <MyButtonTextNext>oi</MyButtonTextNext>
-      </MyButtonNext>
     </Container>
   );
 }
