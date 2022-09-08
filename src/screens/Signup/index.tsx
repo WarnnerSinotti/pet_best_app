@@ -39,7 +39,7 @@ import {
   IconName,
 } from '../../components/SVG';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { CardContainer, CardContainerSingup } from '../../components/Card';
+import { CardContainerSingup } from '../../components/Card';
 import { MotiView } from 'moti';
 import { ProgressSignup } from '../../components/Progress';
 

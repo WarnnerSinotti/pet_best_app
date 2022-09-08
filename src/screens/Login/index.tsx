@@ -1,13 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, {useState, useRef, useMemo, useCallback} from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Alert, KeyboardAvoidingView, Image, View } from 'react-native';
-import {
-  Container,
-  Row,
-  RowCenter,
-  RowLeft,
-  RowRight,
-} from '../../components/Global';
+import { Alert, KeyboardAvoidingView, Image, View, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useTranslation } from 'react-i18next';
+import BottomSheet, { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+
+import { Container, Row, RowCenter, RowLeft, RowRight } from '../../components/Global';
 import {
   BodyText,
   NameAppText,
@@ -17,21 +15,13 @@ import {
   SubTituloLink,
   Titulo,
 } from '../../components/Text';
-import { useTranslation } from 'react-i18next';
 import {
   MyButtonSubmit,
   MyButtonTextSubmit,
   MyButtonSocialSubmit,
   MyButtonSocialTextSubmit,
-  MyButtonNext,
 } from '../../components/Button';
-import themes from '../../themes';
-import {
-  InputView,
-  InputText,
-  InputViewCode,
-  InputTextCenter,
-} from '../../components/TextInput';
+import { InputView, InputText, InputTextCenter, InputViewCode } from '../../components/TextInput';
 import { MyDivider } from '../../components/Divider';
 import {
   IconApple,
@@ -41,197 +31,208 @@ import {
   IconLock,
   IconMail,
 } from '../../components/SVG';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Modalize, useModalize } from 'react-native-modalize';
+
+import themes from '../../themes';
+import { useEffect } from 'react';
+import Teste from '../../components/BottonSheet';
 
 export default function Login(Props: any) {
   const navigation: any = useNavigation();
   const { t } = useTranslation('translation');
   const [textEmail, setTextEmail] = React.useState('');
   const [textPassword, setTextPassword] = React.useState('');
-  const [forgotEmail, setForgotEmail] = React.useState('');
-  const [Code1, setCode1] = React.useState('');
   const [eyed, setEyed] = React.useState(true);
-  const [eyedReset, setEyedReset] = React.useState(true);
-  const [resetPassword, setResetPassword] = React.useState('');
 
-  const [step, setStep] = useState(1);
+ 
+const [forgotEmail, setForgotEmail] = React.useState('');
+const [Code1, setCode1] = React.useState('');
+const [eyedReset, setEyedReset] = React.useState(true);
+const [password, setPassword] = React.useState('');
 
-  const group = [
-    {
-      ID: 1,
-      Title: t('forgotScreen.forgotYourPassword'),
-      Message: t('forgotScreen.noWorries'),
-      TitleInput: t('forgotScreen.email'),
-      TitleButton: t('forgotScreen.sendCode'),
-    },
-    {
-      ID: 2,
-      Title: t('forgotScreen.checkYourEmail'),
-      Message: t('forgotScreen.verificationCode'),
-      TitleInput: t('forgotScreen.enterCode'),
-      TitleButton: t('forgotScreen.done'),
-    },
-    {
-      ID: 3,
-      Title: t('forgotScreen.newPassword'),
-      Message: t('forgotScreen.mustBeDifferentUsedPasswords'),
-      TitleInput: t('forgotScreen.password'),
-      TitleButton: t('forgotScreen.resetPassword'),
-    },
-  ];
+const [step, setStep] = useState(1);
 
-  const { ref, open, close } = useModalize();
+const group = [
+  {
+    ID: 1,
+    Title: t('forgotScreen.forgotYourPassword'),
+    Message: t('forgotScreen.noWorries'),
+    TitleInput: t('forgotScreen.email'),
+    TitleButton: t('forgotScreen.sendCode'),
+  },
+  {
+    ID: 2,
+    Title: t('forgotScreen.checkYourEmail'),
+    Message: t('forgotScreen.verificationCode'),
+    TitleInput: t('forgotScreen.enterCode'),
+    TitleButton: t('forgotScreen.done'),
+  },
+  {
+    ID: 3,
+    Title: t('forgotScreen.newPassword'),
+    Message: t('forgotScreen.mustBeDifferentUsedPasswords'),
+    TitleInput: t('forgotScreen.password'),
+    TitleButton: t('forgotScreen.resetPassword'),
+  },
+];
 
-  /* const modalizeRef = useRef<Modalize>(null);
+const VisualPassword = () => {
+  setEyed((current) => !current);
+};
 
-  const onOpen = () => {
-    modalizeRef.current?.open();
+const Click = () => {
+  if (step === 3) {
+    navigation.navigate('Login');
+    setStep(0)
+  }
+  setStep(step + 1);
+  console.log(step);
   
-  }; */
+};
 
-  const VisualPassword = () => {
-    setEyed((current) => !current);
-  };
+const listItems = group.map((dados) => {
+  if (step == dados.ID) {
+    return (
+      <View key={dados.ID}>
+        <RowCenter style={{ paddingTop: 24 }}>
+          <Titulo>{dados.Title}</Titulo>
+        </RowCenter>
+        <RowCenter style={{ paddingTop: 4 }}>
+          <BodyText>{dados.Message}</BodyText>
+        </RowCenter>
+        <RowLeft style={{ paddingTop: 24 }}>
+          <BodyText>{dados.TitleInput}</BodyText>
+        </RowLeft>
+        {step == 1 ? (
+          <RowCenter style={{ paddingTop: 8 }}>
+            <InputView>
+              <IconMail
+                style={{ marginLeft: 10, color: themes.light.COLORS.neutral }}
+              />
+              <InputText
+                style={{ marginLeft: 8 }}
+                placeholder={t('forgotScreen.emailPlaceholder')}
+                onChangeText={setForgotEmail}
+                value={forgotEmail}
+                keyboardType="email-address"
+              />
+            </InputView>
+          </RowCenter>
+        ) : step == 2 ? (
+          <RowCenter style={{ paddingTop: 8 }}>
+            <InputViewCode>
+              <InputTextCenter
+                onChangeText={setCode1}
+                value={Code1}
+                keyboardType="numeric"
+              >
+                1
+              </InputTextCenter>
+            </InputViewCode>
+            <InputViewCode
+              style={{ marginLeft: 12 }}
+              onChangeText={setCode1}
+              value={Code1}
+              keyboardType="numeric"
+            >
+              <InputTextCenter>2</InputTextCenter>
+            </InputViewCode>
+            <InputViewCode
+              style={{ marginLeft: 12 }}
+              onChangeText={setCode1}
+              value={Code1}
+              keyboardType="numeric"
+            >
+              <InputTextCenter>3</InputTextCenter>
+            </InputViewCode>
+            <InputViewCode
+              style={{ marginLeft: 12 }}
+              onChangeText={setCode1}
+              value={Code1}
+              keyboardType="numeric"
+            >
+              <InputTextCenter>4</InputTextCenter>
+            </InputViewCode>
+            <InputViewCode
+              style={{ marginLeft: 12 }}
+              onChangeText={setCode1}
+              value={Code1}
+              keyboardType="numeric"
+            >
+              <InputTextCenter>5</InputTextCenter>
+            </InputViewCode>
+          </RowCenter>
+        ) : step == 3 ? (
+          <RowCenter style={{ paddingTop: 8 }}>
+            <InputView>
+              <IconLock
+                style={{ marginLeft: 10, color: themes.light.COLORS.neutral }}
+              />
+              <InputText
+                style={{ marginLeft: 8, width: '72%' }}
+                placeholder={t('forgotScreen.enterYourNewPassword')}
+                secureTextEntry={eyed} //ocultar senha
+                onChangeText={setPassword}
+                value={password}
+                maxLength={3}
+              />
+              <TouchableOpacity onPress={VisualPassword}>
+                {eyed ? (
+                  <IconEyeOff
+                    style={{ color: themes.light.COLORS.neutral }}
+                  />
+                ) : (
+                  <IconEye style={{ color: themes.light.COLORS.neutral }} />
+                )}
+              </TouchableOpacity>
+            </InputView>
+          </RowCenter>
+        ) : null}
 
-  const VisualResetPassword = () => {
-    console.log('entrar aqui');
-    
-  };
-
-  const Click = () => {
-    if (step === 3) {
-      close;
-    }
-    setStep(step + 1);
-    console.log(step)
-  };
-
-  const listItems = group.map((dados) => {
-    if (step == dados.ID) {
-      return (
-        <View key={dados.ID}>
+        {step == 2 ? (
           <RowCenter style={{ paddingTop: 24 }}>
-            <Titulo>{dados.Title}</Titulo>
+            <MyButtonSubmit onPress={() => {console.log('teste')}}>
+              <MyButtonTextSubmit>{dados.TitleButton}</MyButtonTextSubmit>
+            </MyButtonSubmit>
           </RowCenter>
-          <RowCenter style={{ paddingTop: 4 }}>
-            <BodyText>{dados.Message}</BodyText>
-          </RowCenter>
-          <RowLeft style={{ paddingTop: 24 }}>
-            <BodyText>{dados.TitleInput}</BodyText>
-          </RowLeft>
-          {step == 1 ? (
-            <RowCenter style={{ paddingTop: 8 }}>
-              <InputView>
-                <IconMail
-                  style={{ marginLeft: 10, color: themes.light.COLORS.neutral }}
-                />
-                <InputText
-                  style={{ marginLeft: 8 }}
-                  placeholder={t('forgotScreen.emailPlaceholder')}
-                  onChangeText={setForgotEmail}
-                  value={forgotEmail}
-                  keyboardType="email-address"
-                />
-              </InputView>
-            </RowCenter>
-          ) : step == 2 ? (
-            <RowCenter style={{ paddingTop: 8 }}>
-              <InputViewCode>
-                <InputTextCenter
-                  onChangeText={setCode1}
-                  value={Code1}
-                  keyboardType="numeric"
-                >
-                  1
-                </InputTextCenter>
-              </InputViewCode>
-              <InputViewCode
-                style={{ marginLeft: 12 }}
-                onChangeText={setCode1}
-                value={Code1}
-                keyboardType="numeric"
-              >
-                <InputTextCenter>2</InputTextCenter>
-              </InputViewCode>
-              <InputViewCode
-                style={{ marginLeft: 12 }}
-                onChangeText={setCode1}
-                value={Code1}
-                keyboardType="numeric"
-              >
-                <InputTextCenter>3</InputTextCenter>
-              </InputViewCode>
-              <InputViewCode
-                style={{ marginLeft: 12 }}
-                onChangeText={setCode1}
-                value={Code1}
-                keyboardType="numeric"
-              >
-                <InputTextCenter>4</InputTextCenter>
-              </InputViewCode>
-              <InputViewCode
-                style={{ marginLeft: 12 }}
-                onChangeText={setCode1}
-                value={Code1}
-                keyboardType="numeric"
-              >
-                <InputTextCenter>5</InputTextCenter>
-              </InputViewCode>
-            </RowCenter>
-          ) : step == 3 ? (
-            <RowCenter style={{ paddingTop: 8 }}>
-              <InputView>
-                <IconLock
-                  style={{ marginLeft: 10, color: themes.light.COLORS.neutral }}
-                />
-                <InputText
-                  style={{ marginLeft: 8, width: '72%' }}
-                  placeholder={t('forgotScreen.enterYourNewPassword')}
-                  secureTextEntry={eyedReset} //ocultar senha
-                  onChangeText={setResetPassword}
-                  value={resetPassword}
-                  maxLength={3}
-                />
-               <TouchableOpacity onPress={VisualResetPassword}>
-              {eyed ? (
-                <IconEyeOff style={{ color: themes.light.COLORS.neutral }} />
-              ) : (
-                <IconEye style={{ color: themes.light.COLORS.neutral }} />
-              )}
-            </TouchableOpacity>
-               {/*  <TouchableOpacity onPress={VisualResetPassword}>
-                  {eyedReset ? (
-                    <IconEyeOff
-                      style={{ color: themes.light.COLORS.neutral }}
-                    />
-                  ) : (
-                    <IconEye style={{ color: themes.light.COLORS.neutral }} />
-                  )}
-                </TouchableOpacity> */}
-              </InputView>
-            </RowCenter>
-          ) : null}
-
+        ) : (
           <RowCenter style={{ paddingTop: 24 }}>
             <MyButtonSubmit onPress={() => Click()}>
               <MyButtonTextSubmit>{dados.TitleButton}</MyButtonTextSubmit>
             </MyButtonSubmit>
           </RowCenter>
-          {step == 2 ? (
-            <RowCenter style={{ paddingTop: 26 }}>
-              <NewPetFriendText>
-                {t('forgotScreen.receiveTheLink')}
-              </NewPetFriendText>
-              <SubTituloLink onPress={() => Click()}>
-                {t('forgotScreen.resend')}
-              </SubTituloLink>
-            </RowCenter>
-          ) : null}
-        </View>
-      );
-    }
-  });
+        )}
+        {step == 2 ? (
+          <RowCenter style={{ paddingTop: 26 }}>
+            <NewPetFriendText>
+              {t('forgotScreen.receiveTheLink')}
+            </NewPetFriendText>
+            <SubTituloLink onPress={() => Click()}>
+              {t('forgotScreen.resend')}
+            </SubTituloLink>
+          </RowCenter>
+        ) : null}
+      </View>
+    );
+  }
+});
+
+const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+
+// variables
+const snapPoints = useMemo(() => ['25%', '50%'], []);
+
+// callbacks
+const handlePresentModalPress = useCallback(() => {
+  bottomSheetModalRef.current?.present();
+}, []);
+const handleSheetChanges = useCallback((index: number) => {
+  console.log('handleSheetChanges', index);
+
+}, []);
+
+  const VisualPasswordText = () => {
+    setEyed((current) => !current);
+  };
 
   return (
     <Container>
@@ -294,7 +295,7 @@ export default function Login(Props: any) {
         </RowCenter>
       </KeyboardAvoidingView>
       <RowRight style={{ paddingTop: 8 }}>
-        <SubTituloLink onPress={open}>
+        <SubTituloLink onPress={() => {handlePresentModalPress()}}>
           {t('loginScreen.forgot_your_password')}
         </SubTituloLink>
       </RowRight>
@@ -332,7 +333,6 @@ export default function Login(Props: any) {
         </MyButtonSocialSubmit>
       </RowCenter>
 
-
       <RowCenter style={{ paddingTop: 42 }}>
         <NewPetFriendText>
           {t('loginScreen.new_to_my_pet_friend')}
@@ -341,18 +341,37 @@ export default function Login(Props: any) {
           {t('loginScreen.sign_up')}
         </SubTituloLink>
       </RowCenter>
-
-      {/* FORGOT */}
-      <Modalize 
-        openAnimationConfig={{
-          timing: { duration: 500 },
-          spring: { speed: 1 },
-        }}
-        snapPoint={600}
-        ref={ref}
-      >
-        {listItems}
-      </Modalize>
+      <BottomSheetModalProvider>
+     
+        <BottomSheetModal
+          ref={bottomSheetModalRef}
+          index={1}
+          snapPoints={snapPoints}
+          onChange={handleSheetChanges}
+        >
+          <View style={styles.contentContainer}>
+          <View style={styles.contentContainer}>{listItems}</View>
+          </View>
+        </BottomSheetModal>
+      
+    </BottomSheetModalProvider>
+    <Teste></Teste>
+     
     </Container>
   );
 }
+
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 24,
+    justifyContent: 'center',
+    backgroundColor: 'grey',
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+});
