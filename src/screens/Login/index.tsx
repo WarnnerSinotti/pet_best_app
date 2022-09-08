@@ -1,9 +1,9 @@
-import React, {useState, useRef, useMemo} from 'react';
+import React, {useState, useRef, useMemo, useCallback} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Alert, KeyboardAvoidingView, Image, View, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useTranslation } from 'react-i18next';
-import BottomSheet from '@gorhom/bottom-sheet';
+import BottomSheet, { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 
 import { Container, Row, RowCenter, RowLeft, RowRight } from '../../components/Global';
 import {
@@ -33,6 +33,8 @@ import {
 } from '../../components/SVG';
 
 import themes from '../../themes';
+import { useEffect } from 'react';
+import Teste from '../../components/BottonSheet';
 
 export default function Login(Props: any) {
   const navigation: any = useNavigation();
@@ -80,6 +82,7 @@ const VisualPassword = () => {
 const Click = () => {
   if (step === 3) {
     navigation.navigate('Login');
+    setStep(0)
   }
   setStep(step + 1);
   console.log(step);
@@ -187,7 +190,7 @@ const listItems = group.map((dados) => {
 
         {step == 2 ? (
           <RowCenter style={{ paddingTop: 24 }}>
-            <MyButtonSubmit onPress={() => {bottomSheetRef.current?.close()}}>
+            <MyButtonSubmit onPress={() => {console.log('teste')}}>
               <MyButtonTextSubmit>{dados.TitleButton}</MyButtonTextSubmit>
             </MyButtonSubmit>
           </RowCenter>
@@ -213,11 +216,19 @@ const listItems = group.map((dados) => {
   }
 });
 
-// ref
-const bottomSheetRef = useRef<BottomSheet>(null);
+const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
 // variables
-const snapPoints = useMemo(() => [1, '71%'], []);
+const snapPoints = useMemo(() => ['25%', '50%'], []);
+
+// callbacks
+const handlePresentModalPress = useCallback(() => {
+  bottomSheetModalRef.current?.present();
+}, []);
+const handleSheetChanges = useCallback((index: number) => {
+  console.log('handleSheetChanges', index);
+
+}, []);
 
   const VisualPasswordText = () => {
     setEyed((current) => !current);
@@ -284,7 +295,7 @@ const snapPoints = useMemo(() => [1, '71%'], []);
         </RowCenter>
       </KeyboardAvoidingView>
       <RowRight style={{ paddingTop: 8 }}>
-        <SubTituloLink onPress={() => {bottomSheetRef.current?.expand()}}>
+        <SubTituloLink onPress={() => {handlePresentModalPress()}}>
           {t('loginScreen.forgot_your_password')}
         </SubTituloLink>
       </RowRight>
@@ -330,16 +341,22 @@ const snapPoints = useMemo(() => [1, '71%'], []);
           {t('loginScreen.sign_up')}
         </SubTituloLink>
       </RowCenter>
-      <BottomSheet
-      style={styles.container}
-      ref={bottomSheetRef}
-      index={0}
-      snapPoints={snapPoints}
-      //onChange={handleSheetChanges}
-      handleIndicatorStyle={{ backgroundColor: themes.light.COLORS.secondary}}
-    >
-      <View style={styles.contentContainer}>{listItems}</View>
-    </BottomSheet>
+      <BottomSheetModalProvider>
+     
+        <BottomSheetModal
+          ref={bottomSheetModalRef}
+          index={1}
+          snapPoints={snapPoints}
+          onChange={handleSheetChanges}
+        >
+          <View style={styles.contentContainer}>
+          <View style={styles.contentContainer}>{listItems}</View>
+          </View>
+        </BottomSheetModal>
+      
+    </BottomSheetModalProvider>
+    <Teste></Teste>
+     
     </Container>
   );
 }
@@ -349,13 +366,12 @@ const snapPoints = useMemo(() => [1, '71%'], []);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
-    backgroundColor: 'black',
+    padding: 24,
+    justifyContent: 'center',
+    backgroundColor: 'grey',
   },
   contentContainer: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'red'
   },
 });

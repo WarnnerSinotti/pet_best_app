@@ -1,81 +1,115 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from '@gorhom/bottom-sheet';
+
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useTranslation } from 'react-i18next';
-import BottomSheet from '@gorhom/bottom-sheet';
 
-import { RowCenter, RowLeft } from '../../components/Global';
+import { Container, Row, RowCenter, RowLeft, RowRight } from '../../components/Global';
 import {
   BodyText,
+  NameAppText,
   NewPetFriendText,
+  ORText,
+  SubTitulo,
   SubTituloLink,
   Titulo,
 } from '../../components/Text';
-import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
 import {
-  InputView,
-  InputText,
-  InputViewCode,
-  InputTextCenter,
-} from '../../components/TextInput';
-import { IconEye, IconEyeOff, IconLock, IconMail } from '../../components/SVG';
+  MyButtonSubmit,
+  MyButtonTextSubmit,
+  MyButtonSocialSubmit,
+  MyButtonSocialTextSubmit,
+} from '../../components/Button';
+import { InputView, InputText, InputTextCenter, InputViewCode } from '../../components/TextInput';
+import { MyDivider } from '../../components/Divider';
+import {
+  IconApple,
+  IconEye,
+  IconEyeOff,
+  IconGoogle,
+  IconLock,
+  IconMail,
+} from '../../components/SVG';
 
 import themes from '../../themes';
+import { useEffect } from 'react';
 
-const Forgot = () => {
+const Teste = () => {
+ 
   const navigation: any = useNavigation();
   const { t } = useTranslation('translation');
   const [textEmail, setTextEmail] = React.useState('');
   const [textPassword, setTextPassword] = React.useState('');
-  const [forgotEmail, setForgotEmail] = React.useState('');
-  const [Code1, setCode1] = React.useState('');
   const [eyed, setEyed] = React.useState(true);
-  const [eyedReset, setEyedReset] = React.useState(true);
-  const [password, setPassword] = React.useState('');
 
-  const [step, setStep] = useState(1);
+ 
+const [forgotEmail, setForgotEmail] = React.useState('');
+const [Code1, setCode1] = React.useState('');
+const [eyedReset, setEyedReset] = React.useState(true);
+const [password, setPassword] = React.useState('');
 
-  const group = [
-    {
-      ID: 1,
-      Title: t('forgotScreen.forgotYourPassword'),
-      Message: t('forgotScreen.noWorries'),
-      TitleInput: t('forgotScreen.email'),
-      TitleButton: t('forgotScreen.sendCode'),
-    },
-    {
-      ID: 2,
-      Title: t('forgotScreen.checkYourEmail'),
-      Message: t('forgotScreen.verificationCode'),
-      TitleInput: t('forgotScreen.enterCode'),
-      TitleButton: t('forgotScreen.done'),
-    },
-    {
-      ID: 3,
-      Title: t('forgotScreen.newPassword'),
-      Message: t('forgotScreen.mustBeDifferentUsedPasswords'),
-      TitleInput: t('forgotScreen.password'),
-      TitleButton: t('forgotScreen.resetPassword'),
-    },
-  ];
+const [step, setStep] = useState(1);
 
-  const VisualPassword = () => {
-    setEyed((current) => !current);
-  };
+const group = [
+  {
+    ID: 1,
+    Title: t('forgotScreen.forgotYourPassword'),
+    Message: t('forgotScreen.noWorries'),
+    TitleInput: t('forgotScreen.email'),
+    TitleButton: t('forgotScreen.sendCode'),
+  },
+  {
+    ID: 2,
+    Title: t('forgotScreen.checkYourEmail'),
+    Message: t('forgotScreen.verificationCode'),
+    TitleInput: t('forgotScreen.enterCode'),
+    TitleButton: t('forgotScreen.done'),
+  },
+  {
+    ID: 3,
+    Title: t('forgotScreen.newPassword'),
+    Message: t('forgotScreen.mustBeDifferentUsedPasswords'),
+    TitleInput: t('forgotScreen.password'),
+    TitleButton: t('forgotScreen.resetPassword'),
+  },
+];
+
+
+const VisualPassword = () => {
+  setEyed((current) => !current);
+};
+ 
+  // ref
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+
+  // variables
+  const snapPoints = useMemo(() => ['25%', '50%'], []);
+
+  // callbacks
+  const handlePresentModalPress = useCallback(() => {
+    bottomSheetModalRef.current?.present();
+  }, []);
+  
+  const handleSheetChanges = useCallback((index: number) => {
+    console.log('handleSheetChanges', index);
+  }, []);
+
 
   const Click = () => {
-    console.log(step, "contador")
-    if (step == 3) {
+    if (step === 3) {
       navigation.navigate('Login');
-      bottomSheetRef.current?.snapToIndex
-      console.log('entrou aqui')
+      setStep(0)
     }
-
     setStep(step + 1);
     console.log(step);
+    
   };
-
+  
   const listItems = group.map((dados) => {
     if (step == dados.ID) {
       return (
@@ -174,10 +208,10 @@ const Forgot = () => {
               </InputView>
             </RowCenter>
           ) : null}
-
+  
           {step == 2 ? (
             <RowCenter style={{ paddingTop: 24 }}>
-              <MyButtonSubmit onPress={() => navigation.navigate('Login')}>
+              <MyButtonSubmit onPress={() => {console.log('teste')}}>
                 <MyButtonTextSubmit>{dados.TitleButton}</MyButtonTextSubmit>
               </MyButtonSubmit>
             </RowCenter>
@@ -202,32 +236,41 @@ const Forgot = () => {
       );
     }
   });
-
-  // ref
-  const bottomSheetRef = useRef<BottomSheet>(null);
-
-  // variables
-  const snapPoints = useMemo(() => [1, '50%'], []);
-
   // renders
   return (
-    <BottomSheet
-      ref={bottomSheetRef}
-      index={1}
-      snapPoints={snapPoints}
-      //onChange={handleSheetChanges}
-      handleIndicatorStyle={{ backgroundColor: themes.light.COLORS.secondary}}
-    >
-      <View style={styles.contentContainer}>{listItems}</View>
-    </BottomSheet>
+    <BottomSheetModalProvider>
+     
+         <Button
+          onPress={handlePresentModalPress}
+          title="Button Funcional"
+          color="black"
+        /> 
+        <BottomSheetModal
+          ref={bottomSheetModalRef}
+          index={1}
+          snapPoints={snapPoints}
+          onChange={handleSheetChanges}
+        >
+          <View style={styles.contentContainer}>
+            {listItems}
+          </View>
+        </BottomSheetModal>
+     
+    </BottomSheetModalProvider>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 24,
+    justifyContent: 'center',
+    backgroundColor: 'grey',
+  },
   contentContainer: {
     flex: 1,
     alignItems: 'center',
   },
 });
 
-export default Forgot;
+export default Teste;
