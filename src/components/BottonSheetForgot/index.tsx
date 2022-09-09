@@ -37,6 +37,7 @@ import {
 } from '../SVG';
 
 import themes from '../../themes';
+import { ProgressSignup } from '../Progress';
 
 const BottonSheetForgot = () => {
   const navigation: any = useNavigation();
@@ -247,6 +248,8 @@ const BottonSheetForgot = () => {
         color="black"
       />
       <BottomSheetModal
+        style={styles.container}
+        handleIndicatorStyle={{backgroundColor: themes.light.COLORS.secondary, width: 50}}
         ref={bottomSheetModalRef}
         index={1}
         snapPoints={snapPoints}
@@ -261,9 +264,7 @@ const BottonSheetForgot = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
     justifyContent: 'center',
-    backgroundColor: 'grey',
   },
   contentContainer: {
     flex: 1,
