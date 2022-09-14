@@ -42,6 +42,11 @@ export default function Login(Props: any) {
     setEyed((current) => !current);
   };
 
+  const OpenModal = (Props: any) => {
+    console.log('inserir para abrir modal')
+    Props.handlePresentModalPress
+  };
+
   return (
     <Container>
       <KeyboardAvoidingView behavior="position">
@@ -104,7 +109,7 @@ export default function Login(Props: any) {
       </KeyboardAvoidingView>
       <RowRight style={{ paddingTop: 8 }}>
         <SubTituloLink
-          onPress={() => console.log('chamar o modal aqui')}
+          onPress={OpenModal}
         >
           {t('loginScreen.forgot_your_password')}
         </SubTituloLink>
@@ -151,7 +156,7 @@ export default function Login(Props: any) {
           {t('loginScreen.sign_up')}
         </SubTituloLink>
       </RowCenter>
-
+      
       <BottonSheetForgot></BottonSheetForgot>
     </Container>
   );

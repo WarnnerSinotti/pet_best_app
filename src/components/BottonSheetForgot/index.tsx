@@ -37,9 +37,14 @@ import {
 } from '../SVG';
 
 import themes from '../../themes';
-import { ProgressSignup } from '../Progress';
 
-const BottonSheetForgot = () => {
+/* interface BottonSheetProps {
+  onPress: () => void
+  props: any
+} */
+
+const BottonSheetForgot = (Props:any) => {
+
   const navigation: any = useNavigation();
   const { t } = useTranslation('translation');
   const [textEmail, setTextEmail] = React.useState('');
@@ -88,7 +93,7 @@ const BottonSheetForgot = () => {
   const snapPoints = useMemo(() => ['25%', '50%'], []);
 
   // callbacks
-  const handlePresentModalPress = useCallback(() => {
+  const handlePresentModalPress = useCallback((Props) => {
     bottomSheetModalRef.current?.present();
   }, []);
 
@@ -97,15 +102,13 @@ const BottonSheetForgot = () => {
     setStep(1) //Quando fecha retorna para Primeiro Step
   }, []);
 
+
   const Click = () => {
     if (step === 3) {
-      console.log('entrou aqui no 3');
       setStep(1);
-      console.log(step, 'dentro if');
       bottomSheetModalRef.current?.close();
     } else {
       setStep(step + 1);
-      console.log(step);
     }
   };
 
@@ -243,7 +246,7 @@ const BottonSheetForgot = () => {
   return (
     <BottomSheetModalProvider>
       <Button
-        onPress={handlePresentModalPress}
+        onPress={() => handlePresentModalPress(Props)}
         title="Button Funcional"
         color="black"
       />
