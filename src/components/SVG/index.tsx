@@ -7,6 +7,8 @@ import EyeOff from '../../../assets/icons/eye-off.svg';
 import Slug from '../../../assets/icons/slug.svg';
 import Cat from '../../../assets/icons/cat.svg'
 import Menu from '../../../assets/icons/menu.svg'
+import Search from '../../../assets/icons/search.svg'
+import User from '../../../assets/icons/user.svg'
 
 const tamanho = {
   height: 25,
@@ -47,4 +49,12 @@ export const IconCat = (props: any) => {
 
 export const IconMenu = (props: any) => {
   return <Menu height={tamanho.height} width={tamanho.width} {...props} />;
+};
+
+export const IconSearch = (props: any) => {
+  return <Search height={tamanho.height} width={tamanho.width} {...props} />;
+};
+
+export const IconUser = (props: any) => {
+  return <User height={tamanho.height} width={tamanho.width} {...props} />;
 };

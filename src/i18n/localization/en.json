@@ -49,6 +49,9 @@
     "alreadyHaveAnAccount": "Already have an account?",
     "sign_in": "Log in"
   },
+  "menuScreen":{
+    "search": "Search"
+  },
   "stepCardScreen": {
     "titleStep01": "My Pet Friend",
     "titleStep02": "Shop",
