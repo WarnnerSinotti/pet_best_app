@@ -36,7 +36,7 @@ import {
   IconEyeOff,
   IconGoogle,
   IconMail,
-  IconName,
+  IconUser,
 } from '../../components/SVG';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { CardContainerSingup } from '../../components/Card';
@@ -83,7 +83,7 @@ export default function Signup(Props: any) {
           </Row>
           <RowCenter style={{ padding: 4 }}>
             <InputView>
-              <IconName style={{ marginLeft: 10, color: themes.light.COLORS.neutral }} />
+              <IconUser style={{ marginLeft: 10, color: themes.light.COLORS.neutral }} />
               <InputText  style={{ marginLeft: 8 }}
                 placeholder={t('singupScreen.name')}
                 onChangeText={setName}

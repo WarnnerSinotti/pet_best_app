@@ -10,6 +10,8 @@ export default {
     colorTextSubmit: '#FFFFFF',
     colorTextSocialButton: '#393939',
     colorTextSingup: '#4D4D4D',
+    greyPrimary: '#F3F3F3',
+    greySecondary: '#D9D9D9',
   },
 
   FONT_SIZE: {

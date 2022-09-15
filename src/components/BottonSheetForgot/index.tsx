@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
@@ -9,81 +9,83 @@ import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useTranslation } from 'react-i18next';
 
-import { Container, Row, RowCenter, RowLeft, RowRight } from '../../components/Global';
+import {
+  RowCenter,
+  RowLeft,
+} from '../Global';
 import {
   BodyText,
-  NameAppText,
   NewPetFriendText,
-  ORText,
-  SubTitulo,
   SubTituloLink,
   Titulo,
-} from '../../components/Text';
+} from '../Text';
 import {
   MyButtonSubmit,
   MyButtonTextSubmit,
-  MyButtonSocialSubmit,
-  MyButtonSocialTextSubmit,
-} from '../../components/Button';
-import { InputView, InputText, InputTextCenter, InputViewCode } from '../../components/TextInput';
-import { MyDivider } from '../../components/Divider';
+} from '../Button';
 import {
-  IconApple,
+  InputView,
+  InputText,
+  InputTextCenter,
+  InputViewCode,
+} from '../TextInput';
+import {
   IconEye,
   IconEyeOff,
-  IconGoogle,
   IconLock,
   IconMail,
-} from '../../components/SVG';
+} from '../SVG';
 
 import themes from '../../themes';
-import { useEffect } from 'react';
+/* 
+ interface BottonSheetProps {
+  onPress: () => void
+} 
+const BottonSheetForgot: React.FC <BottonSheetProps> = ({...rest}) => { */
 
-const Teste = () => {
- 
+const BottonSheetForgot = ({...rest}) => {
+
   const navigation: any = useNavigation();
   const { t } = useTranslation('translation');
   const [textEmail, setTextEmail] = React.useState('');
   const [textPassword, setTextPassword] = React.useState('');
   const [eyed, setEyed] = React.useState(true);
 
- 
-const [forgotEmail, setForgotEmail] = React.useState('');
-const [Code1, setCode1] = React.useState('');
-const [eyedReset, setEyedReset] = React.useState(true);
-const [password, setPassword] = React.useState('');
+  const [forgotEmail, setForgotEmail] = React.useState('');
+  const [Code1, setCode1] = React.useState('');
+  const [eyedReset, setEyedReset] = React.useState(true);
+  const [password, setPassword] = React.useState('');
 
-const [step, setStep] = useState(1);
+  const [step, setStep] = useState(1);
 
-const group = [
-  {
-    ID: 1,
-    Title: t('forgotScreen.forgotYourPassword'),
-    Message: t('forgotScreen.noWorries'),
-    TitleInput: t('forgotScreen.email'),
-    TitleButton: t('forgotScreen.sendCode'),
-  },
-  {
-    ID: 2,
-    Title: t('forgotScreen.checkYourEmail'),
-    Message: t('forgotScreen.verificationCode'),
-    TitleInput: t('forgotScreen.enterCode'),
-    TitleButton: t('forgotScreen.done'),
-  },
-  {
-    ID: 3,
-    Title: t('forgotScreen.newPassword'),
-    Message: t('forgotScreen.mustBeDifferentUsedPasswords'),
-    TitleInput: t('forgotScreen.password'),
-    TitleButton: t('forgotScreen.resetPassword'),
-  },
-];
+  const group = [
+    {
+      ID: 1,
+      Title: t('forgotScreen.forgotYourPassword'),
+      Message: t('forgotScreen.noWorries'),
+      TitleInput: t('forgotScreen.email'),
+      TitleButton: t('forgotScreen.sendCode'),
+    },
+    {
+      ID: 2,
+      Title: t('forgotScreen.checkYourEmail'),
+      Message: t('forgotScreen.verificationCode'),
+      TitleInput: t('forgotScreen.enterCode'),
+      TitleButton: t('forgotScreen.done'),
+    },
+    {
+      ID: 3,
+      Title: t('forgotScreen.newPassword'),
+      Message: t('forgotScreen.mustBeDifferentUsedPasswords'),
+      TitleInput: t('forgotScreen.password'),
+      TitleButton: t('forgotScreen.resetPassword'),
+    },
+  ];
 
+  const VisualPassword = () => {
+    setEyed((current) => !current);
+  };
 
-const VisualPassword = () => {
-  setEyed((current) => !current);
-};
- 
   // ref
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
@@ -91,25 +93,25 @@ const VisualPassword = () => {
   const snapPoints = useMemo(() => ['25%', '50%'], []);
 
   // callbacks
-  const handlePresentModalPress = useCallback(() => {
+  const handlePresentModalPress = useCallback((Props) => {
     bottomSheetModalRef.current?.present();
   }, []);
-  
-  const handleSheetChanges = useCallback((index: number) => {
+
+  const handleSheetChanges = useCallback(( index: number) => {
     console.log('handleSheetChanges', index);
+    setStep(1) //Quando fecha retorna para Primeiro Step
   }, []);
 
 
   const Click = () => {
     if (step === 3) {
-      navigation.navigate('Login');
-      setStep(0)
+      setStep(1);
+      bottomSheetModalRef.current?.close();
+    } else {
+      setStep(step + 1);
     }
-    setStep(step + 1);
-    console.log(step);
-    
   };
-  
+
   const listItems = group.map((dados) => {
     if (step == dados.ID) {
       return (
@@ -208,10 +210,14 @@ const VisualPassword = () => {
               </InputView>
             </RowCenter>
           ) : null}
-  
+
           {step == 2 ? (
             <RowCenter style={{ paddingTop: 24 }}>
-              <MyButtonSubmit onPress={() => {console.log('teste')}}>
+              <MyButtonSubmit
+                onPress={() => {
+                  console.log('teste');
+                }}
+              >
                 <MyButtonTextSubmit>{dados.TitleButton}</MyButtonTextSubmit>
               </MyButtonSubmit>
             </RowCenter>
@@ -239,23 +245,21 @@ const VisualPassword = () => {
   // renders
   return (
     <BottomSheetModalProvider>
-     
-         <Button
-          onPress={handlePresentModalPress}
-          title="Button Funcional"
-          color="black"
-        /> 
-        <BottomSheetModal
-          ref={bottomSheetModalRef}
-          index={1}
-          snapPoints={snapPoints}
-          onChange={handleSheetChanges}
-        >
-          <View style={styles.contentContainer}>
-            {listItems}
-          </View>
-        </BottomSheetModal>
-     
+      <Button
+        onPress={handlePresentModalPress}
+        title="Button Funcional"
+        color="black"
+      />
+      <BottomSheetModal
+        style={styles.container}
+        handleIndicatorStyle={{backgroundColor: themes.light.COLORS.secondary, width: 50}}
+        ref={bottomSheetModalRef}
+        index={1}
+        snapPoints={snapPoints}
+        onChange={handleSheetChanges}
+      >
+        <View style={styles.contentContainer}>{listItems}</View>
+      </BottomSheetModal>
     </BottomSheetModalProvider>
   );
 };
@@ -263,9 +267,7 @@ const VisualPassword = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
     justifyContent: 'center',
-    backgroundColor: 'grey',
   },
   contentContainer: {
     flex: 1,
@@ -273,4 +275,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Teste;
+export default BottonSheetForgot;
