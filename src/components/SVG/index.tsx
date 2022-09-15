@@ -5,7 +5,8 @@ import Lock from '../../../assets/icons/lock.svg';
 import Eye from '../../../assets/icons/eye.svg';
 import EyeOff from '../../../assets/icons/eye-off.svg';
 import Slug from '../../../assets/icons/slug.svg';
-import Name from '../../../assets/icons/name.svg'
+import Cat from '../../../assets/icons/cat.svg'
+import Menu from '../../../assets/icons/menu.svg'
 
 const tamanho = {
   height: 25,
@@ -40,6 +41,10 @@ export const IconEyeOff = (props: any) => {
   return <EyeOff height={tamanho.height} width={tamanho.width} {...props} />;
 };
 
-export const IconName = (props: any) => {
-  return <Slug height={tamanho.height} width={tamanho.width} {...props} />;
+export const IconCat = (props: any) => {
+  return <Cat height={tamanho.height} width={tamanho.width} {...props} />;
+};
+
+export const IconMenu = (props: any) => {
+  return <Menu height={tamanho.height} width={tamanho.width} {...props} />;
 };

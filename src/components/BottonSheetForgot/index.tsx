@@ -37,13 +37,13 @@ import {
 } from '../SVG';
 
 import themes from '../../themes';
-
-/* interface BottonSheetProps {
+/* 
+ interface BottonSheetProps {
   onPress: () => void
-  props: any
-} */
+} 
+const BottonSheetForgot: React.FC <BottonSheetProps> = ({...rest}) => { */
 
-const BottonSheetForgot = (Props:any) => {
+const BottonSheetForgot = ({...rest}) => {
 
   const navigation: any = useNavigation();
   const { t } = useTranslation('translation');
@@ -246,7 +246,7 @@ const BottonSheetForgot = (Props:any) => {
   return (
     <BottomSheetModalProvider>
       <Button
-        onPress={() => handlePresentModalPress(Props)}
+        onPress={handlePresentModalPress}
         title="Button Funcional"
         color="black"
       />

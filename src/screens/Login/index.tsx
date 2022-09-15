@@ -109,7 +109,7 @@ export default function Login(Props: any) {
       </KeyboardAvoidingView>
       <RowRight style={{ paddingTop: 8 }}>
         <SubTituloLink
-          onPress={OpenModal}
+          onPress={() => console.log('modal')}
         >
           {t('loginScreen.forgot_your_password')}
         </SubTituloLink>
@@ -157,7 +157,7 @@ export default function Login(Props: any) {
         </SubTituloLink>
       </RowCenter>
       
-      <BottonSheetForgot></BottonSheetForgot>
+      <BottonSheetForgot ></BottonSheetForgot>
     </Container>
   );
 }
