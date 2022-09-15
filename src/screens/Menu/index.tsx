@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native';
 import { Container, Row, RowCenter } from '../../components/Global';
 import { SubTitulo } from '../../components/Text';
 import { Header } from '../../components/Header';
-import { IconCat, IconMenu, IconSearch } from '../../components/SVG';
+import { IconCat, IconMenu, IconSearch, IconSliders } from '../../components/SVG';
 import themes from '../../themes';
 import { InputText, InputView } from '../../components/TextInput';
 
@@ -20,8 +20,6 @@ export default function Menu() {
         <IconCat height={50} width={50} />
         <TouchableOpacity onPress={() => console.log('Menu')}>
           <IconMenu
-            height={30}
-            width={30}
             style={{ color: themes.light.COLORS.secondary }}
           />
         </TouchableOpacity>
@@ -32,16 +30,14 @@ export default function Menu() {
             style={{ marginLeft: 10, color: themes.light.COLORS.secondary }}
           />
           <InputText
-            style={{ marginLeft: 8, width: '72%' }}
+            style={{ marginLeft: 8, width: '74%' }}
             placeholder={t('menuScreen.search')}
             //onChangeText={setTextPassword}
             //value={textPassword}
             maxLength={33}
           ></InputText>
           <TouchableOpacity onPress={() => console.log('Icone')}>
-            <IconMenu
-              height={30}
-              width={30}
+            <IconSliders
               style={{ color: themes.light.COLORS.secondary }}
             />
           </TouchableOpacity>

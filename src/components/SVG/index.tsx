@@ -8,6 +8,7 @@ import Slug from '../../../assets/icons/slug.svg';
 import Cat from '../../../assets/icons/cat.svg'
 import Menu from '../../../assets/icons/menu.svg'
 import Search from '../../../assets/icons/search.svg'
+import Sliders from '../../../assets/icons/sliders.svg'
 import User from '../../../assets/icons/user.svg'
 
 const tamanho = {
@@ -57,4 +58,8 @@ export const IconSearch = (props: any) => {
 
 export const IconUser = (props: any) => {
   return <User height={tamanho.height} width={tamanho.width} {...props} />;
+};
+
+export const IconSliders = (props: any) => {
+  return <Sliders height={tamanho.height} width={tamanho.width} {...props} />;
 };
