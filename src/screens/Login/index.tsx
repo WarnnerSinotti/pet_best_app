@@ -31,7 +31,8 @@ import {
 
 import themes from '../../themes';
 
-export default function Login(Props: any) {
+
+export default function Login({}) {
   const navigation: any = useNavigation();
   const { t } = useTranslation('translation');
   const [textEmail, setTextEmail] = React.useState('');
@@ -41,10 +42,9 @@ export default function Login(Props: any) {
   const VisualPassword = () => {
     setEyed((current) => !current);
   };
-
-  const OpenModal = (Props: any) => {
-    console.log('inserir para abrir modal')
-    Props.handlePresentModalPress
+ 
+  const warnner = () => {
+    console.log('entrar')
   };
 
   return (
@@ -109,7 +109,7 @@ export default function Login(Props: any) {
       </KeyboardAvoidingView>
       <RowRight style={{ paddingTop: 8 }}>
         <SubTituloLink
-          onPress={() => console.log('modal')}
+          onPress={warnner}
         >
           {t('loginScreen.forgot_your_password')}
         </SubTituloLink>
@@ -157,7 +157,7 @@ export default function Login(Props: any) {
         </SubTituloLink>
       </RowCenter>
       
-      <BottonSheetForgot ></BottonSheetForgot>
+      <BottonSheetForgot warnner={() => console.log('warnner')}/>
     </Container>
   );
 }
