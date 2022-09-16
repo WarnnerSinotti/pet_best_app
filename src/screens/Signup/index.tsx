@@ -246,9 +246,9 @@ export default function Signup(Props: any) {
           </RowCenter>
 
           <RowCenter style={{ padding: 6 }}>
-            <MyDivider />
-            <ORText>{t('loginScreen.or')}</ORText>
-            <MyDivider />
+          <MyDivider style={{ width: '46%', height: 2, backgroundColor: themes.light.COLORS.neutral}}/>
+        <ORText>{t('loginScreen.or')}</ORText>
+        <MyDivider style={{ width: '46%', height: 2, backgroundColor: themes.light.COLORS.neutral}}/>
           </RowCenter>
           <RowCenter style={{ padding: 14 }}>
             <MyButtonSocialSubmit

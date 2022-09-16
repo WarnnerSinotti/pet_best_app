@@ -9,6 +9,8 @@ import { Header } from '../../components/Header';
 import { IconCat, IconMenu, IconSearch, IconSliders } from '../../components/SVG';
 import themes from '../../themes';
 import { InputText, InputView } from '../../components/TextInput';
+import { MyDivider } from '../../components/Divider';
+import { CardLocalization } from '../../components/CardLocalization';
 
 export default function Menu() {
   const navigation: any = useNavigation();
@@ -43,6 +45,13 @@ export default function Menu() {
           </TouchableOpacity>
         </InputView>
       </RowCenter>
+      <CardLocalization style={{ paddingTop: 20}}>
+      <SubTitulo>Adicionar Localização</SubTitulo>
+      </CardLocalization>
+      <RowCenter style={{ paddingTop: 20}}>
+      <MyDivider/>
+      </RowCenter>
+
       <SubTitulo>Icon</SubTitulo>
 
       <MyButtonTextSubmit>MENU</MyButtonTextSubmit>
