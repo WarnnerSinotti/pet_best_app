@@ -9,4 +9,5 @@ export const CardLocalization = styled.View`
   align-items: center;
   justify-content: center;
   margin-top: 16px;
+  margin-left: 20px;
 `;

@@ -1,9 +1,16 @@
 import { useNavigation } from '@react-navigation/native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
 import { FlatList, TouchableOpacity } from 'react-native';
-import { Column, Container, Row, RowCenter, RowLeft } from '../../components/Global';
+import {
+  Column,
+  Container,
+  Row,
+  RowCenter,
+  RowCenterCard,
+  RowLeft,
+} from '../../components/Global';
 import { SubTitulo } from '../../components/Text';
 import { Header } from '../../components/Header';
 import {
@@ -19,39 +26,38 @@ import { CardLocalization } from '../../components/Card/CardLocalization';
 import { CardMenuList } from '../../components/Card/CardMenuList';
 import { FlatlistMenu } from '../../components/FlatList';
 
+/* interface IUser {
+  id: number;
+  title: string;
+} */
+
 export default function Menu() {
   const navigation: any = useNavigation();
   const { t } = useTranslation();
-  const [selectedId, setSelectedId] = useState(null);
-    
-  const DATA = [
+
+  const services = [
     {
-      id: '01',
+      id: '1',
       title: 'First Item',
     },
     {
-      id: '02',
+      id: '2',
       title: 'Second Item',
     },
     {
-      id: '03',
+      id: '3',
       title: 'Third Item',
     },
-  ]
+  ];
 
-
-  const renderItem = ( item: any ) => {
-
-    return (
-      <CardMenuList
-        item={item}
-        onPress={() => setSelectedId(item.id)}
-      />
-    );
-  };
+  const cardList = ({ item }) => (
+    <CardMenuList item={item.id}>
+      <SubTitulo>{item.title}</SubTitulo>
+    </CardMenuList>
+  );
 
   return (
-    <Container style={{ justifyContent: 'flex-start', paddingTop: 50 }}>
+    <Container style={{ justifyContent: 'flex-start', paddingTop: 50,  }}>
       <Header>
         <IconCat height={50} width={50} />
         <TouchableOpacity onPress={() => console.log('Menu')}>
@@ -82,34 +88,21 @@ export default function Menu() {
         <MyDivider />
       </RowCenter>
 
-      <Row style={{padding: 24}}>
+      <Row style={{ padding: 24 }}>
         <SubTitulo>{t('menuScreen.services')}</SubTitulo>
       </Row>
 
       {/* ADICIONANDO SERVIÇOS  */}
-      <SubTitulo>hi</SubTitulo>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        extraData={selectedId}
+      <RowCenterCard>
+      <FlatlistMenu
+        data={services}
+        renderItem={cardList}
+        showsVerticalScrollIndicator={true}
       />
-     
-      <SubTitulo>Text</SubTitulo>
-      <SubTitulo>Text</SubTitulo>
-      <SubTitulo>Text</SubTitulo>
-      <SubTitulo>Text</SubTitulo>
-      <SubTitulo>Text</SubTitulo>
-      <SubTitulo>Text</SubTitulo>
-      <SubTitulo>Text</SubTitulo>
-      <SubTitulo>Text</SubTitulo>
- 
-
-      
-      
-      <MyButtonTextSubmit>MENU</MyButtonTextSubmit>
+      </RowCenterCard>
+    
       <MyButtonSubmit onPress={() => navigation.navigate('Login')}>
-        <MyButtonTextSubmit>Voltar</MyButtonTextSubmit>
+        <MyButtonTextSubmit>Back Warnner</MyButtonTextSubmit>
       </MyButtonSubmit>
     </Container>
   );
