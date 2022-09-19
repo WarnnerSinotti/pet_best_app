@@ -17,8 +17,6 @@ export const NameAppText = styled(Titulo)`
 
 //SUB TITULO
 export const SubTitulo = styled.Text`
-  align-items: flex-start;
-  justify-content: flex-start;
   font-size: ${({ ...props }) => props.theme.FONT_SIZE.h6}px;
   color: ${(props: any) => props.theme.COLORS.color};
   font-family: ${(props: any) => props.theme.FONTS.LEXEND_BOLD};
@@ -26,8 +24,6 @@ export const SubTitulo = styled.Text`
 
 //SUB TITULO COM LINK
 export const SubTituloLink = styled.Text`
-  align-items: flex-start;
-  justify-content: flex-start;
   font-size: ${({ ...props }) => props.theme.FONT_SIZE.caption}px;
   color: ${(props: any) => props.theme.COLORS.secondary};
   font-family: ${(props: any) => props.theme.FONTS.LEXEND_BOLD};

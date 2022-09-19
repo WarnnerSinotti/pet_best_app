@@ -11,7 +11,7 @@ import {
   CaptionText,
   Titulo,
 } from '../../components/Text';
-import { CardContainer, CardProgress } from '../../components/Card';
+import { CardContainer, CardProgress } from '../../components/Card/CardGlobal';
 import themes from '../../themes';
 
 export default function Step01({ ...props }) {
