@@ -2,29 +2,17 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
-import { FlatList, SafeAreaView, TouchableOpacity } from 'react-native';
 import {
-  Column,
   Container,
   Row,
   RowCenter,
-  RowCenterCard,
-  RowLeft,
 } from '../../components/Global';
 import { SubTitulo } from '../../components/Text';
-import { Header } from '../../components/Header';
-import {
-  IconCat,
-  IconMenu,
-  IconSearch,
-  IconSliders,
-} from '../../components/SVG';
-import themes from '../../themes';
-import { InputText, InputView } from '../../components/TextInput';
+import HeaderMy from '../../components/Header';
 import { MyDivider } from '../../components/Divider';
 import { CardLocalization } from '../../components/Card/CardLocalization';
-import { CardMenuList } from '../../components/Card/CardMenuList';
-import MenuListWarnner, { FlatlistMenu } from '../../components/FlatList';
+import MenuListHorizontal from '../../components/FlatList';
+import Search from '../../components/Search';
 
 /* interface IUser {
   id: number;
@@ -34,7 +22,7 @@ import MenuListWarnner, { FlatlistMenu } from '../../components/FlatList';
 export default function Menu() {
   const navigation: any = useNavigation();
   const { t } = useTranslation();
-  const [selectedId, setSelectedId] = useState(null)
+  const [selectedId, setSelectedId] = useState(null);
 
   const services = [
     {
@@ -59,37 +47,11 @@ export default function Menu() {
     },
   ];
 
-  const CardList = ({ item }) => (
-    <CardMenuList item={item.id} >
-      <SubTitulo>{item.title}</SubTitulo>
-    </CardMenuList>
-  );
 
   return (
-    <Container style={{ justifyContent: 'flex-start', paddingTop: 50,  }}>
-      <Header>
-        <IconCat height={50} width={50} />
-        <TouchableOpacity onPress={() => console.log('Menu')}>
-          <IconMenu style={{ color: themes.light.COLORS.secondary }} />
-        </TouchableOpacity>
-      </Header>
-      <RowCenter style={{ paddingTop: 25 }}>
-        <InputView style={{ backgroundColor: themes.light.COLORS.greyPrimary }}>
-          <IconSearch
-            style={{ marginLeft: 10, color: themes.light.COLORS.neutral }}
-          />
-          <InputText
-            style={{ marginLeft: 8, width: '74%' }}
-            placeholder={t('menuScreen.search')}
-            //onChangeText={setTextPassword}
-            //value={textPassword}
-            maxLength={33}
-          ></InputText>
-          <TouchableOpacity onPress={() => console.log('Icone')}>
-            <IconSliders style={{ color: themes.light.COLORS.neutral }} />
-          </TouchableOpacity>
-        </InputView>
-      </RowCenter>
+    <Container style={{ justifyContent: 'flex-start', paddingTop: 50 }}>
+      <HeaderMy/>
+      <Search />
       <CardLocalization>
         <SubTitulo>Adicionar Localização</SubTitulo>
       </CardLocalization>
@@ -103,12 +65,10 @@ export default function Menu() {
 
       {/* ADICIONANDO SERVIÇOS  */}
 
-<RowCenter>
-
-      <MenuListWarnner/>
-        
- </RowCenter>
- <MyButtonSubmit onPress={() => navigation.navigate('Shop')}>
+      <RowCenter>
+        <MenuListHorizontal />
+      </RowCenter>
+      <MyButtonSubmit onPress={() => navigation.navigate('Shop')}>
         <MyButtonTextSubmit>Shop</MyButtonTextSubmit>
       </MyButtonSubmit>
 

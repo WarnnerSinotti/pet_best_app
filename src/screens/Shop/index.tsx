@@ -2,6 +2,9 @@ import React from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
 import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';
+import HeaderMy from '../../components/Header';
+import { Container } from '../../components/Global';
+import Search from '../../components/Search';
 
 const DATA = [
   {
@@ -32,7 +35,9 @@ const App = () => {
   const navigation: any = useNavigation();
 
   return (
-    <SafeAreaView style={styles.container}>
+    <Container style={{ justifyContent: 'flex-start', paddingTop: 50 }}>
+       <HeaderMy />
+       <Search />
       <FlatList
         data={DATA}
         renderItem={renderItem}
@@ -42,13 +47,12 @@ const App = () => {
       <MyButtonSubmit onPress={() => navigation.navigate('Menu')}>
         <MyButtonTextSubmit>Back Warnner</MyButtonTextSubmit>
       </MyButtonSubmit>
-    </SafeAreaView>
+    </Container>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     marginTop: StatusBar.currentHeight || 0,
   },
   item: {
