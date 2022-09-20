@@ -1,53 +1,79 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
-import { TouchableOpacity } from 'react-native';
-import { Container, Row, RowCenter } from '../../components/Global';
+import {
+  Container,
+  Row,
+  RowCenter,
+} from '../../components/Global';
 import { SubTitulo } from '../../components/Text';
-import { Header } from '../../components/Header';
-import { IconCat, IconMenu, IconSearch, IconSliders } from '../../components/SVG';
-import themes from '../../themes';
-import { InputText, InputView } from '../../components/TextInput';
+import HeaderMy from '../../components/Header';
+import { MyDivider } from '../../components/Divider';
+import { CardLocalization } from '../../components/Card/CardLocalization';
+import MenuListHorizontal from '../../components/FlatList';
+import Search from '../../components/Search';
+
+/* interface IUser {
+  id: number;
+  title: string;
+} */
 
 export default function Menu() {
   const navigation: any = useNavigation();
   const { t } = useTranslation();
+  const [selectedId, setSelectedId] = useState(null);
+
+  const services = [
+    {
+      id: '1',
+      title: 'item 1',
+    },
+    {
+      id: '2',
+      title: 'item 2',
+    },
+    {
+      id: '3',
+      title: 'item 3',
+    },
+    {
+      id: '4',
+      title: 'item 4',
+    },
+    {
+      id: '5',
+      title: 'item 5',
+    },
+  ];
+
 
   return (
-    <Container>
-      <Header>
-        <IconCat height={50} width={50} />
-        <TouchableOpacity onPress={() => console.log('Menu')}>
-          <IconMenu
-            style={{ color: themes.light.COLORS.secondary }}
-          />
-        </TouchableOpacity>
-      </Header>
-      <RowCenter style={{ paddingTop: 25 }}>
-        <InputView style={{ backgroundColor: themes.light.COLORS.greyPrimary }}>
-          <IconSearch
-            style={{ marginLeft: 10, color: themes.light.COLORS.secondary }}
-          />
-          <InputText
-            style={{ marginLeft: 8, width: '74%' }}
-            placeholder={t('menuScreen.search')}
-            //onChangeText={setTextPassword}
-            //value={textPassword}
-            maxLength={33}
-          ></InputText>
-          <TouchableOpacity onPress={() => console.log('Icone')}>
-            <IconSliders
-              style={{ color: themes.light.COLORS.secondary }}
-            />
-          </TouchableOpacity>
-        </InputView>
+    <Container style={{ justifyContent: 'flex-start', paddingTop: 50 }}>
+      <HeaderMy/>
+      <Search />
+      <CardLocalization>
+        <SubTitulo>Adicionar Localização</SubTitulo>
+      </CardLocalization>
+      <RowCenter style={{ paddingTop: 20 }}>
+        <MyDivider />
       </RowCenter>
-      <SubTitulo>Icon</SubTitulo>
 
-      <MyButtonTextSubmit>MENU</MyButtonTextSubmit>
+      <Row style={{ padding: 24 }}>
+        <SubTitulo>{t('menuScreen.services')}</SubTitulo>
+      </Row>
+
+      {/* ADICIONANDO SERVIÇOS  */}
+
+      <RowCenter>
+        <MenuListHorizontal />
+      </RowCenter>
+      <MyButtonSubmit onPress={() => navigation.navigate('Shop')}>
+        <MyButtonTextSubmit>Shop</MyButtonTextSubmit>
+      </MyButtonSubmit>
+
       <MyButtonSubmit onPress={() => navigation.navigate('Login')}>
-        <MyButtonTextSubmit>Voltar</MyButtonTextSubmit>
+        <MyButtonTextSubmit>Back Warnner</MyButtonTextSubmit>
       </MyButtonSubmit>
     </Container>
   );

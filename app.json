@@ -4,7 +4,7 @@
     "slug": "myPetFriend",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icons/cat.svg",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/slug.png",

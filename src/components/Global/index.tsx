@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   background: ${(props: any) => props.theme.COLORS.background};
   flex: 1;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 `;
 
@@ -33,7 +33,6 @@ export const RowCenter = styled.View`
   align-items: center;
   padding-left: 24px;
   padding-right: 24px;
-
 `;
 
 export const RowCenterCard = styled.View`

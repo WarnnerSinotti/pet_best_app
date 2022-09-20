@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Alert, KeyboardAvoidingView, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -28,23 +28,28 @@ import {
   IconLock,
   IconMail,
 } from '../../components/SVG';
+import {
+  BottomSheetModal,
+  } from '@gorhom/bottom-sheet';
 
 import themes from '../../themes';
 
-export default function Login(Props: any) {
+
+export default function Login({}) {
   const navigation: any = useNavigation();
   const { t } = useTranslation('translation');
   const [textEmail, setTextEmail] = React.useState('');
   const [textPassword, setTextPassword] = React.useState('');
   const [eyed, setEyed] = React.useState(true);
+  
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
   const VisualPassword = () => {
     setEyed((current) => !current);
   };
 
-  const OpenModal = (Props: any) => {
-    console.log('inserir para abrir modal')
-    Props.handlePresentModalPress
+  const Danilo = () => {
+    bottomSheetModalRef.current?.present()
   };
 
   return (
@@ -109,7 +114,7 @@ export default function Login(Props: any) {
       </KeyboardAvoidingView>
       <RowRight style={{ paddingTop: 8 }}>
         <SubTituloLink
-          onPress={() => console.log('modal')}
+          onPress={Danilo}
         >
           {t('loginScreen.forgot_your_password')}
         </SubTituloLink>
@@ -121,9 +126,9 @@ export default function Login(Props: any) {
       </RowCenter>
 
       <RowCenter style={{ paddingTop: 40 }}>
-        <MyDivider />
+        <MyDivider style={{ width: '46%', height: 2, backgroundColor: themes.light.COLORS.neutral}}/>
         <ORText>{t('loginScreen.or')}</ORText>
-        <MyDivider />
+        <MyDivider style={{ width: '46%', height: 2, backgroundColor: themes.light.COLORS.neutral}}/>
       </RowCenter>
       <RowCenter style={{ paddingTop: 40 }}>
         <MyButtonSocialSubmit
@@ -147,7 +152,6 @@ export default function Login(Props: any) {
           </MyButtonSocialTextSubmit>
         </MyButtonSocialSubmit>
       </RowCenter>
-
       <RowCenter style={{ paddingTop: 42 }}>
         <NewPetFriendText>
           {t('loginScreen.new_to_my_pet_friend')}
@@ -156,8 +160,7 @@ export default function Login(Props: any) {
           {t('loginScreen.sign_up')}
         </SubTituloLink>
       </RowCenter>
-      
-      <BottonSheetForgot ></BottonSheetForgot>
+      <BottonSheetForgot bottomSheetModalRef={bottomSheetModalRef} />
     </Container>
   );
 }

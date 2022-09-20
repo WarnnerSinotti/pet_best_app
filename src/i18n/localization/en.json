@@ -50,7 +50,8 @@
     "sign_in": "Log in"
   },
   "menuScreen":{
-    "search": "Search"
+    "search": "Search",
+    "services": "Services"
   },
   "stepCardScreen": {
     "titleStep01": "My Pet Friend",

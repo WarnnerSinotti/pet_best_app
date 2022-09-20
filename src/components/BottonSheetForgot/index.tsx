@@ -37,13 +37,14 @@ import {
 } from '../SVG';
 
 import themes from '../../themes';
-/* 
- interface BottonSheetProps {
-  onPress: () => void
-} 
-const BottonSheetForgot: React.FC <BottonSheetProps> = ({...rest}) => { */
 
-const BottonSheetForgot = ({...rest}) => {
+ interface BottonSheetProps {
+  bottomSheetModalRef: any
+ }
+
+const BottonSheetForgot: React.FC <BottonSheetProps> = ({bottomSheetModalRef}) => { 
+
+//const BottonSheetForgot = ({...rest}) => {
 
   const navigation: any = useNavigation();
   const { t } = useTranslation('translation');
@@ -86,22 +87,8 @@ const BottonSheetForgot = ({...rest}) => {
     setEyed((current) => !current);
   };
 
-  // ref
-  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-
   // variables
   const snapPoints = useMemo(() => ['25%', '50%'], []);
-
-  // callbacks
-  const handlePresentModalPress = useCallback((Props) => {
-    bottomSheetModalRef.current?.present();
-  }, []);
-
-  const handleSheetChanges = useCallback(( index: number) => {
-    console.log('handleSheetChanges', index);
-    setStep(1) //Quando fecha retorna para Primeiro Step
-  }, []);
-
 
   const Click = () => {
     if (step === 3) {
@@ -245,18 +232,12 @@ const BottonSheetForgot = ({...rest}) => {
   // renders
   return (
     <BottomSheetModalProvider>
-      <Button
-        onPress={handlePresentModalPress}
-        title="Button Funcional"
-        color="black"
-      />
       <BottomSheetModal
         style={styles.container}
         handleIndicatorStyle={{backgroundColor: themes.light.COLORS.secondary, width: 50}}
         ref={bottomSheetModalRef}
         index={1}
         snapPoints={snapPoints}
-        onChange={handleSheetChanges}
       >
         <View style={styles.contentContainer}>{listItems}</View>
       </BottomSheetModal>

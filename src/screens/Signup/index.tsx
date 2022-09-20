@@ -39,7 +39,7 @@ import {
   IconUser,
 } from '../../components/SVG';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { CardContainerSingup } from '../../components/Card';
+import { CardContainerSingup } from '../../components/Card/CardGlobal';
 import { MotiView } from 'moti';
 import { ProgressSignup } from '../../components/Progress';
 
@@ -246,11 +246,11 @@ export default function Signup(Props: any) {
           </RowCenter>
 
           <RowCenter style={{ padding: 6 }}>
-            <MyDivider />
-            <ORText>{t('loginScreen.or')}</ORText>
-            <MyDivider />
+          <MyDivider style={{ width: '46%', height: 2, backgroundColor: themes.light.COLORS.neutral}}/>
+        <ORText>{t('loginScreen.or')}</ORText>
+        <MyDivider style={{ width: '46%', height: 2, backgroundColor: themes.light.COLORS.neutral}}/>
           </RowCenter>
-          <RowCenter style={{ padding: 14 }}>
+          <RowCenter style={{ padding: 12 }}>
             <MyButtonSocialSubmit
               testID={'Google_btn'}
               onPress={() => Alert.alert('Ainda não funcionando')}
@@ -273,7 +273,7 @@ export default function Signup(Props: any) {
             </MyButtonSocialSubmit>
           </RowCenter>
 
-          <RowCenter style={{ padding: 24 }}>
+          <RowCenter style={{ padding: 12 }}>
             <NewPetFriendText>
               {t('singupScreen.alreadyHaveAnAccount')}
             </NewPetFriendText>
