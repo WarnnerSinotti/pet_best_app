@@ -33,7 +33,6 @@ export const RowCenter = styled.View`
   align-items: center;
   padding-left: 24px;
   padding-right: 24px;
-
 `;
 
 export const RowCenterCard = styled.View`

@@ -10,6 +10,7 @@ import Menu from '../screens/Menu';
 import Step01 from '../screens/Step01';
 import Signup from '../screens/Signup';
 import Forgot from '../screens/Forgot';
+import Shop from '../screens/Shop';
 
 const Stack = createStackNavigator();
 
@@ -62,6 +63,18 @@ export default function Routes() {
           component={Forgot}
           options={{
             title: 'Forgot',
+            headerTransparent: true,
+            gestureEnabled: true,
+            cardStyleInterpolator:
+              CardStyleInterpolators.forFadeFromBottomAndroid,
+            headerShown: false, //desabilitar depois ativando titulo
+          }}
+        />
+        <Stack.Screen
+          name="Shop"
+          component={Shop}
+          options={{
+            title: 'Shop',
             headerTransparent: true,
             gestureEnabled: true,
             cardStyleInterpolator:

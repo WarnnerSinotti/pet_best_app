@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
-import { FlatList, TouchableOpacity } from 'react-native';
+import { FlatList, SafeAreaView, TouchableOpacity } from 'react-native';
 import {
   Column,
   Container,
@@ -24,7 +24,7 @@ import { InputText, InputView } from '../../components/TextInput';
 import { MyDivider } from '../../components/Divider';
 import { CardLocalization } from '../../components/Card/CardLocalization';
 import { CardMenuList } from '../../components/Card/CardMenuList';
-import { FlatlistMenu } from '../../components/FlatList';
+import MenuListWarnner, { FlatlistMenu } from '../../components/FlatList';
 
 /* interface IUser {
   id: number;
@@ -34,24 +34,33 @@ import { FlatlistMenu } from '../../components/FlatList';
 export default function Menu() {
   const navigation: any = useNavigation();
   const { t } = useTranslation();
+  const [selectedId, setSelectedId] = useState(null)
 
   const services = [
     {
       id: '1',
-      title: 'First Item',
+      title: 'item 1',
     },
     {
       id: '2',
-      title: 'Second Item',
+      title: 'item 2',
     },
     {
       id: '3',
-      title: 'Third Item',
+      title: 'item 3',
+    },
+    {
+      id: '4',
+      title: 'item 4',
+    },
+    {
+      id: '5',
+      title: 'item 5',
     },
   ];
 
-  const cardList = ({ item }) => (
-    <CardMenuList item={item.id}>
+  const CardList = ({ item }) => (
+    <CardMenuList item={item.id} >
       <SubTitulo>{item.title}</SubTitulo>
     </CardMenuList>
   );
@@ -93,14 +102,16 @@ export default function Menu() {
       </Row>
 
       {/* ADICIONANDO SERVIÇOS  */}
-      <RowCenterCard>
-      <FlatlistMenu
-        data={services}
-        renderItem={cardList}
-        showsVerticalScrollIndicator={true}
-      />
-      </RowCenterCard>
-    
+
+<RowCenter>
+
+      <MenuListWarnner/>
+        
+ </RowCenter>
+ <MyButtonSubmit onPress={() => navigation.navigate('Shop')}>
+        <MyButtonTextSubmit>Shop</MyButtonTextSubmit>
+      </MyButtonSubmit>
+
       <MyButtonSubmit onPress={() => navigation.navigate('Login')}>
         <MyButtonTextSubmit>Back Warnner</MyButtonTextSubmit>
       </MyButtonSubmit>
