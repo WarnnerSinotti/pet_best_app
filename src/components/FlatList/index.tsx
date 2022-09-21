@@ -12,26 +12,31 @@ import themes from '../../themes';
 const DATA = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'Services',
+    title: 'Shop',
+    button: () =>  console.log('01')
   },
   {
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
     title: 'Clinic',
+    button: () => console.log('02')
   },
   {
     id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Shop',
+    title: 'Services',
+    button: () => console.log('03')
   },
 ];
 
+
 const Item = ({ item, onPress, backgroundColor, textColor }) => (
-  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
+  <TouchableOpacity onPress={onPress}  style={[styles.item, backgroundColor]}>
     <Text style={[styles.title, textColor]}>{item.title}</Text>
   </TouchableOpacity>
 );
 
 const MenuListHorizontal = () => {
   const [selectedId, setSelectedId] = useState(null);
+  const [selectedButton, setSelectedButton] = useState(1);
 
   const renderItem = ({ item }) => {
     const backgroundColor =
@@ -39,6 +44,7 @@ const MenuListHorizontal = () => {
         ? themes.light.COLORS.secondary
         : themes.light.COLORS.neutral;
     const color = item.id === selectedId ? 'white' : 'black';
+    //console.log(item.id)
 
     return (
       <Item
