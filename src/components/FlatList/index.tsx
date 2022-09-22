@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
   FlatList,
   SafeAreaView,
@@ -11,24 +12,30 @@ import themes from '../../themes';
 
 const DATA = [
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    id: '1',
     title: 'Shop',
-    button: () =>  console.log('01')
+    //button: () =>  console.log('01')
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    id: '2',
     title: 'Clinic',
-    button: () => console.log('02')
+    //button: () => console.log('02')
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    id: '3',
     title: 'Services',
-    button: () => console.log('03')
+    //button: () => console.log('03')
   },
 ];
 
+interface ItemProps {
+  item: any;
+  onPress: () => void;
+  backgroundColor: any;
+  textColor: any;
+}
 
-const Item = ({ item, onPress, backgroundColor, textColor }) => (
+const Item = ({ item, onPress, backgroundColor, textColor }: ItemProps) => (
   <TouchableOpacity onPress={onPress}  style={[styles.item, backgroundColor]}>
     <Text style={[styles.title, textColor]}>{item.title}</Text>
   </TouchableOpacity>
@@ -38,13 +45,12 @@ const MenuListHorizontal = () => {
   const [selectedId, setSelectedId] = useState(null);
   const [selectedButton, setSelectedButton] = useState(1);
 
-  const renderItem = ({ item }) => {
+  const renderItem = ({ item }: ItemProps) => {
     const backgroundColor =
       item.id === selectedId
         ? themes.light.COLORS.secondary
         : themes.light.COLORS.neutral;
     const color = item.id === selectedId ? 'white' : 'black';
-    //console.log(item.id)
 
     return (
       <Item

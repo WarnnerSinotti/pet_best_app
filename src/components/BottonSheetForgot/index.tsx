@@ -231,9 +231,9 @@ const BottonSheetForgot: React.FC <BottonSheetProps> = ({bottomSheetModalRef}) =
   });
   // renders
   return (
-    <BottomSheetModalProvider>
+    <BottomSheetModalProvider >
       <BottomSheetModal
-        style={styles.container}
+        style={styles.container }
         handleIndicatorStyle={{backgroundColor: themes.light.COLORS.secondary, width: 50}}
         ref={bottomSheetModalRef}
         index={1}
@@ -249,10 +249,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+    opacity: 0.9,
   },
   contentContainer: {
     flex: 1,
     alignItems: 'center',
+    opacity: 0.9,
   },
 });
 

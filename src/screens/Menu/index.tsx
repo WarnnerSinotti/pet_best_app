@@ -13,6 +13,7 @@ import { MyDivider } from '../../components/Divider';
 import { CardLocalization } from '../../components/Card/CardLocalization';
 import MenuListHorizontal from '../../components/FlatList';
 import Search from '../../components/Search';
+import MyMap from '../../components/Map';
 
 /* interface IUser {
   id: number;
@@ -29,7 +30,7 @@ export default function Menu() {
       <HeaderMy/>
       <Search />
       <CardLocalization>
-        <SubTitulo>Adicionar Localização</SubTitulo>
+      <MyMap/>
       </CardLocalization>
       <RowCenter style={{ paddingTop: 20 }}>
         <MyDivider />
@@ -52,5 +53,6 @@ export default function Menu() {
         <MyButtonTextSubmit>Back Warnner</MyButtonTextSubmit>
       </MyButtonSubmit>
     </Container>
+    
   );
 }

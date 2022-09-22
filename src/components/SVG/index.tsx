@@ -10,6 +10,7 @@ import Menu from '../../../assets/icons/menu.svg'
 import Search from '../../../assets/icons/search.svg'
 import Sliders from '../../../assets/icons/sliders.svg'
 import User from '../../../assets/icons/user.svg'
+import MapPin from '../../../assets/icons/map-pin.svg'
 
 const tamanho = {
   height: 25,
@@ -62,4 +63,8 @@ export const IconUser = (props: any) => {
 
 export const IconSliders = (props: any) => {
   return <Sliders height={tamanho.height} width={tamanho.width} {...props} />;
+};
+
+export const IconMapPin = (props: any) => {
+  return <MapPin height={tamanho.height} width={tamanho.width} {...props} />;
 };
