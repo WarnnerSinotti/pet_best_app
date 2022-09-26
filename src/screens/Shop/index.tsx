@@ -1,36 +1,17 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, TouchableOpacity, Image } from 'react-native';
 import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';
 import HeaderMy from '../../components/Header';
-import { Container } from '../../components/Global';
+import { Container, Row } from '../../components/Global';
 import Search from '../../components/Search';
+import MenuCategory from '../../components/FlatList/MenuCategory';
+import { SubTitulo } from '../../components/Text';
+import { TesteComponent } from '../../components/TESTE';
 
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-];
-
-const Item = ({ title, onPress }) => (
-  <View style={styles.item}>
-    <Text onPress={onPress} style={styles.title}>{title}</Text>
-  </View>
-);
 
 const Shop = () => {
-  const renderItem = ({ item }) => (
-    <Item title={item.title} />
-  );
+
 
   const navigation: any = useNavigation();
 
@@ -38,12 +19,19 @@ const Shop = () => {
     <Container style={{ justifyContent: 'flex-start', paddingTop: 50 }}>
        <HeaderMy />
        <Search />
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-        horizontal
-      />
+       <Row style={{paddingTop: 20}}>
+       <SubTitulo>Category</SubTitulo>
+       </Row>
+       <Row>
+     {/* <MenuCategory /> */}
+
+     
+
+     </Row>
+     <TesteComponent/>
+     <Row style={{paddingTop: 20}}>
+       <SubTitulo>Last Itens</SubTitulo>
+       </Row>
       <MyButtonSubmit onPress={() => navigation.navigate('Menu')}>
         <MyButtonTextSubmit>Back Warnner</MyButtonTextSubmit>
       </MyButtonSubmit>

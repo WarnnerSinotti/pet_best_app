@@ -11,9 +11,9 @@ import { SubTitulo } from '../../components/Text';
 import HeaderMy from '../../components/Header';
 import { MyDivider } from '../../components/Divider';
 import { CardLocalization } from '../../components/Card/CardLocalization';
-import MenuListHorizontal from '../../components/FlatList';
 import Search from '../../components/Search';
 import MyMap from '../../components/Map';
+import MenuServices from '../../components/FlatList/MenuServices';
 
 /* interface IUser {
   id: number;
@@ -43,7 +43,7 @@ export default function Menu() {
       {/* ADICIONANDO SERVIÇOS  */}
 
       <RowCenter>
-        <MenuListHorizontal />
+        <MenuServices />
       </RowCenter>
       <MyButtonSubmit onPress={() => navigation.navigate('Shop')}>
         <MyButtonTextSubmit>Shop</MyButtonTextSubmit>
