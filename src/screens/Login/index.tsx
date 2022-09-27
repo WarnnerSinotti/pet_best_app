@@ -53,7 +53,7 @@ export default function Login({}) {
   };
 
   return (
-    <Container>
+    <Container >
       <KeyboardAvoidingView behavior="position">
         <RowCenter>
           <Image
@@ -124,7 +124,6 @@ export default function Login({}) {
           <MyButtonTextSubmit>{t('loginScreen.login')}</MyButtonTextSubmit>
         </MyButtonSubmit>
       </RowCenter>
-
       <RowCenter style={{ paddingTop: 40 }}>
         <MyDivider style={{ width: '46%', height: 2, backgroundColor: themes.light.COLORS.neutral}}/>
         <ORText>{t('loginScreen.or')}</ORText>

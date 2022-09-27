@@ -11,8 +11,9 @@ import { SubTitulo } from '../../components/Text';
 import HeaderMy from '../../components/Header';
 import { MyDivider } from '../../components/Divider';
 import { CardLocalization } from '../../components/Card/CardLocalization';
-import MenuListHorizontal from '../../components/FlatList';
 import Search from '../../components/Search';
+import MyMap from '../../components/Map';
+import MenuServices from '../../components/FlatList/MenuServices';
 
 /* interface IUser {
   id: number;
@@ -24,36 +25,12 @@ export default function Menu() {
   const { t } = useTranslation();
   const [selectedId, setSelectedId] = useState(null);
 
-  const services = [
-    {
-      id: '1',
-      title: 'item 1',
-    },
-    {
-      id: '2',
-      title: 'item 2',
-    },
-    {
-      id: '3',
-      title: 'item 3',
-    },
-    {
-      id: '4',
-      title: 'item 4',
-    },
-    {
-      id: '5',
-      title: 'item 5',
-    },
-  ];
-
-
   return (
     <Container style={{ justifyContent: 'flex-start', paddingTop: 50 }}>
       <HeaderMy/>
       <Search />
       <CardLocalization>
-        <SubTitulo>Adicionar Localização</SubTitulo>
+      <MyMap/>
       </CardLocalization>
       <RowCenter style={{ paddingTop: 20 }}>
         <MyDivider />
@@ -66,7 +43,7 @@ export default function Menu() {
       {/* ADICIONANDO SERVIÇOS  */}
 
       <RowCenter>
-        <MenuListHorizontal />
+        <MenuServices />
       </RowCenter>
       <MyButtonSubmit onPress={() => navigation.navigate('Shop')}>
         <MyButtonTextSubmit>Shop</MyButtonTextSubmit>
@@ -76,5 +53,6 @@ export default function Menu() {
         <MyButtonTextSubmit>Back Warnner</MyButtonTextSubmit>
       </MyButtonSubmit>
     </Container>
+    
   );
 }
