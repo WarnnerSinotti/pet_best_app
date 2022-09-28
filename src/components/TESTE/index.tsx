@@ -1,5 +1,6 @@
-import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { CardCategory, CardTitle } from '../Card/CardCategory';
+import { Image, TouchableOpacity, View } from 'react-native';
+import { CardCategory } from '../Card/CardCategory';
+import { Row, RowCenter } from '../Global';
 import { BodyText, SubTituloLink, Titulo } from '../Text';
 
 export const TesteComponent = () => {
@@ -7,17 +8,16 @@ export const TesteComponent = () => {
     <View>
       <TouchableOpacity>
          <CardCategory>
-         <CardTitle>
+          
         <Image
           source={require('../../../assets/img/fish.png')}
           style={{
-            width: '80%',
-            height: '80%',
+            width: '100%',
+            height: '100%',
+            bottom: 15
           }}
         />
-        <BodyText>Fish</BodyText>
-        
-        </CardTitle>
+        <BodyText style={{bottom: 15}}>Fish</BodyText>
         
         </CardCategory>
       </TouchableOpacity>

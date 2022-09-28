@@ -28,8 +28,11 @@ const Shop = () => {
      
 
      </Row>
+    
      <TesteComponent/>
-     <Row style={{paddingTop: 20}}>
+     <TesteComponent/>
+    
+     <Row >
        <SubTitulo>Last Itens</SubTitulo>
        </Row>
       <MyButtonSubmit onPress={() => navigation.navigate('Menu')}>
