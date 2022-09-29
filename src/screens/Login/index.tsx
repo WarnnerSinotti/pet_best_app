@@ -33,6 +33,7 @@ import {
   } from '@gorhom/bottom-sheet';
 
 import themes from '../../themes';
+import { FocusedW } from '../../components/Focused';
 
 
 export default function Login({}) {
@@ -41,19 +42,23 @@ export default function Login({}) {
   const [textEmail, setTextEmail] = React.useState('');
   const [textPassword, setTextPassword] = React.useState('');
   const [eyed, setEyed] = React.useState(true);
-  
+  const [focused, setFocused] = React.useState(1);
+
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+
 
   const VisualPassword = () => {
     setEyed((current) => !current);
   };
 
-  const Danilo = () => {
+  const Modal = () => {
     bottomSheetModalRef.current?.present()
+    setFocused(.5)
   };
 
   return (
-    <Container >
+    <Container>
+      <FocusedW style={{opacity: focused}}> 
       <KeyboardAvoidingView behavior="position">
         <RowCenter>
           <Image
@@ -114,7 +119,7 @@ export default function Login({}) {
       </KeyboardAvoidingView>
       <RowRight style={{ paddingTop: 8 }}>
         <SubTituloLink
-          onPress={Danilo}
+          onPress={Modal}
         >
           {t('loginScreen.forgot_your_password')}
         </SubTituloLink>
@@ -159,7 +164,8 @@ export default function Login({}) {
           {t('loginScreen.sign_up')}
         </SubTituloLink>
       </RowCenter>
-      <BottonSheetForgot bottomSheetModalRef={bottomSheetModalRef} />
+    </FocusedW> 
+      <BottonSheetForgot bottomSheetModalRef={bottomSheetModalRef} focused={setFocused}/>
     </Container>
   );
 }

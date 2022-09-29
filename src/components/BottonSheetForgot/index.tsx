@@ -40,9 +40,10 @@ import themes from '../../themes';
 
  interface BottonSheetProps {
   bottomSheetModalRef: any
+  focused: any
  }
 
-const BottonSheetForgot: React.FC <BottonSheetProps> = ({bottomSheetModalRef}) => { 
+const BottonSheetForgot: React.FC <BottonSheetProps> = ({bottomSheetModalRef, focused}) => { 
 
 //const BottonSheetForgot = ({...rest}) => {
 
@@ -56,7 +57,6 @@ const BottonSheetForgot: React.FC <BottonSheetProps> = ({bottomSheetModalRef}) =
   const [Code1, setCode1] = React.useState('');
   const [eyedReset, setEyedReset] = React.useState(true);
   const [password, setPassword] = React.useState('');
-
   const [step, setStep] = useState(1);
 
   const group = [
@@ -94,6 +94,7 @@ const BottonSheetForgot: React.FC <BottonSheetProps> = ({bottomSheetModalRef}) =
     if (step === 3) {
       setStep(1);
       bottomSheetModalRef.current?.close();
+      focused=1
     } else {
       setStep(step + 1);
     }
@@ -233,9 +234,10 @@ const BottonSheetForgot: React.FC <BottonSheetProps> = ({bottomSheetModalRef}) =
   return (
     <BottomSheetModalProvider >
       <BottomSheetModal
-        style={styles.container }
+        style={styles.container}
         handleIndicatorStyle={{backgroundColor: themes.light.COLORS.secondary, width: 50}}
         ref={bottomSheetModalRef}
+        focused={focused}
         index={1}
         snapPoints={snapPoints}
       >
@@ -249,12 +251,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    opacity: 0.9,
   },
   contentContainer: {
     flex: 1,
     alignItems: 'center',
-    opacity: 0.9,
   },
 });
 

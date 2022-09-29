@@ -10,6 +10,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import themes from '../../../themes';
+import { Row } from '../../Global';
+import { BodyText } from '../../Text';
 
 const DATA = [
   {
@@ -68,11 +70,12 @@ const Item = ({ item, onPress, backgroundColor, textColor }: ItemProps) => (
     <Image
             source={item.image}
             style={{
-              width: '40%',
-              height: '40%',
+              width: '100%',
+              height: '100%',
+              bottom: 30
             }}
           ></Image>
-    <Text style={[styles.title, textColor]}>{item.title}</Text>
+    <BodyText style={[styles.title, textColor]}>{item.title}</BodyText>
   </TouchableOpacity>
 );
 
@@ -88,12 +91,14 @@ const MenuCategory = () => {
     const color = item.id === selectedId ? 'white' : 'black';
 
     return (
+      <Row style={{width: '10%', paddingLeft: 0,  justifyContent: 'left' }}>
       <Item
         item={item}
         onPress={() => setSelectedId(item.id)}
         backgroundColor={{ backgroundColor }}
         textColor={{ color }}
       />
+      </Row>
     );
   };
 
@@ -118,13 +123,18 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight || 0,
   },
   item: {
-    padding: 30,
-    marginVertical: 10,
-    marginHorizontal: 10,
+    marginTop: 35,
+    marginVertical: 20,
+    marginRight: 40,
     borderRadius: 12,
+    width: 80,
+    height: 90
   },
   title: {
-    fontSize: 32,
+    fontSize: 10,
+    bottom: 20,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 });
 

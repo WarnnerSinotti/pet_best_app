@@ -7,7 +7,6 @@ import { Container, Row } from '../../components/Global';
 import Search from '../../components/Search';
 import MenuCategory from '../../components/FlatList/MenuCategory';
 import { SubTitulo } from '../../components/Text';
-import { TesteComponent } from '../../components/TESTE';
 
 
 const Shop = () => {
@@ -22,16 +21,15 @@ const Shop = () => {
        <Row style={{paddingTop: 20}}>
        <SubTitulo>Category</SubTitulo>
        </Row>
-       <Row>
-     {/* <MenuCategory /> */}
+   
+     <MenuCategory /> 
 
      
 
-     </Row>
     
-     <TesteComponent/>
-     <TesteComponent/>
     
+
+
      <Row >
        <SubTitulo>Last Itens</SubTitulo>
        </Row>

@@ -1,5 +1,5 @@
-var  MenuCategory = require("./MenuCategory")
-var  MenuServices = require("./MenuServices")
+const  MenuCategory = require("./MenuCategory")
+const  MenuServices = require("./MenuServices")
 
 
 export default {MenuCategory, MenuServices};
