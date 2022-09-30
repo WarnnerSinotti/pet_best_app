@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { useTranslation } from 'react-i18next';
-import { Image, AppRegistry } from 'react-native';
+import { Image } from 'react-native';
 import {
   FlatList,
-  SafeAreaView,
-  StatusBar,
   StyleSheet,
-  Text,
   TouchableOpacity,
 } from 'react-native';
 import themes from '../../../themes';
 import { Row } from '../../Global';
 import { BodyText } from '../../Text';
-import Shop from '../../../screens/Shop';
-
-const {t} = useTranslation('translation')
 
 const DATA = [
   {

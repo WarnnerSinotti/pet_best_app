@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet,StatusBar} from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Alert, KeyboardAvoidingView, Image, View } from 'react-native';
+import { Alert } from 'react-native';
 import {
   CollumSignup,
   ContainerSignup,

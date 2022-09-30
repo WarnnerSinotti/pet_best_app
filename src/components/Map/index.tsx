@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MapView, { Marker, Callout } from 'react-native-maps';
-import { StyleSheet, Image, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import {
   requestForegroundPermissionsAsync,
   getCurrentPositionAsync,
@@ -11,9 +11,6 @@ import { IconMapPin } from '../SVG';
 import themes from '../../themes';
 import { RowLeft } from '../Global';
 import { NewPetFriendText } from '../Text';
-import Geolocation from '@react-native-community/geolocation';
-
-const icon = require('../../../assets/icon.png');
 
 export default function MyMap() {
   const [currentRegion, setCurrentRegion] = useState();
