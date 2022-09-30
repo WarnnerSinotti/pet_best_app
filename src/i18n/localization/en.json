@@ -65,5 +65,17 @@
     "buttonNext": "Next",
     "buttonNextGetStart": "Get Start",
     "skip": "Skip"
+  },
+  "shopScreen":{
+    "category": "Category",
+    "dog": "Dog",
+    "cat": "Cat",
+    "bird": "Bird",
+    "fish": "Fish",
+    "hamster": "Hamster",
+    "rabbit": "Rabbit",
+    "turtle": "Turtle",
+    "lastItems": "Last Items",
+    "promotions": "Promotions"
   }
 }

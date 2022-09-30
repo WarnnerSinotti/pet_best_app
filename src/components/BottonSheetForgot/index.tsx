@@ -40,12 +40,9 @@ import themes from '../../themes';
 
  interface BottonSheetProps {
   bottomSheetModalRef: any
-  focused: any
  }
 
-const BottonSheetForgot: React.FC <BottonSheetProps> = ({bottomSheetModalRef, focused}) => { 
-
-//const BottonSheetForgot = ({...rest}) => {
+const BottonSheetForgot: React.FC <BottonSheetProps> = ({bottomSheetModalRef}) => { 
 
   const navigation: any = useNavigation();
   const { t } = useTranslation('translation');
@@ -94,8 +91,7 @@ const BottonSheetForgot: React.FC <BottonSheetProps> = ({bottomSheetModalRef, fo
     if (step === 3) {
       setStep(1);
       bottomSheetModalRef.current?.close();
-      focused=1
-    } else {
+      } else {
       setStep(step + 1);
     }
   };
@@ -231,13 +227,12 @@ const BottonSheetForgot: React.FC <BottonSheetProps> = ({bottomSheetModalRef, fo
     }
   });
   // renders
-  return (
+  return ( 
     <BottomSheetModalProvider >
       <BottomSheetModal
         style={styles.container}
         handleIndicatorStyle={{backgroundColor: themes.light.COLORS.secondary, width: 50}}
         ref={bottomSheetModalRef}
-        focused={focused}
         index={1}
         snapPoints={snapPoints}
       >

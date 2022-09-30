@@ -53,7 +53,7 @@ export default function Login({}) {
 
   const Modal = () => {
     bottomSheetModalRef.current?.present()
-    setFocused(.5)
+    setFocused(0.5)
   };
 
   return (
@@ -165,7 +165,7 @@ export default function Login({}) {
         </SubTituloLink>
       </RowCenter>
     </FocusedW> 
-      <BottonSheetForgot bottomSheetModalRef={bottomSheetModalRef} focused={setFocused}/>
+      <BottonSheetForgot bottomSheetModalRef={bottomSheetModalRef} />
     </Container>
   );
 }

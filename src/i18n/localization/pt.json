@@ -65,5 +65,17 @@
     "buttonNext": "Próximo",
     "buttonNextGetStart": "Começar",
     "skip": "Fechar"
+  },
+  "shopScreen":{
+    "category": "Categoria",
+    "dog": "Cachorro",
+    "cat": "Gato",
+    "bird": "Pássaro",
+    "fish": "Peixe",
+    "hamster": "Hamster",
+    "rabbit": "Coelho",
+    "turtle": "Tartaruga",
+    "lastItems": "Últimos Itens",
+    "promotions": "Promoções"
   }
 }

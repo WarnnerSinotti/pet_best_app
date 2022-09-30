@@ -1,5 +1,6 @@
 import React from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, TouchableOpacity, Image } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';
 import HeaderMy from '../../components/Header';
@@ -13,26 +14,22 @@ const Shop = () => {
 
 
   const navigation: any = useNavigation();
+  const  {t}  = useTranslation('translation');
 
   return (
     <Container style={{ justifyContent: 'flex-start', paddingTop: 50 }}>
        <HeaderMy />
        <Search />
        <Row style={{paddingTop: 20}}>
-       <SubTitulo>Category</SubTitulo>
+       <SubTitulo>{t('shopScreen.category')}</SubTitulo>
        </Row>
-   
-     <MenuCategory /> 
-
-     
-
-    
-    
-
+       
+ <MenuCategory /> 
 
      <Row >
-       <SubTitulo>Last Itens</SubTitulo>
+       <SubTitulo>{t('shopScreen.lastItems')}</SubTitulo>
        </Row>
+       <SubTitulo>{t('shopScreen.promotions')}</SubTitulo>
       <MyButtonSubmit onPress={() => navigation.navigate('Menu')}>
         <MyButtonTextSubmit>Back Warnner</MyButtonTextSubmit>
       </MyButtonSubmit>

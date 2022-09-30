@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Image } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { Image, AppRegistry } from 'react-native';
 import {
   FlatList,
   SafeAreaView,
@@ -12,6 +13,9 @@ import {
 import themes from '../../../themes';
 import { Row } from '../../Global';
 import { BodyText } from '../../Text';
+import Shop from '../../../screens/Shop';
+
+const {t} = useTranslation('translation')
 
 const DATA = [
   {
@@ -91,7 +95,7 @@ const MenuCategory = () => {
     const color = item.id === selectedId ? 'white' : 'black';
 
     return (
-      <Row style={{width: '10%', paddingLeft: 0,  justifyContent: 'left' }}>
+      <Row style={{width: '10%', justifyContent: 'left' }}>
       <Item
         item={item}
         onPress={() => setSelectedId(item.id)}
@@ -103,7 +107,7 @@ const MenuCategory = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <Row>
       <FlatList
         horizontal
         data={DATA}
@@ -113,22 +117,18 @@ const MenuCategory = () => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       />
-    </SafeAreaView>
+      </Row>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-  },
   item: {
     marginTop: 35,
     marginVertical: 20,
     marginRight: 40,
     borderRadius: 12,
     width: 80,
-    height: 90
+    height: 90,
   },
   title: {
     fontSize: 10,
