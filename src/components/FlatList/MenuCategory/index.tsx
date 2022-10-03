@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { Image } from 'react-native';
 import {
   FlatList,
@@ -9,11 +10,14 @@ import themes from '../../../themes';
 import { Row } from '../../Global';
 import { BodyText } from '../../Text';
 
+//const navigation: any = useNavigation();
+
 const DATA = [
   {
     id: '1',
     title: 'Dog',
     image: require('../../../../assets/img/dog.png'),
+    //button: navigation.navigate('menu')
      //button: () =>  console.log('01')
   },
   {

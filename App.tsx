@@ -36,4 +36,4 @@ export default function App({}) {
   );
   }
 
-  AppRegistry.registerComponent('X', () => App);
+  AppRegistry.registerComponent('Appname', () => App);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+//import { useNavigation } from '@react-navigation/native';
 import {
   FlatList,
   SafeAreaView,
@@ -10,21 +10,23 @@ import {
 } from 'react-native';
 import themes from '../../../themes';
 
+//const navigation = useNavigation();
+
 const DATA = [
   {
     id: '1',
     title: 'Shop',
-    //button: () =>  console.log('01')
+    //button: navigation.navigate('menu')
   },
   {
     id: '2',
     title: 'Clinic',
-    //button: () => console.log('02')
+    //button: navigation.navigate('menu')
   },
   {
     id: '3',
     title: 'Services',
-    //button: () => console.log('03')
+    //button: navigation.navigate('menu')
   },
 ];
 
