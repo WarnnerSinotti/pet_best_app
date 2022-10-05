@@ -28,7 +28,7 @@ const Shop = () => {
        <Row>
        <Warnner/>
        </Row>
-{/*  <MenuCategory />  */}
+  <MenuCategory /> 
 
      <Row >
        <SubTitulo>{t('shopScreen.lastItems')}</SubTitulo>

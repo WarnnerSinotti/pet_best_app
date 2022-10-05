@@ -10,51 +10,49 @@ import themes from '../../../themes';
 import { Row } from '../../Global';
 import { BodyText } from '../../Text';
 
-//const navigation: any = useNavigation();
 
 const DATA = [
   {
     id: '1',
     title: 'Dog',
     image: require('../../../../assets/img/dog.png'),
-    //button: navigation.navigate('menu')
-     //button: () =>  console.log('01')
+    button: 'Menu'
   },
   {
     id: '2',
     title: 'Cat',
-    //button: () => console.log('02')
     image: require('../../../../assets/img/cat.png'),
+    button: 'Menu'
   },
   {
     id: '3',
     title: 'Bird',
-    //button: () => console.log('03')
     image: require('../../../../assets/img/bird.png'),
+    button: 'Menu'
   },
   {
     id: '4',
     title: 'Fish',
-    //button: () => console.log('03')
     image: require('../../../../assets/img/fish.png'),
+    button: 'Menu'
   },
   {
     id: '5',
     title: 'Hamster',
-    //button: () => console.log('03')
     image: require('../../../../assets/img/hamster.png'),
+    button: 'Menu'
   },
   {
     id: '6',
     title: 'Rabbit',
-    //button: () => console.log('03')
     image: require('../../../../assets/img/rabbit.png'),
+    button: 'Menu'
   },
   {
     id: '7',
     title: 'Turtle',
-    //button: () => console.log('03')
     image: require('../../../../assets/img/turtle.png'),
+    button: 'Menu'
   },
 ];
 
@@ -82,6 +80,7 @@ const Item = ({ item, onPress, backgroundColor, textColor }: ItemProps) => (
 const MenuCategory = () => {
   const [selectedId, setSelectedId] = useState(null);
   const [selectedButton, setSelectedButton] = useState(1);
+  const navigation: any = useNavigation();
 
   const renderItem = ({ item }: ItemProps) => {
     const backgroundColor =
@@ -94,7 +93,8 @@ const MenuCategory = () => {
       <Row style={{width: '10%', justifyContent: 'left' }}>
       <Item
         item={item}
-        onPress={() => setSelectedId(item.id)}
+        onPress={() => navigation.navigate(item.button)}
+      //onPress={() => setSelectedId(item.id)}
         backgroundColor={{ backgroundColor }}
         textColor={{ color }}
       />
