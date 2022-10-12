@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { View, StyleSheet, Button } from 'react-native';
+import React, { useMemo, useState } from 'react';
+import { View, StyleSheet } from 'react-native';
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
@@ -44,8 +44,6 @@ import themes from '../../themes';
 
 const BottonSheetForgot: React.FC <BottonSheetProps> = ({bottomSheetModalRef}) => { 
 
-//const BottonSheetForgot = ({...rest}) => {
-
   const navigation: any = useNavigation();
   const { t } = useTranslation('translation');
   const [textEmail, setTextEmail] = React.useState('');
@@ -56,7 +54,6 @@ const BottonSheetForgot: React.FC <BottonSheetProps> = ({bottomSheetModalRef}) =
   const [Code1, setCode1] = React.useState('');
   const [eyedReset, setEyedReset] = React.useState(true);
   const [password, setPassword] = React.useState('');
-
   const [step, setStep] = useState(1);
 
   const group = [
@@ -94,7 +91,7 @@ const BottonSheetForgot: React.FC <BottonSheetProps> = ({bottomSheetModalRef}) =
     if (step === 3) {
       setStep(1);
       bottomSheetModalRef.current?.close();
-    } else {
+      } else {
       setStep(step + 1);
     }
   };
@@ -230,10 +227,10 @@ const BottonSheetForgot: React.FC <BottonSheetProps> = ({bottomSheetModalRef}) =
     }
   });
   // renders
-  return (
+  return ( 
     <BottomSheetModalProvider >
       <BottomSheetModal
-        style={styles.container }
+        style={styles.container}
         handleIndicatorStyle={{backgroundColor: themes.light.COLORS.secondary, width: 50}}
         ref={bottomSheetModalRef}
         index={1}
@@ -249,12 +246,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    opacity: 0.9,
   },
   contentContainer: {
     flex: 1,
     alignItems: 'center',
-    opacity: 0.9,
   },
 });
 

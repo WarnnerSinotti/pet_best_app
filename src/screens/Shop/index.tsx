@@ -1,5 +1,6 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet,StatusBar} from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';
 import HeaderMy from '../../components/Header';
@@ -7,31 +8,32 @@ import { Container, Row } from '../../components/Global';
 import Search from '../../components/Search';
 import MenuCategory from '../../components/FlatList/MenuCategory';
 import { SubTitulo } from '../../components/Text';
-import { TesteComponent } from '../../components/TESTE';
+import Warnner from '../../components/FlatListTest';
+
 
 
 const Shop = () => {
 
 
   const navigation: any = useNavigation();
+  const  {t}  = useTranslation('translation');
 
   return (
     <Container style={{ justifyContent: 'flex-start', paddingTop: 50 }}>
        <HeaderMy />
        <Search />
        <Row style={{paddingTop: 20}}>
-       <SubTitulo>Category</SubTitulo>
+       <SubTitulo>{t('shopScreen.category')}</SubTitulo>
        </Row>
        <Row>
-     {/* <MenuCategory /> */}
-
-     
-
-     </Row>
-     <TesteComponent/>
-     <Row style={{paddingTop: 20}}>
-       <SubTitulo>Last Itens</SubTitulo>
+       <Warnner/>
        </Row>
+  <MenuCategory /> 
+
+     <Row >
+       <SubTitulo>{t('shopScreen.lastItems')}</SubTitulo>
+       </Row>
+       <SubTitulo>{t('shopScreen.promotions')}</SubTitulo>
       <MyButtonSubmit onPress={() => navigation.navigate('Menu')}>
         <MyButtonTextSubmit>Back Warnner</MyButtonTextSubmit>
       </MyButtonSubmit>

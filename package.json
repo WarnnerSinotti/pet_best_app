@@ -8,7 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .tsx"
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.2",

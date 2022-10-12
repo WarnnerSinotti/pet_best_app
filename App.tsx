@@ -2,7 +2,7 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import Routes from './src/routes/Routes';
 import { ThemeProvider } from 'styled-components/native';
-import { useColorScheme } from 'react-native';
+import { useColorScheme, AppRegistry } from 'react-native';
 import './src/i18n/i18n';
 import themes from './src/themes';
 
@@ -36,3 +36,4 @@ export default function App({}) {
   );
   }
 
+  AppRegistry.registerComponent('Appname', () => App);
