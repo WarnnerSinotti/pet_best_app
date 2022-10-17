@@ -16,7 +16,7 @@ const DATA = [
     id: '1',
     title: 'Dog',
     image: require('../../../../assets/img/dog.png'),
-    button: 'Menu'
+    button: 'Dog'
   },
   {
     id: '2',
