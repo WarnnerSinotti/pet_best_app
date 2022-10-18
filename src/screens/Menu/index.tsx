@@ -8,7 +8,7 @@ import {
   RowCenter,
 } from '../../components/Global';
 import { SubTitulo } from '../../components/Text';
-import HeaderMy from '../../components/Header';
+import HeaderMy from '../../components/Header/HeaderMain';
 import { MyDivider } from '../../components/Divider';
 import { CardLocalization } from '../../components/Card/CardLocalization';
 import Search from '../../components/Search';

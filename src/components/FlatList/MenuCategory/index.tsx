@@ -22,37 +22,37 @@ const DATA = [
     id: '2',
     title: 'Cat',
     image: require('../../../../assets/img/cat.png'),
-    button: 'Menu'
+    button: 'Cat'
   },
   {
     id: '3',
     title: 'Bird',
     image: require('../../../../assets/img/bird.png'),
-    button: 'Menu'
+    button: 'Bird'
   },
   {
     id: '4',
     title: 'Fish',
     image: require('../../../../assets/img/fish.png'),
-    button: 'Menu'
+    button: 'Fish'
   },
   {
     id: '5',
     title: 'Hamster',
     image: require('../../../../assets/img/hamster.png'),
-    button: 'Menu'
+    button: 'Hamster'
   },
   {
     id: '6',
     title: 'Rabbit',
     image: require('../../../../assets/img/rabbit.png'),
-    button: 'Menu'
+    button: 'Rabbit'
   },
   {
     id: '7',
     title: 'Turtle',
     image: require('../../../../assets/img/turtle.png'),
-    button: 'Menu'
+    button: 'Turtle'
   },
 ];
 
