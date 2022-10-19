@@ -8,7 +8,6 @@ import { Container, Row } from '../../components/Global';
 import Search from '../../components/Search';
 import MenuCategory from '../../components/FlatList/MenuCategory';
 import { SubTitulo } from '../../components/Text';
-import Warnner from '../../components/FlatListTest';
 
 const Shop = () => {
   const navigation: any = useNavigation();
