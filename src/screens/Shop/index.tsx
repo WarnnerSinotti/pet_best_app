@@ -8,6 +8,7 @@ import { Container, Row } from '../../components/Global';
 import Search from '../../components/Search';
 import MenuCategory from '../../components/FlatList/MenuCategory';
 import { SubTitulo } from '../../components/Text';
+import CardLastItem from '../../components/CardShopping';
 
 const Shop = () => {
   const navigation: any = useNavigation();
@@ -25,7 +26,9 @@ const Shop = () => {
       <Row>
         <SubTitulo>{t('shopScreen.lastItems')}</SubTitulo>
       </Row>
+      <CardLastItem/>
       <SubTitulo>{t('shopScreen.promotions')}</SubTitulo>
+      <CardLastItem/>
       <MyButtonSubmit onPress={() => navigation.navigate('Menu')}>
         <MyButtonTextSubmit>Back Warnner</MyButtonTextSubmit>
       </MyButtonSubmit>
