@@ -5,12 +5,19 @@ import Lock from '../../../assets/icons/lock.svg';
 import Eye from '../../../assets/icons/eye.svg';
 import EyeOff from '../../../assets/icons/eye-off.svg';
 import Slug from '../../../assets/icons/slug.svg';
-import Cat from '../../../assets/icons/cat.svg'
 import Menu from '../../../assets/icons/menu.svg'
 import Search from '../../../assets/icons/search.svg'
 import Sliders from '../../../assets/icons/sliders.svg'
 import User from '../../../assets/icons/user.svg'
 import MapPin from '../../../assets/icons/map-pin.svg'
+import Bird from '../../../assets/icons/bird.svg'
+import Cat from '../../../assets/icons/cat.svg'
+import Dog from '../../../assets/icons/dog.svg'
+import Fish from '../../../assets/icons/fish.svg'
+import Hamster from '../../../assets/icons/hamster.svg'
+import Rabbit from '../../../assets/icons/rabbit.svg'
+import Turtle from '../../../assets/icons/turtle.svg'
+
 
 const tamanho = {
   height: 25,
@@ -45,10 +52,6 @@ export const IconEyeOff = (props: any) => {
   return <EyeOff height={tamanho.height} width={tamanho.width} {...props} />;
 };
 
-export const IconCat = (props: any) => {
-  return <Cat height={tamanho.height} width={tamanho.width} {...props} />;
-};
-
 export const IconMenu = (props: any) => {
   return <Menu height={tamanho.height} width={tamanho.width} {...props} />;
 };
@@ -68,3 +71,33 @@ export const IconSliders = (props: any) => {
 export const IconMapPin = (props: any) => {
   return <MapPin height={tamanho.height} width={tamanho.width} {...props} />;
 };
+
+export const IconBird = (props: any) => {
+  return <Bird height={tamanho.height} width={tamanho.width} {...props} />;
+};
+
+export const IconCat = (props: any) => {
+  return <Cat height={tamanho.height} width={tamanho.width} {...props} />;
+};
+
+export const IconDog = (props: any) => {
+  return <Dog height={tamanho.height} width={tamanho.width} {...props} />;
+};
+
+export const IconFish = (props: any) => {
+  return <Fish height={tamanho.height} width={tamanho.width} {...props} />;
+};
+
+export const IconHamster = (props: any) => {
+  return <Hamster height={tamanho.height} width={tamanho.width} {...props} />;
+};
+
+export const IconRabbit = (props: any) => {
+  return <Rabbit height={tamanho.height} width={tamanho.width} {...props} />;
+};
+
+export const IconTurtle = (props: any) => {
+  return <Turtle height={tamanho.height} width={tamanho.width} {...props} />;
+};
+
+

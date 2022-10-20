@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import {
   FlatList,
   SafeAreaView,
@@ -10,23 +10,21 @@ import {
 } from 'react-native';
 import themes from '../../../themes';
 
-//const navigation = useNavigation();
-
 const DATA = [
   {
     id: '1',
     title: 'Shop',
-    //button: navigation.navigate('menu')
+    button: 'Shop',
   },
   {
     id: '2',
     title: 'Clinic',
-    //button: navigation.navigate('menu')
+    button: 'Shop',
   },
   {
     id: '3',
     title: 'Services',
-    //button: navigation.navigate('menu')
+    button: 'Shop',
   },
 ];
 
@@ -38,14 +36,14 @@ interface ItemProps {
 }
 
 const Item = ({ item, onPress, backgroundColor, textColor }: ItemProps) => (
-  <TouchableOpacity onPress={onPress}  style={[styles.item, backgroundColor]}>
+  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
     <Text style={[styles.title, textColor]}>{item.title}</Text>
   </TouchableOpacity>
 );
 
 const MenuServices = () => {
   const [selectedId, setSelectedId] = useState(null);
-  const [selectedButton, setSelectedButton] = useState(1);
+  const navigation = useNavigation();
 
   const renderItem = ({ item }: ItemProps) => {
     const backgroundColor =
@@ -53,6 +51,7 @@ const MenuServices = () => {
         ? themes.light.COLORS.secondary
         : themes.light.COLORS.neutral;
     const color = item.id === selectedId ? 'white' : 'black';
+    item.id === selectedId ? navigation.navigate(item.button) : false;
 
     return (
       <Item

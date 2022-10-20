@@ -1,58 +1,53 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Image } from 'react-native';
-import {
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import { FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import themes from '../../../themes';
 import { Row } from '../../Global';
 import { BodyText } from '../../Text';
-
 
 const DATA = [
   {
     id: '1',
     title: 'Dog',
     image: require('../../../../assets/img/dog.png'),
-    button: 'Menu'
+    button: 'Dog',
   },
   {
     id: '2',
     title: 'Cat',
     image: require('../../../../assets/img/cat.png'),
-    button: 'Menu'
+    button: 'Cat',
   },
   {
     id: '3',
     title: 'Bird',
     image: require('../../../../assets/img/bird.png'),
-    button: 'Menu'
+    button: 'Bird',
   },
   {
     id: '4',
     title: 'Fish',
     image: require('../../../../assets/img/fish.png'),
-    button: 'Menu'
+    button: 'Fish',
   },
   {
     id: '5',
     title: 'Hamster',
     image: require('../../../../assets/img/hamster.png'),
-    button: 'Menu'
+    button: 'Hamster',
   },
   {
     id: '6',
     title: 'Rabbit',
     image: require('../../../../assets/img/rabbit.png'),
-    button: 'Menu'
+    button: 'Rabbit',
   },
   {
     id: '7',
     title: 'Turtle',
     image: require('../../../../assets/img/turtle.png'),
-    button: 'Menu'
+    button: 'Turtle',
   },
 ];
 
@@ -64,22 +59,21 @@ interface ItemProps {
 }
 
 const Item = ({ item, onPress, backgroundColor, textColor }: ItemProps) => (
-  <TouchableOpacity onPress={onPress}  style={[styles.item, backgroundColor]}>
+  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
     <Image
-            source={item.image}
-            style={{
-              width: '100%',
-              height: '100%',
-              bottom: 30
-            }}
-          ></Image>
+      source={item.image}
+      style={{
+        width: '100%',
+        height: '100%',
+        bottom: 30,
+      }}
+    ></Image>
     <BodyText style={[styles.title, textColor]}>{item.title}</BodyText>
   </TouchableOpacity>
 );
 
 const MenuCategory = () => {
   const [selectedId, setSelectedId] = useState(null);
-  const [selectedButton, setSelectedButton] = useState(1);
   const navigation: any = useNavigation();
 
   const renderItem = ({ item }: ItemProps) => {
@@ -88,16 +82,16 @@ const MenuCategory = () => {
         ? themes.light.COLORS.secondary
         : themes.light.COLORS.neutral;
     const color = item.id === selectedId ? 'white' : 'black';
+    item.id === selectedId ? navigation.navigate(item.button) : false;
 
     return (
-      <Row style={{width: '10%', justifyContent: 'left' }}>
-      <Item
-        item={item}
-        onPress={() => navigation.navigate(item.button)}
-      //onPress={() => setSelectedId(item.id)}
-        backgroundColor={{ backgroundColor }}
-        textColor={{ color }}
-      />
+      <Row style={{ width: '10%', justifyContent: 'left' }}>
+        <Item
+          item={item}
+          onPress={() => setSelectedId(item.id)}
+          backgroundColor={{ backgroundColor }}
+          textColor={{ color }}
+        />
       </Row>
     );
   };
@@ -113,7 +107,7 @@ const MenuCategory = () => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       />
-      </Row>
+    </Row>
   );
 };
 
@@ -130,7 +124,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     bottom: 20,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 });
 
