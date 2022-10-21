@@ -22,13 +22,17 @@ const Shop = () => {
         <SubTitulo>{t('shopScreen.category')}</SubTitulo>
       </Row>
       <MenuCategory />
-
       <Row>
         <SubTitulo>{t('shopScreen.lastItems')}</SubTitulo>
       </Row>
-      <CardLastItem/>
-      <SubTitulo>{t('shopScreen.promotions')}</SubTitulo>
-      <CardLastItem/>
+     
+      <CardLastItem />
+     
+      <Row>
+        <SubTitulo>{t('shopScreen.promotions')}</SubTitulo>
+      </Row>
+      <CardLastItem />
+
       <MyButtonSubmit onPress={() => navigation.navigate('Menu')}>
         <MyButtonTextSubmit>Back Warnner</MyButtonTextSubmit>
       </MyButtonSubmit>
