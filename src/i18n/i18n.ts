@@ -19,6 +19,7 @@ const getDefaultLang = async () => {
   return i18n
     .use(initReactI18next) 
     .init({
+      compatibilityJSON: 'v3',
       resources,
       lng: storedLang ? storedLang : 'pt', 
 
