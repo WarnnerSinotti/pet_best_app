@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, StatusBar, Image } from 'react-native';
+import { StyleSheet, StatusBar, Image, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';
@@ -8,8 +8,13 @@ import { Container, Row } from '../../components/Global';
 import Search from '../../components/Search';
 import MenuCategory from '../../components/FlatList/MenuCategory';
 import { BodyText, SubTitulo } from '../../components/Text';
-import { CardLastItem } from '../../components/CardShopping';
+import {
+  CardBorderLastItem,
+  CardContainerLastItem,
+  CardLastItem,
+} from '../../components/CardShopping';
 import { IconHeart } from '../../components/SVG';
+import themes from '../../themes';
 
 const Shop = () => {
   const navigation: any = useNavigation();
@@ -26,28 +31,42 @@ const Shop = () => {
       <Row>
         <SubTitulo>{t('shopScreen.lastItems')}</SubTitulo>
       </Row>
-     
-     <Row style={{ paddingTop: 20 }}>
-     <CardLastItem>
-      <IconHeart style={styles.cardIcon} />
-     <Image
-source={require('../../../assets/img/Products/product01.png')}
-  style={{
-    width: '100%',
-    height: '100%',
-    //bottom: 30,
-  }}
-/>
-        <BodyText>hello</BodyText>
-        </CardLastItem>
 
+      <CardContainerLastItem style={{ paddingTop: 20 }}>
+        <CardBorderLastItem>
+          <TouchableOpacity style={styles.cardIcon}>
+            <IconHeart style={styles.Icon} width={20} />
+          </TouchableOpacity>
+          <CardLastItem>
+            <Image
+              source={require('../../../assets/img/Products/product01.png')}
+              style={{
+                width: '100%',
+                height: '100%',
+              }}
+            />
+          </CardLastItem>
+          <BodyText style={styles.title}>Bakers Adult with Beef </BodyText>
+        </CardBorderLastItem>
 
-       
-        </Row>
+        <CardBorderLastItem>
+          <TouchableOpacity style={styles.cardIcon}>
+            <IconHeart style={styles.Icon} width={20} />
+          </TouchableOpacity>
+          <CardLastItem>
+            <Image
+              source={require('../../../assets/img/Products/product02.png')}
+              style={{
+                width: '100%',
+                height: '100%',
+              }}
+            />
+          </CardLastItem>
+          <BodyText style={styles.title}>Aquarium Tank LED </BodyText>
+        </CardBorderLastItem>
+      </CardContainerLastItem>
 
-        
-     
-      <Row>
+      <Row style={{ paddingTop: 30 }}>
         <SubTitulo>{t('shopScreen.promotions')}</SubTitulo>
       </Row>
 
@@ -69,15 +88,27 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
   },
   title: {
-    fontSize: 32,
+    fontSize: 12,
+    alignContent: 'center',
+    justifyContent: 'center',
+    paddingLeft: 0,
+    paddingTop: 10,
+    fontFamily: themes.light.FONTS.LEXEND_BOLD,
+  },
+  Icon: {
+    color: themes.light.COLORS.neutral,
+    alignSelf: 'center',
   },
   cardIcon: {
-    backgroundColor:  '#F1F1F1',
+    width: 35,
+    height: 35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: themes.light.COLORS.background,
     borderRadius: 20,
-    color: 'red',
-    bottom: -10,
-    alignSelf: 'flex-end'
-  }
+    margin: -12,
+    alignSelf: 'flex-end',
+  },
 });
 
 export default Shop;
