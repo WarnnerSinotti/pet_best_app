@@ -21,12 +21,4 @@ justify-content: center;
 align-items: center;
 `;
 
-export const CardLastItem = styled.View`
-width: 80%;
-height: 80%;
-background-color:  ${(props: any) => props.theme.COLORS.neutral} ;
-border-radius: 12px;
-justify-content: center;
-align-items: center;
-`;
 

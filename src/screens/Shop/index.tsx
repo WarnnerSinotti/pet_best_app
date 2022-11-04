@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, StatusBar, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, StatusBar, Image, TouchableOpacity, FlatList } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';
@@ -15,6 +15,7 @@ import {
 } from '../../components/CardShopping';
 import { IconHeart } from '../../components/SVG';
 import themes from '../../themes';
+import FlatShopping from '../../components/FlatList/Shopping';
 
 const Shop = () => {
   const navigation: any = useNavigation();
@@ -31,25 +32,15 @@ const Shop = () => {
       <Row>
         <SubTitulo>{t('shopScreen.lastItems')}</SubTitulo>
       </Row>
+      <FlatShopping/>
 
-      <CardContainerLastItem style={{ paddingTop: 20 }}>
-        <CardBorderLastItem>
-          <TouchableOpacity style={styles.cardIcon}>
-            <IconHeart style={styles.Icon} width={20} />
-          </TouchableOpacity>
-          <CardLastItem>
-            <Image
-              source={require('../../../assets/img/Products/product01.png')}
-              style={{
-                width: '100%',
-                height: '100%',
-              }}
-            />
-          </CardLastItem>
-          <BodyText style={styles.title}>Bakers Adult with Beef </BodyText>
-        </CardBorderLastItem>
+      
+   
+      
 
-        <CardBorderLastItem>
+     
+
+       {/*  <CardBorderLastItem>
           <TouchableOpacity style={styles.cardIcon}>
             <IconHeart style={styles.Icon} width={20} />
           </TouchableOpacity>
@@ -63,13 +54,15 @@ const Shop = () => {
             />
           </CardLastItem>
           <BodyText style={styles.title}>Aquarium Tank LED </BodyText>
-        </CardBorderLastItem>
-      </CardContainerLastItem>
+        </CardBorderLastItem> */}
+     
 
       <Row style={{ paddingTop: 30 }}>
         <SubTitulo>{t('shopScreen.promotions')}</SubTitulo>
       </Row>
 
+
+   
       <MyButtonSubmit onPress={() => navigation.navigate('Menu')}>
         <MyButtonTextSubmit>Back Warnner</MyButtonTextSubmit>
       </MyButtonSubmit>
