@@ -14,11 +14,12 @@ const resources = {
 };
 
 const getDefaultLang = async () => {
-  const storedLang = await AsyncStorage.getItem('lang');
+  const storedLang = await AsyncStorage.getItem('lng');
 
   return i18n
     .use(initReactI18next) 
     .init({
+      compatibilityJSON: 'v3',
       resources,
       lng: storedLang ? storedLang : 'pt', 
 
@@ -31,25 +32,3 @@ const getDefaultLang = async () => {
 };
 
 export default getDefaultLang();
-
-/* import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
-import translationEN from './localization/en.json'
-import translationPT from './localization/pt.json'
-
-export const defaultNS = "en";
-export const resources = {
-  en: {
-    translation: translationEN,
-  },
-  pt: {
-    translation: translationPT,
-  },
-}
-
-i18n.use(initReactI18next).init({
-  lng: "en",
-  ns: ["ns1", "ns2"],
-  defaultNS,
-  resources,
-}) */

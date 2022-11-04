@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet, StatusBar, Image, TouchableOpacity, FlatList } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { MyButtonSubmit, MyButtonTextSubmit } from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';
@@ -7,8 +7,15 @@ import HeaderMy from '../../components/Header/HeaderMain';
 import { Container, Row } from '../../components/Global';
 import Search from '../../components/Search';
 import MenuCategory from '../../components/FlatList/MenuCategory';
-import { SubTitulo } from '../../components/Text';
-import CardLastItem from '../../components/CardShopping';
+import { BodyText, SubTitulo } from '../../components/Text';
+import {
+  CardBorderLastItem,
+  CardContainerLastItem,
+  CardLastItem,
+} from '../../components/CardShopping';
+import { IconHeart } from '../../components/SVG';
+import themes from '../../themes';
+import FlatShopping from '../../components/FlatList/Shopping';
 
 const Shop = () => {
   const navigation: any = useNavigation();
@@ -22,13 +29,40 @@ const Shop = () => {
         <SubTitulo>{t('shopScreen.category')}</SubTitulo>
       </Row>
       <MenuCategory />
-
       <Row>
         <SubTitulo>{t('shopScreen.lastItems')}</SubTitulo>
       </Row>
-      <CardLastItem/>
-      <SubTitulo>{t('shopScreen.promotions')}</SubTitulo>
-      <CardLastItem/>
+      <FlatShopping/>
+
+      
+   
+      
+
+     
+
+       {/*  <CardBorderLastItem>
+          <TouchableOpacity style={styles.cardIcon}>
+            <IconHeart style={styles.Icon} width={20} />
+          </TouchableOpacity>
+          <CardLastItem>
+            <Image
+              source={require('../../../assets/img/Products/product02.png')}
+              style={{
+                width: '100%',
+                height: '100%',
+              }}
+            />
+          </CardLastItem>
+          <BodyText style={styles.title}>Aquarium Tank LED </BodyText>
+        </CardBorderLastItem> */}
+     
+
+      <Row style={{ paddingTop: 30 }}>
+        <SubTitulo>{t('shopScreen.promotions')}</SubTitulo>
+      </Row>
+
+
+   
       <MyButtonSubmit onPress={() => navigation.navigate('Menu')}>
         <MyButtonTextSubmit>Back Warnner</MyButtonTextSubmit>
       </MyButtonSubmit>
@@ -47,7 +81,26 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
   },
   title: {
-    fontSize: 32,
+    fontSize: 12,
+    alignContent: 'center',
+    justifyContent: 'center',
+    paddingLeft: 0,
+    paddingTop: 10,
+    fontFamily: themes.light.FONTS.LEXEND_BOLD,
+  },
+  Icon: {
+    color: themes.light.COLORS.neutral,
+    alignSelf: 'center',
+  },
+  cardIcon: {
+    width: 35,
+    height: 35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: themes.light.COLORS.background,
+    borderRadius: 20,
+    margin: -12,
+    alignSelf: 'flex-end',
   },
 });
 

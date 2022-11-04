@@ -1,56 +1,24 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Row } from '../Global';
-import { BodyText } from '../Text';
+import styled from 'styled-components/native';
 
-const DATA = [
-  {
-    id: '1',
-    image: require('../../../../assets/img/dog.png'),
-    text: 'product 1'
-  },{
-    id: '2',
-    image: require('../../../../assets/img/dog.png'),
-    text: 'product 2'
-  },
-  {
-    id: '3',
-    image: require('../../../../assets/img/dog.png'),
-    text: 'product 3'
-  },
-];
 
-/* interface ItemProps {
-  item: any;
-  onPress: () => void;
-  backgroundColor: any;
-  textColor: any;
-} */
+export const CardContainerLastItem = styled.View`
+  background-color:  ${(props: any) => props.theme.COLORS.background};
+  height: 25%;
+  width: 100%;
+  flex-direction: row;
+  padding-left: 24px;
+  padding-right: 24px;
+  align-items: center;
+  justify-content: space-between;
+`;
 
-const CardLastItem = () => {
-  
-  return (
-    <Row>
-      <BodyText>Criar a Lista de Items</BodyText>
-    </Row>
-  );
-};
+export const CardBorderLastItem = styled.View`
+width: 48%;
+height: 100%;
+background-color:  ${(props: any) => props.theme.COLORS.neutral} ;
+border-radius: 12px;
+justify-content: center;
+align-items: center;
+`;
 
-const styles = StyleSheet.create({
-  item: {
-    marginTop: 35,
-    marginVertical: 20,
-    marginRight: 40,
-    borderRadius: 12,
-    width: 80,
-    height: 90,
-  },
-  title: {
-    fontSize: 10,
-    bottom: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
-export default CardLastItem;

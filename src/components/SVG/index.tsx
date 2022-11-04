@@ -17,7 +17,12 @@ import Fish from '../../../assets/icons/fish.svg'
 import Hamster from '../../../assets/icons/hamster.svg'
 import Rabbit from '../../../assets/icons/rabbit.svg'
 import Turtle from '../../../assets/icons/turtle.svg'
+import Heart from '../../../assets/icons/heart.svg'
 
+interface TamanhoProps {
+  height: number;
+  width: number;
+}
 
 const tamanho = {
   height: 25,
@@ -100,4 +105,6 @@ export const IconTurtle = (props: any) => {
   return <Turtle height={tamanho.height} width={tamanho.width} {...props} />;
 };
 
-
+export const IconHeart = (props: any) => {
+   return <Heart {...props} />;
+};
